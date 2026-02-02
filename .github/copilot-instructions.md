@@ -1,0 +1,8 @@
+- [x] Clarify Project Requirements - Car parts e-commerce with Next.js 14, Prisma, PostgreSQL, NextAuth, Stripe
+- [x] Scaffold the Project
+- [x] Customize the Project
+- [ ] Install Required Extensions
+- [ ] Compile the Project
+- [ ] Create and Run Task
+- [ ] Launch the Project
+- [x] Ensure Documentation is Complete
