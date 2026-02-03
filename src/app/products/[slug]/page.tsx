@@ -35,7 +35,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
   });
 
   const finalPrice = calculateDiscount(product.price, product.discount);
-  const attributes = product.attributes as any;
+  
+  // Parse attributes properly
+  let attributes: Record<string, any> = {};
+  if (product.attributes) {
+    if (typeof product.attributes === 'string') {
+      try {
+        attributes = JSON.parse(product.attributes);
+      } catch (e) {
+        attributes = product.attributes as Record<string, any>;
+      }
+    } else {
+      attributes = product.attributes as Record<string, any>;
+    }
+  }
+  
   const imageUrl = getProductImage(product.title, product.mainImage);
 
   return (
