@@ -1,11 +1,40 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Calculator, Car, Sparkles, TrendingUp } from 'lucide-react';
+
+// Turbo.az-dan toplanan real məlumatlar
+const CAR_DATA: { [brand: string]: string[] } = {
+  'Mercedes': ['E-Class', 'C-Class', 'S-Class', 'GLE', 'GLC', 'GLA', 'A-Class', 'CLS', 'ML', 'E 220 d', 'E 240', 'E 350 4MATIC', 'GLE 53 AMG 4MATIC+ Coupe'],
+  'BMW': ['3 Series', '5 Series', '7 Series', 'X5', 'X3', 'X1', 'X6', 'X7', '428', '528', '530', '525'],
+  'Toyota': ['Camry', 'Corolla', 'Land Cruiser', 'Land Cruiser Prado', 'RAV4', 'Highlander', 'Yaris', 'Prius', 'Aqua', 'Frontlander'],
+  'Hyundai': ['Sonata', 'Elantra', 'Tucson', 'Santa Fe', 'Accent', 'i30', 'Creta'],
+  'Lexus': ['RX', 'ES', 'LX', 'GX', 'IS', 'NX', 'RX 350', 'RX 200t', 'LX 570'],
+  'Kia': ['Sportage', 'Rio', 'Cerato', 'Sorento', 'Soul', 'Optima'],
+  'Nissan': ['X-Trail', 'Qashqai', 'Juke', 'Patrol', 'Altima', 'Murano'],
+  'Volkswagen': ['Passat', 'Golf', 'Tiguan', 'Jetta', 'Polo', 'Touareg'],
+  'Ford': ['Focus', 'Fiesta', 'Kuga', 'Mondeo', 'Ranger', 'Transit', 'F-150'],
+  'Mazda': ['3', '6', 'CX-5', 'CX-9', 'CX-3'],
+  'Honda': ['Accord', 'Civic', 'CR-V', 'HR-V', 'Jazz'],
+  'Chevrolet': ['Cruze', 'Malibu', 'Aveo', 'Captiva', 'Tahoe'],
+  'Audi': ['A4', 'A6', 'Q5', 'Q7', 'A3', 'Q3', 'A8'],
+  'Land Rover': ['Range Rover', 'Discovery', 'Defender', 'Evoque', 'Rover Discovery', 'Rover Range Rover'],
+  'BYD': ['Seal', 'Atto 3', 'Han', 'Tang', 'Song Plus DM-i', 'Seal 05', 'Destroyer 05', 'Song Plus DM-İ'],
+  'Porsche': ['Cayenne', 'Macan', '911', 'Panamera', 'Macan S'],
+  'Mitsubishi': ['Outlander', 'ASX', 'Pajero', 'Lancer', 'L200'],
+  'Subaru': ['Forester', 'Outback', 'XV', 'Legacy', 'Impreza'],
+  'Opel': ['Astra', 'Insignia', 'Corsa', 'Mokka', 'Zafira'],
+  'Jaguar': ['F-Pace', 'XF', 'XE', 'E-Pace', 'F-Type'],
+  'Isuzu': ['D-Max', 'MU-X', 'NP 37'],
+  'Changan': ['CS75', 'Eado', 'CS35', 'CS55'],
+  'LADA': ['Vesta', 'Granta', 'Niva', 'Priora', '(VAZ) 2107'],
+};
+
+const BRANDS = Object.keys(CAR_DATA).sort();
 
 export default function CarValuationPage() {
   const [loading, setLoading] = useState(false);
@@ -23,9 +52,20 @@ export default function CarValuationPage() {
     owners: '1',
   });
 
+  // Seçilmiş markaya görə modelləri filtrlə
+  const availableModels = useMemo(() => {
+    return formData.brand ? CAR_DATA[formData.brand] || [] : [];
+  }, [formData.brand]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Marka dəyişdikdə modeli sıfırla
+    if (name === 'brand') {
+      setFormData(prev => ({ ...prev, brand: value, model: '' }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -66,7 +106,7 @@ export default function CarValuationPage() {
             Avtomobil Qiymət Hesablama
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Maşınınızın dəqiq bazar qiymətini öyrənin. 120,000+ avtomobil məlumatı əsasında hazırlanmış AI model.
+            Maşınınızın dəqiq bazar qiymətini öyrənin. Real bazar məlumatları əsasında hazırlanmış süni intellekt modeli.
           </p>
         </div>
 
@@ -88,29 +128,40 @@ export default function CarValuationPage() {
                       <Label htmlFor="brand" className="text-sm font-semibold text-gray-700">
                         Marka *
                       </Label>
-                      <Input
+                      <select
                         id="brand"
                         name="brand"
-                        placeholder="məs: Mercedes-Benz"
                         value={formData.brand}
                         onChange={handleChange}
                         required
-                        className="mt-1.5 h-11"
-                      />
+                        className="mt-1.5 w-full h-11 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      >
+                        <option value="">Marka seçin</option>
+                        {BRANDS.map(brand => (
+                          <option key={brand} value={brand}>{brand}</option>
+                        ))}
+                      </select>
                     </div>
                     <div>
                       <Label htmlFor="model" className="text-sm font-semibold text-gray-700">
                         Model *
                       </Label>
-                      <Input
+                      <select
                         id="model"
                         name="model"
-                        placeholder="məs: E-Class"
                         value={formData.model}
                         onChange={handleChange}
                         required
-                        className="mt-1.5 h-11"
-                      />
+                        disabled={!formData.brand}
+                        className="mt-1.5 w-full h-11 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <option value="">
+                          {formData.brand ? 'Model seçin' : 'Əvvəl marka seçin'}
+                        </option>
+                        {availableModels.map(model => (
+                          <option key={model} value={model}>{model}</option>
+                        ))}
+                      </select>
                     </div>
                   </div>
 
@@ -350,7 +401,7 @@ export default function CarValuationPage() {
                     <div className="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-semibold flex-shrink-0">
                       2
                     </div>
-                    <p>Süni intellekt 120,000+ maşın məlumatını analiz edir</p>
+                    <p>Süni intellekt real bazar məlumatlarını analiz edir</p>
                   </div>
                   <div className="flex items-start gap-2">
                     <div className="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-semibold flex-shrink-0">
