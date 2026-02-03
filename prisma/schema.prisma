@@ -7,39 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum UserRole {
-  USER
-  ADMIN
-}
-
-enum ProductCondition {
-  NEW
-  USED
-}
-
-enum OrderStatus {
-  PENDING
-  PAID
-  PROCESSING
-  SHIPPED
-  DELIVERED
-  CANCELLED
-}
-
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
+  id            String     @id @default(cuid())
+  email         String     @unique
   name          String?
   password      String
-  role          UserRole  @default(USER)
+  role          UserRole   @default(USER)
   image         String?
   emailVerified DateTime?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-
-  accounts Account[]
-  orders   Order[]
-  wishlist Wishlist[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  accounts      Account[]
+  orders        Order[]
+  wishlist      Wishlist[]
 
   @@map("users")
 }
@@ -57,26 +37,24 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@map("accounts")
 }
 
 model Category {
-  id          String    @id @default(cuid())
-  name        String    @unique
-  slug        String    @unique
+  id          String     @id @default(cuid())
+  name        String     @unique
+  slug        String     @unique
   description String?
   image       String?
   parentId    String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-
-  parent   Category?  @relation("CategoryParent", fields: [parentId], references: [id])
-  children Category[] @relation("CategoryParent")
-  products Product[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  parent      Category?  @relation("CategoryParent", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryParent")
+  products    Product[]
 
   @@map("categories")
 }
@@ -89,8 +67,7 @@ model Brand {
   logo        String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-
-  products Product[]
+  products    Product[]
 
   @@map("brands")
 }
@@ -110,28 +87,21 @@ model Product {
   stock       Int              @default(0)
   mainImage   String?
   images      String[]         @default([])
-  
-  // Compatibility fields
   carMake     String?
   carModel    String?
   yearFrom    Int?
   yearTo      Int?
   engine      String?
   gearbox     String?
-  
-  // JSON attributes for flexible data
   attributes  Json?            @default("{}")
-  
   views       Int              @default(0)
   isActive    Boolean          @default(true)
   isFeatured  Boolean          @default(false)
-  
   createdAt   DateTime         @default(now())
   updatedAt   DateTime         @updatedAt
-
-  category    Category         @relation(fields: [categoryId], references: [id])
-  brand       Brand            @relation(fields: [brandId], references: [id])
   orderItems  OrderItem[]
+  brand       Brand            @relation(fields: [brandId], references: [id])
+  category    Category         @relation(fields: [categoryId], references: [id])
   wishlist    Wishlist[]
 
   @@index([slug])
@@ -149,30 +119,22 @@ model Order {
   total           Float
   subtotal        Float
   discount        Float       @default(0)
-  
-  // Customer info
   customerName    String
   customerEmail   String
   customerPhone   String
-  
-  // Shipping address
   shippingAddress String
   shippingCity    String
   shippingZip     String?
   shippingCountry String      @default("Azerbaijan")
-  
-  // Payment
   paymentMethod   String      @default("stripe")
   stripeSessionId String?     @unique
   paymentIntentId String?
   paidAt          DateTime?
-  
   notes           String?
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
-
-  user       User        @relation(fields: [userId], references: [id])
-  orderItems OrderItem[]
+  orderItems      OrderItem[]
+  user            User        @relation(fields: [userId], references: [id])
 
   @@index([userId])
   @@index([orderNumber])
@@ -188,9 +150,8 @@ model OrderItem {
   discount  Float    @default(0)
   total     Float
   createdAt DateTime @default(now())
-
-  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  product Product @relation(fields: [productId], references: [id])
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id])
 
   @@index([orderId])
   @@index([productId])
@@ -202,11 +163,29 @@ model Wishlist {
   userId    String
   productId String
   createdAt DateTime @default(now())
-
-  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, productId])
   @@index([userId])
   @@map("wishlists")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum ProductCondition {
+  NEW
+  USED
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
 }
