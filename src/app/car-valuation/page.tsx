@@ -32,18 +32,25 @@ export default function CarValuationPage() {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate API call - will be replaced with ML model
-    setTimeout(() => {
-      // Simple mock calculation
-      const basePrice = 15000;
-      const yearValue = (2026 - parseInt(formData.year)) * -800;
-      const mileageValue = (parseInt(formData.mileage) / 1000) * -50;
-      const conditionValue = formData.condition === 'ela' ? 2000 : formData.condition === 'yaxsi' ? 0 : -3000;
-      
-      const estimated = Math.max(5000, basePrice + yearValue + mileageValue + conditionValue);
-      setResult(estimated);
+    try {
+      const response = await fetch('/api/predict-price', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Qiymət hesablanmadı');
+      }
+
+      const data = await response.json();
+      setResult(data.prediction.estimated_price);
+    } catch (error) {
+      console.error('Prediction error:', error);
+      alert('Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.');
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   return (
