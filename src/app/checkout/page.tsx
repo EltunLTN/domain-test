@@ -64,16 +64,11 @@ export default function CheckoutPage() {
         throw new Error(data.error || 'Checkout failed');
       }
 
-      // Redirect to Stripe
-      const stripe = await stripePromise;
-      if (stripe && data.sessionId) {
-        const { error } = await stripe.redirectToCheckout({
-          sessionId: data.sessionId,
-        });
-
-        if (error) {
-          throw error;
-        }
+      // Redirect to Stripe Checkout
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error('No checkout URL received');
       }
     } catch (error: any) {
       console.error('Checkout error:', error);

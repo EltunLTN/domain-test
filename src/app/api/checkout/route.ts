@@ -132,7 +132,10 @@ export async function POST(req: NextRequest) {
       data: { stripeSessionId: stripeSession.id },
     });
 
-    return NextResponse.json({ sessionId: stripeSession.id });
+    return NextResponse.json({ 
+      sessionId: stripeSession.id,
+      url: stripeSession.url 
+    });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ error: error.errors[0].message }, { status: 400 });

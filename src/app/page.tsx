@@ -1,6 +1,8 @@
 import { prisma } from '@/lib/prisma';
 import { HomeClient } from '@/components/home-client';
 
+export const dynamic = 'force-dynamic';
+
 async function getFeaturedProducts() {
   return prisma.product.findMany({
     where: {

@@ -17,7 +17,7 @@ export default function TermsPage() {
 
         <h2>1. Acceptance of Terms</h2>
         <p>
-          By accessing and using CarParts ("the Website"), you accept and agree to be bound by these Terms 
+          By accessing and using CarParts ({"\"the Website\""}), you accept and agree to be bound by these Terms 
           and Conditions. If you do not agree to these terms, please do not use our services.
         </p>
 

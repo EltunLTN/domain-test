@@ -116,7 +116,9 @@ export default async function AccountPage() {
           <CardContent>
             {orders.length > 0 ? (
               <div className="space-y-4">
-                {orders.map((order) => (
+                {orders.map((order) => {
+                  const totalAmount = order.orderItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+                  return (
                   <div
                     key={order.id}
                     className="border rounded-lg p-4 hover:bg-muted/50 transition-colors"
@@ -129,7 +131,7 @@ export default async function AccountPage() {
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="font-bold">{formatPrice(order.totalAmount)}</p>
+                        <p className="font-bold">{formatPrice(totalAmount)}</p>
                         <span
                           className={`inline-flex px-2 py-1 rounded text-xs font-medium ${
                             order.status === 'PAID'
@@ -161,7 +163,8 @@ export default async function AccountPage() {
                       )}
                     </div>
                   </div>
-                ))}
+                );
+                })}
               </div>
             ) : (
               <div className="text-center py-8">

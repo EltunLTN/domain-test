@@ -5,6 +5,8 @@ import { prisma } from '@/lib/prisma';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Building2 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Brands - CarParts',
   description: 'Shop by premium automotive brands',
@@ -31,7 +33,7 @@ export default async function BrandsPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-2">Shop by Brand</h1>
         <p className="text-muted-foreground">
-          Discover products from the world's leading automotive brands
+          {"Discover products from the world's leading automotive brands"}
         </p>
       </div>
 

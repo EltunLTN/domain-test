@@ -24,9 +24,9 @@ export default function AboutPage() {
           <CardContent className="pt-6">
             <h2 className="text-2xl font-bold mb-4 text-center">Our Mission</h2>
             <p className="text-lg text-center leading-relaxed">
-              At CarParts, we're committed to providing premium quality automotive parts at competitive prices. 
-              We believe every vehicle owner deserves access to reliable parts backed by expert support and 
-              industry-leading warranties.
+              {"At CarParts, we're committed to providing premium quality automotive parts at competitive prices. "}
+              {"We believe every vehicle owner deserves access to reliable parts backed by expert support and "}
+              {"industry-leading warranties."}
             </p>
           </CardContent>
         </Card>
@@ -119,7 +119,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-4">Our Story</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Founded in 2010, CarParts began as a small family-owned auto parts store in Detroit. 
-            With a passion for automobiles and a commitment to customer service, we've grown into 
+            {"With a passion for automobiles and a commitment to customer service, we've grown into "}
             one of the most trusted online automotive parts retailers.
           </p>
           <p className="text-muted-foreground leading-relaxed">
