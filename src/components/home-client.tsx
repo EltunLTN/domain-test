@@ -16,7 +16,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
       <MouseTrail />
       
       {/* Enhanced Hero Section with Light Colors */}
-      <section className="relative bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 text-slate-900 py-32 md:py-40 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 text-slate-900 py-12 sm:py-20 md:py-32 lg:py-40 overflow-hidden">
         {/* Advanced Animated Background */}
         <div className="absolute inset-0">
           {/* Animated Grid */}
@@ -41,22 +41,22 @@ export function HomeClient({ featuredProducts, categories }: any) {
         <div className="absolute -bottom-8 left-1/3 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
         <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-3000" />
         
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-6 sm:gap-10 md:gap-16 items-center">
               {/* Enhanced Left Content */}
-              <div className="text-center lg:text-left space-y-8">
+              <div className="text-center lg:text-left space-y-4 sm:space-y-6 md:space-y-8">
                 <BounceIn delay={0.1}>
-                  <div className="inline-flex items-center gap-2 mb-4 px-6 py-3 bg-white/80 backdrop-blur-xl rounded-full border-2 border-blue-200 shadow-xl">
-                    <Sparkles className="h-4 w-4 text-yellow-500 animate-pulse" />
-                    <span className="text-sm font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  <div className="inline-flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-4 px-3 sm:px-6 py-2 sm:py-3 bg-white/80 backdrop-blur-xl rounded-full border-2 border-blue-200 shadow-xl">
+                    <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-500 animate-pulse" />
+                    <span className="text-xs sm:text-sm font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                       Azerbaijan&apos;s #1 Trusted Auto Parts Platform
                     </span>
                   </div>
                 </BounceIn>
                 
                 <CarDriveIn delay={0.2}>
-                  <h1 className="text-6xl md:text-8xl font-black leading-[1.1] mb-6">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-[1.1] mb-4 sm:mb-6">
                     <span className="block text-slate-800">Your Car</span>
                     <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-slow bg-[length:200%_auto]">
                       Deserves
@@ -68,7 +68,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                 </CarDriveIn>
                 
                 <AnimatedSection delay={0.3}>
-                  <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
+                  <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
                     Premium quality auto parts with genuine warranties. Fast delivery across Azerbaijan. 
                     <span className="block mt-2 font-semibold text-slate-800">Your satisfaction, our commitment.</span>
                   </p>
@@ -76,7 +76,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                 
                 {/* Quick Stats */}
                 <AnimatedSection delay={0.35}>
-                  <div className="flex flex-wrap gap-6 justify-center lg:justify-start text-sm">
+                  <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center lg:justify-start text-xs sm:text-sm">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500" />
                       <span className="text-slate-700 font-medium">10,000+ Products</span>
@@ -93,23 +93,23 @@ export function HomeClient({ featuredProducts, categories }: any) {
                 </AnimatedSection>
                 
                 <AnimatedSection delay={0.4}>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                     <RevEngine>
-                      <Link href="/shop">
-                        <Button size="lg" className="group relative bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white px-12 py-7 text-lg font-bold shadow-2xl hover:shadow-purple-500/50 transition-all overflow-hidden w-full sm:w-auto">
+                      <Link href="/shop" className="w-full sm:w-auto">
+                        <Button size="lg" className="group relative bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white px-6 sm:px-12 py-4 sm:py-7 text-base sm:text-lg font-bold shadow-2xl hover:shadow-purple-500/50 transition-all overflow-hidden w-full">
                           <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                          <ShoppingCart className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                          <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:animate-bounce" />
                           Explore Products
                         </Button>
                       </Link>
                     </RevEngine>
-                    <Link href="/car-valuation">
+                    <Link href="/car-valuation" className="w-full sm:w-auto">
                       <Button 
                         size="lg" 
                         variant="outline" 
-                        className="group border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-12 py-7 text-lg font-bold shadow-lg hover:shadow-blue-500/50 transition-all w-full sm:w-auto"
+                        className="group border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 sm:px-12 py-4 sm:py-7 text-base sm:text-lg font-bold shadow-lg hover:shadow-blue-500/50 transition-all w-full"
                       >
-                        <Sparkles className="mr-2 h-5 w-5" />
+                        <Sparkles className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                         AI Car Valuation
                       </Button>
                     </Link>
@@ -118,18 +118,18 @@ export function HomeClient({ featuredProducts, categories }: any) {
               </div>
 
               {/* Enhanced Right Content - Premium Feature Grid */}
-              <div className="grid grid-cols-2 gap-4 lg:gap-6">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mt-6 lg:mt-0">
                 <BounceIn delay={0.5} className="col-span-2">
-                  <div className="relative group bg-white/90 backdrop-blur-2xl p-8 rounded-3xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-500 overflow-hidden">
+                  <div className="relative group bg-white/90 backdrop-blur-2xl p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-500 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="relative z-10">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="p-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
-                          <Zap className="h-8 w-8 text-white" />
+                      <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-4">
+                        <div className="p-2 sm:p-3 md:p-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl sm:rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
+                          <Zap className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-white" />
                         </div>
                         <div>
-                          <h3 className="font-black text-2xl mb-1 text-slate-800">Lightning Fast</h3>
-                          <p className="text-slate-600">Same-day delivery in Baku</p>
+                          <h3 className="font-black text-base sm:text-lg md:text-2xl mb-0.5 sm:mb-1 text-slate-800">Lightning Fast</h3>
+                          <p className="text-xs sm:text-sm md:text-base text-slate-600">Same-day delivery in Baku</p>
                         </div>
                       </div>
                     </div>
@@ -137,14 +137,14 @@ export function HomeClient({ featuredProducts, categories }: any) {
                 </BounceIn>
 
                 <BounceIn delay={0.6}>
-                  <div className="relative group bg-white/90 backdrop-blur-2xl p-6 rounded-3xl border-2 border-green-200 hover:border-green-400 hover:shadow-xl transition-all duration-500 hover:scale-105 h-full">
+                  <div className="relative group bg-white/90 backdrop-blur-2xl p-3 sm:p-4 md:p-6 rounded-2xl sm:rounded-3xl border-2 border-green-200 hover:border-green-400 hover:shadow-xl transition-all duration-500 hover:scale-105 h-full">
                     <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="relative z-10 flex flex-col h-full justify-center">
-                      <div className="p-3 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl shadow-lg w-fit mb-3 group-hover:scale-110 transition-transform">
-                        <Shield className="h-7 w-7 text-white" />
+                      <div className="p-2 sm:p-3 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl sm:rounded-2xl shadow-lg w-fit mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
+                        <Shield className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
                       </div>
-                      <h3 className="font-black text-lg mb-1 text-slate-800">100% Genuine</h3>
-                      <p className="text-sm text-slate-600">Quality guaranteed</p>
+                      <h3 className="font-black text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1 text-slate-800">100% Genuine</h3>
+                      <p className="text-xs sm:text-sm text-slate-600">Quality guaranteed</p>
                     </div>
                   </div>
                 </BounceIn>

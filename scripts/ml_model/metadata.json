@@ -1,29 +1,19 @@
 {
   "feature_columns": [
-    "brand_encoded",
+    "marka_encoded",
     "model_encoded",
-    "fuel_type_encoded",
-    "transmission_encoded",
-    "condition_encoded",
-    "city_encoded",
-    "year",
-    "mileage",
-    "engine_size",
-    "owners"
+    "il",
+    "yurus",
+    "muherrik"
   ],
   "categorical_columns": [
-    "brand",
-    "model",
-    "fuel_type",
-    "transmission",
-    "condition",
-    "city"
+    "marka",
+    "model"
   ],
   "numerical_columns": [
-    "year",
-    "mileage",
-    "engine_size",
-    "owners"
+    "il",
+    "yurus",
+    "muherrik"
   ],
-  "trained_at": "2026-02-03 23:29:32"
+  "trained_at": "2026-02-04 00:07:35"
 }

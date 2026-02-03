@@ -1,6 +1,7 @@
 """
 ML Model Training Script
-Bu script car_data_cleaned.csv faylından ML model train edir.
+Bu script car_data.csv faylından ML model train edir.
+Yeni 67,432 məlumat ilə train olunur.
 """
 
 import pandas as pd
@@ -19,31 +20,56 @@ class CarPricePredictor:
         self.scaler = StandardScaler()
         self.label_encoders = {}
         self.feature_columns = []
-        self.categorical_columns = ['brand', 'model', 'fuel_type', 'transmission', 'condition', 'city']
-        self.numerical_columns = ['year', 'mileage', 'engine_size', 'owners']
+        # Yeni CSV sütun adlarına uyğun
+        self.categorical_columns = ['marka', 'model']
+        self.numerical_columns = ['il', 'yurus', 'muherrik']
         
-    def load_data(self, filepath='car_data_cleaned.csv'):
+    def load_data(self, filepath='car_data.csv'):
         """CSV-dən məlumatları yükləyir"""
         print(f"Məlumatlar yüklənir: {filepath}")
         df = pd.read_csv(filepath)
         print(f"✓ Yükləndi: {len(df)} sətir, {len(df.columns)} sütun")
+        print(f"Sütunlar: {list(df.columns)}")
+        
+        # İlk 5 sətiri göstər
+        print("\nİlk 5 sətir:")
+        print(df.head())
+        
         return df
+    
+    def clean_data(self, df):
+        """Məlumatları təmizləyir"""
+        print("\nMəlumatlar təmizlənir...")
+        df_clean = df.copy()
+        
+        # Null dəyərləri sil
+        before = len(df_clean)
+        df_clean = df_clean.dropna()
+        after = len(df_clean)
+        print(f"✓ Null dəyərlər silindi: {before - after} sətir")
+        
+        # Qeyri-real qiymətləri sil (çox aşağı və ya çox yüksək)
+        df_clean = df_clean[df_clean['qiymet'] > 1000]
+        df_clean = df_clean[df_clean['qiymet'] < 500000]
+        print(f"✓ Qeyri-real qiymətlər silindi")
+        
+        # Yürüşü int-ə çevir
+        df_clean['yurus'] = df_clean['yurus'].astype(int)
+        df_clean['il'] = df_clean['il'].astype(int)
+        
+        # 1990-dan əvvəl və 2026-dan sonra olan maşınları sil
+        df_clean = df_clean[(df_clean['il'] >= 1990) & (df_clean['il'] <= 2026)]
+        
+        print(f"✓ Təmizləndikdən sonra: {len(df_clean)} sətir")
+        
+        return df_clean
     
     def preprocess_data(self, df):
         """Məlumatları preprocessing edir"""
-        print("Preprocessing başladı...")
+        print("\nPreprocessing başladı...")
         
         # Kopyasını götür
         df_processed = df.copy()
-        
-        # Null dəyərləri doldur
-        for col in self.numerical_columns:
-            if col in df_processed.columns:
-                df_processed[col].fillna(df_processed[col].median(), inplace=True)
-        
-        for col in self.categorical_columns:
-            if col in df_processed.columns:
-                df_processed[col].fillna(df_processed[col].mode()[0], inplace=True)
         
         # Kateqorik dəyərləri encode et
         for col in self.categorical_columns:
@@ -64,14 +90,20 @@ class CarPricePredictor:
                 self.feature_columns.append(col)
         
         print(f"✓ Preprocessing tamamlandı. Feature sayı: {len(self.feature_columns)}")
+        print(f"Features: {self.feature_columns}")
         return df_processed
     
-    def train(self, df, target_column='price', test_size=0.2):
+    def train(self, df, target_column='qiymet', test_size=0.2):
         """Modeli train edir"""
-        print("\nModel train başladı...")
+        print("\n" + "="*60)
+        print("MODEL TRAİNİNG BAŞLADI")
+        print("="*60)
+        
+        # Məlumatları təmizlə
+        df_clean = self.clean_data(df)
         
         # Preprocessing
-        df_processed = self.preprocess_data(df)
+        df_processed = self.preprocess_data(df_clean)
         
         # Features və target
         X = df_processed[self.feature_columns]
@@ -207,7 +239,7 @@ def main():
     predictor = CarPricePredictor()
     
     # Məlumatları yükləyir
-    df = predictor.load_data('car_data_cleaned.csv')
+    df = predictor.load_data()
     
     # Train edir
     metrics = predictor.train(df)
@@ -216,22 +248,17 @@ def main():
     predictor.save_model('ml_model')
     
     print("\n=== TEST PREDICTION ===")
-    # Test prediction
+    # Test prediction (yeni struktur)
     test_car = {
-        'brand': 'Mercedes-Benz',
+        'marka': 'Mercedes',
         'model': 'E 200',
-        'year': 2020,
-        'mileage': 50000,
-        'engine_size': 2.0,
-        'fuel_type': 'benzin',
-        'transmission': 'avtomat',
-        'condition': 'yaxsi',
-        'city': 'Bakı',
-        'owners': 1
+        'il': 2020,
+        'yurus': 50000,
+        'muherrik': 2.0
     }
     
     predicted_price = predictor.predict(test_car)
-    print(f"\nTest Maşın: {test_car['brand']} {test_car['model']} ({test_car['year']})")
+    print(f"\nTest Maşın: {test_car['marka']} {test_car['model']} ({test_car['il']})")
     print(f"Predicted Qiymət: {predicted_price:,.0f} AZN")
     
     print("\n🎉 Model train tamamlandı!")

@@ -57,18 +57,13 @@ export async function POST(request: NextRequest) {
         throw new Error('Python script tapılmadı');
       }
 
-      // Prepare car data for Python script
+      // Prepare car data for Python script (yeni struktur - Azərbaycanca sütun adları)
       const carData = {
-        brand,
-        model,
-        year: parseInt(year),
-        mileage: parseInt(mileage),
-        engine_size: parseFloat(engineSize),
-        fuel_type: fuelType || 'benzin',
-        transmission: transmission || 'avtomat',
-        condition: condition || 'yaxsi',
-        city: 'Bakı',
-        owners: parseInt(owners) || 1,
+        marka: brand,
+        model: model,
+        il: parseInt(year),
+        yurus: parseInt(mileage),
+        muherrik: parseFloat(engineSize),
       };
 
       // Write to temp file to avoid quote issues
