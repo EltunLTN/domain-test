@@ -33,8 +33,13 @@ async function getStats() {
 
 export default async function AdminPage() {
   const session = await getServerSession(authOptions);
-  if (!session || session.user.role !== 'ADMIN') {
+  if (!session) {
     redirect('/login');
+  }
+
+  const role = (session.user?.role || '').toUpperCase();
+  if (role !== 'ADMIN') {
+    redirect('/');
   }
 
   const stats = await getStats();

@@ -17,10 +17,15 @@ export async function middleware(req: NextRequest) {
 
   // Require ADMIN role for /admin
   if (pathname.startsWith('/admin')) {
-    if (!token || token.role !== 'ADMIN') {
+    if (!token) {
       const loginUrl = new URL('/login', req.url);
       loginUrl.searchParams.set('callbackUrl', pathname);
       return NextResponse.redirect(loginUrl);
+    }
+
+    const role = (token.role || '').toString().toUpperCase();
+    if (role !== 'ADMIN') {
+      return NextResponse.redirect(new URL('/', req.url));
     }
   }
 

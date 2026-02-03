@@ -31,10 +31,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userRole = (session.user as any).role || session.user?.role;
+    const userRole = (session.user?.role || '').toString().toUpperCase();
     if (userRole !== 'ADMIN') {
-      console.error('User role:', userRole, 'Session:', session.user);
-      return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
+      return NextResponse.json(
+        { error: 'Admin access required' },
+        { status: 403 }
+      );
     }
 
     const body = await req.json();
