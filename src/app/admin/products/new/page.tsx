@@ -61,13 +61,16 @@ export default function AddProductPage() {
     loadData();
   }, []);
 
+  // Loading state while checking session
   if (!session) {
-    return <div className="p-4 text-red-600">Lütfen giriş yapın</div>;
-  }
-
-  const userRole = (session?.user?.role || '').toString().toUpperCase();
-  if (userRole !== 'ADMIN') {
-    return <div className="p-4 text-red-600">Giriş Yetkiniz Yok</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Yükleniyor...</p>
+        </div>
+      </div>
+    );
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
