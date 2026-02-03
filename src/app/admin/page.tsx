@@ -1,6 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { prisma } from '@/lib/prisma';
 import { Package, ShoppingCart, Users, DollarSign } from 'lucide-react';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+import { redirect } from 'next/navigation';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 async function getStats() {
   const [totalProducts, totalOrders, totalUsers, recentOrders] = await Promise.all([
@@ -26,6 +32,11 @@ async function getStats() {
 }
 
 export default async function AdminPage() {
+  const session = await getServerSession(authOptions);
+  if (!session || session.user.role !== 'ADMIN') {
+    redirect('/login');
+  }
+
   const stats = await getStats();
 
   return (

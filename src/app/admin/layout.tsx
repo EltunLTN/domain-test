@@ -4,6 +4,9 @@ import { authOptions } from '@/lib/auth';
 import Link from 'next/link';
 import { Package, ShoppingCart, Users, Settings, LayoutDashboard, Tags, Folder } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function AdminLayout({
   children,
 }: {
