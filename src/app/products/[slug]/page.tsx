@@ -43,10 +43,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
       try {
         attributes = JSON.parse(product.attributes);
       } catch (e) {
-        attributes = product.attributes as Record<string, any>;
+        attributes = {};
       }
     } else {
-      attributes = product.attributes as Record<string, any>;
+      attributes = product.attributes as unknown as Record<string, any>;
     }
   }
   
