@@ -31,12 +31,14 @@ export default function LoginPage() {
       if (result?.error) {
         setError('Geçersiz email veya şifre');
       } else if (result?.ok) {
-        // Wait for session to be established, then check role and redirect
-        setTimeout(async () => {
+        // Wait longer for session to be fully established
+        setTimeout(() => {
           router.refresh();
-          // Session will be available after refresh
-          router.push('/');
-        }, 200);
+          // Redirect after refresh to ensure session is available
+          setTimeout(() => {
+            router.push('/');
+          }, 100);
+        }, 300);
       }
     } catch (error) {
       setError('Bir hata oluştu. Lütfen tekrar deneyin.');

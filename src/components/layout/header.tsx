@@ -20,12 +20,9 @@ export function Header() {
     setMounted(true);
   }, []);
 
-  // Refresh session when status changes
-  useEffect(() => {
-    if (status === 'authenticated') {
-      // Session is ready
-    }
-  }, [status]);
+  // Don't render auth buttons until component is mounted and session is loaded
+  const isReady = mounted && status !== 'loading';
+  const isAuthenticated = isReady && status === 'authenticated' && session?.user;
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,9 +85,11 @@ export function Header() {
               </Button>
             </Link>
 
-            {session?.user ? (
+            {!isReady ? (
+              <div className="w-12 h-9 bg-muted rounded animate-pulse"></div>
+            ) : isAuthenticated ? (
               <div className="flex items-center gap-2">
-                {session.user.role === 'ADMIN' && (
+                {session?.user?.role === 'ADMIN' && (
                   <Link href="/admin">
                     <Button variant="outline" size="sm">
                       Admin Paneli
