@@ -160,14 +160,14 @@ export default function CartPage() {
 
               <div className="border-t pt-4 mb-6">
                 <div className="flex justify-between font-bold text-lg">
-                  <span>Total</span>
+                  <span>Cəmi</span>
                   <span className="text-primary">{formatPrice(total)}</span>
                 </div>
               </div>
 
-              <Link href="/checkout">
+              <Link href="/contact">
                 <Button className="w-full" size="lg">
-                  Proceed to Checkout
+                  Sifariş Vermək Üçün Bizimlə Əlaqə Saxla
                 </Button>
               </Link>
 

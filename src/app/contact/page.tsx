@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import ContactForm from '@/components/contact-form';
 
 export const metadata: Metadata = {
   title: 'Contact Us - CarParts',
@@ -15,9 +16,9 @@ export default function ContactPage() {
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+          <h1 className="text-4xl font-bold mb-4">Bizimlə Əlaqə</h1>
           <p className="text-muted-foreground text-lg">
-            {"Have a question? We'd love to hear from you. Send us a message and we'll respond as soon as possible."}
+            Sualınız var? Bizimlə iletişime geçin. Adınız, emailiniz və telefon nömrənizi yazın.
           </p>
         </div>
 
@@ -28,7 +29,7 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Mail className="h-5 w-5 text-primary" />
-                  Email Us
+                  Email
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -39,7 +40,7 @@ export default function ContactPage() {
                   eltunjalilli@gmail.com
                 </a>
                 <p className="text-sm text-muted-foreground mt-2">
-                  We typically respond within 24 hours
+                  24 saat içinde cavab veririk
                 </p>
               </CardContent>
             </Card>
@@ -48,13 +49,13 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Phone className="h-5 w-5 text-primary" />
-                  Call Us
+                  Telefon
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-medium">+1 (555) 123-4567</p>
+                <p className="text-lg font-medium">+994 50 XXX XX XX</p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  Monday - Friday: 9am - 6pm EST
+                  Bazar günü saat 10:00 - 18:00
                 </p>
               </CardContent>
             </Card>
@@ -63,15 +64,14 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-primary" />
-                  Visit Us
+                  Ünvan
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="font-medium">CarParts Headquarters</p>
+                <p className="font-medium">CarParts - Bakı</p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  123 Auto Parts Lane<br />
-                  Detroit, MI 48201<br />
-                  United States
+                  Bakı, Xətai rayonu<br />
+                  Azərbaycan
                 </p>
               </CardContent>
             </Card>
@@ -80,24 +80,18 @@ export default function ContactPage() {
           {/* Contact Form */}
           <Card>
             <CardHeader>
-              <CardTitle>Send us a Message</CardTitle>
+              <CardTitle>Mesaj Göndər</CardTitle>
             </CardHeader>
             <CardContent>
-              <form 
-                action={`mailto:eltunjalilli@gmail.com`}
-                method="post"
-                encType="text/plain"
-                className="space-y-4"
-              >
-                <div className="space-y-2">
-                  <Label htmlFor="name">Full Name *</Label>
-                  <Input 
-                    id="name" 
-                    name="name" 
-                    placeholder="John Doe" 
-                    required 
-                  />
-                </div>
+              <ContactForm />
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
                 <div className="space-y-2">
                   <Label htmlFor="email">Email Address *</Label>
