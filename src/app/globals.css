@@ -71,11 +71,57 @@
     }
   }
   
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  @keyframes drive-in {
+    0% {
+      transform: translateX(-100%) rotate(-5deg);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) rotate(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes rev {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
   .animate-blob {
     animation: blob 7s infinite;
   }
   
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+  
+  .animate-drive-in {
+    animation: drive-in 0.8s ease-out;
+  }
+  
+  .animate-rev {
+    animation: rev 0.3s ease-in-out 3;
+  }
+  
   .animation-delay-2000 {
     animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
   }
 }
