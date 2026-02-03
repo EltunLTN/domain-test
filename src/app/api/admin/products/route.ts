@@ -19,6 +19,7 @@ const createProductSchema = z.object({
   carModel: z.string().optional(),
   yearFrom: z.number().int().optional().nullable(),
   yearTo: z.number().int().optional().nullable(),
+  mainImage: z.string().url().optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -26,8 +27,14 @@ export async function POST(req: NextRequest) {
     const session = await getServerSession(authOptions);
 
     // Check if user is admin
-    if (!session?.user || session.user.role !== 'ADMIN') {
+    if (!session || !session.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const userRole = (session.user as any).role || session.user?.role;
+    if (userRole !== 'ADMIN') {
+      console.error('User role:', userRole, 'Session:', session.user);
+      return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
     }
 
     const body = await req.json();
@@ -48,6 +55,58 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Validate category and brand exist if provided
+    if (validatedData.categoryId) {
+      const category = await prisma.category.findUnique({
+        where: { id: validatedData.categoryId },
+      });
+      if (!category) {
+        return NextResponse.json(
+          { error: 'Category not found' },
+          { status: 404 }
+        );
+      }
+    }
+
+    if (validatedData.brandId) {
+      const brand = await prisma.brand.findUnique({
+        where: { id: validatedData.brandId },
+      });
+      if (!brand) {
+        return NextResponse.json(
+          { error: 'Brand not found' },
+          { status: 404 }
+        );
+      }
+    }
+
+    // Get or create default category and brand
+    let defaultCategory = await prisma.category.findFirst({
+      where: { name: 'Diğer' },
+    });
+    if (!defaultCategory) {
+      defaultCategory = await prisma.category.create({
+        data: {
+          name: 'Diğer',
+          slug: 'diger',
+          description: 'Diğer kategoriler',
+        },
+      });
+    }
+
+    let defaultBrand = await prisma.brand.findFirst({
+      where: { name: 'Belirtilmemiş' },
+    });
+    if (!defaultBrand) {
+      defaultBrand = await prisma.brand.create({
+        data: {
+          name: 'Belirtilmemiş',
+          slug: 'belirtilmemis',
+          description: 'Belirtilmemiş marka',
+        },
+      });
+    }
+
     const product = await prisma.product.create({
       data: {
         title: validatedData.title,
@@ -62,8 +121,9 @@ export async function POST(req: NextRequest) {
         carModel: validatedData.carModel,
         yearFrom: validatedData.yearFrom,
         yearTo: validatedData.yearTo,
-        categoryId: validatedData.categoryId || 'unknown',
-        brandId: validatedData.brandId || 'unknown',
+        mainImage: validatedData.mainImage,
+        categoryId: validatedData.categoryId || defaultCategory.id,
+        brandId: validatedData.brandId || defaultBrand.id,
       },
     });
 

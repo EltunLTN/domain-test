@@ -1,17 +1,31 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { useSession } from 'next-auth/react';
+
+interface Category {
+  id: string;
+  name: string;
+}
+
+interface Brand {
+  id: string;
+  name: string;
+}
 
 export default function AddProductPage() {
   const router = useRouter();
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [brands, setBrands] = useState<Brand[]>([]);
+  
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -26,10 +40,33 @@ export default function AddProductPage() {
     carModel: '',
     yearFrom: '',
     yearTo: '',
+    mainImage: '',
   });
 
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [catsRes, brandsRes] = await Promise.all([
+          fetch('/api/categories'),
+          fetch('/api/brands'),
+        ]);
+        
+        if (catsRes.ok) setCategories(await catsRes.json());
+        if (brandsRes.ok) setBrands(await brandsRes.json());
+      } catch (error) {
+        console.error('Error loading data:', error);
+      }
+    };
+    
+    loadData();
+  }, []);
+
+  if (!session) {
+    return <div className="p-4 text-red-600">Lütfen giriş yapın</div>;
+  }
+
   if (session?.user?.role !== 'ADMIN') {
-    return <div className="p-4 text-red-600">Access Denied</div>;
+    return <div className="p-4 text-red-600">Giriş Yetkiniz Yok</div>;
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -40,6 +77,7 @@ export default function AddProductPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
 
     try {
       const response = await fetch('/api/admin/products', {
@@ -55,40 +93,44 @@ export default function AddProductPage() {
         }),
       });
 
+      const data = await response.json();
+      
       if (response.ok) {
         router.push('/admin/products');
       } else {
-        alert('Failed to create product');
+        setError(data.error || 'Ürün oluşturulamadı');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('Error creating product');
+      setError('Ürün eklenirken hata oluştu');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8">Add New Product</h1>
+    <div className="max-w-3xl">
+      <h1 className="text-3xl font-bold mb-8">Yeni Ürün Ekle</h1>
+
+      {error && <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">{error}</div>}
 
       <Card>
         <CardContent className="pt-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="title">Product Title *</Label>
+              <Label htmlFor="title">Ürün Adı *</Label>
               <Input 
                 id="title" 
                 name="title" 
                 required 
                 value={formData.title}
                 onChange={handleChange}
-                placeholder="e.g., Oil Filter"
+                placeholder="Örn: Yağ Filtresi"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="description">Description *</Label>
+              <Label htmlFor="description">Açıklama *</Label>
               <textarea
                 id="description"
                 name="description"
@@ -97,13 +139,13 @@ export default function AddProductPage() {
                 onChange={handleChange}
                 rows={4}
                 className="w-full px-3 py-2 border border-input rounded-md"
-                placeholder="Product description"
+                placeholder="Ürün açıklaması"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="price">Price (AZN) *</Label>
+                <Label htmlFor="price">Fiyat (AZN) *</Label>
                 <Input 
                   id="price" 
                   name="price" 
@@ -116,7 +158,7 @@ export default function AddProductPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="discount">Discount (%)</Label>
+                <Label htmlFor="discount">İndirim (%)</Label>
                 <Input 
                   id="discount" 
                   name="discount" 
@@ -140,7 +182,7 @@ export default function AddProductPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="stock">Stock *</Label>
+                <Label htmlFor="stock">Stok *</Label>
                 <Input 
                   id="stock" 
                   name="stock" 
@@ -152,8 +194,42 @@ export default function AddProductPage() {
               </div>
             </div>
 
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="categoryId">Kategori</Label>
+                <select
+                  id="categoryId"
+                  name="categoryId"
+                  value={formData.categoryId}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-input rounded-md"
+                >
+                  <option value="">Kategori Seç</option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>{cat.name}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="brandId">Marka</Label>
+                <select
+                  id="brandId"
+                  name="brandId"
+                  value={formData.brandId}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-input rounded-md"
+                >
+                  <option value="">Marka Seç</option>
+                  {brands.map((brand) => (
+                    <option key={brand.id} value={brand.id}>{brand.name}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
             <div className="space-y-2">
-              <Label htmlFor="condition">Condition</Label>
+              <Label htmlFor="condition">Durum</Label>
               <select
                 id="condition"
                 name="condition"
@@ -161,62 +237,76 @@ export default function AddProductPage() {
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-input rounded-md"
               >
-                <option value="NEW">New</option>
-                <option value="USED">Used</option>
+                <option value="NEW">Yeni</option>
+                <option value="USED">Kullanılmış</option>
               </select>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="mainImage">Ana Görüntü URL</Label>
+              <Input 
+                id="mainImage" 
+                name="mainImage" 
+                type="url"
+                value={formData.mainImage}
+                onChange={handleChange}
+                placeholder="https://example.com/image.jpg"
+              />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="carMake">Car Make</Label>
+                <Label htmlFor="carMake">Araç Markası</Label>
                 <Input 
                   id="carMake" 
                   name="carMake" 
                   value={formData.carMake}
                   onChange={handleChange}
-                  placeholder="e.g., Hyundai"
+                  placeholder="Örn: Hyundai"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="carModel">Car Model</Label>
+                <Label htmlFor="carModel">Araç Modeli</Label>
                 <Input 
                   id="carModel" 
                   name="carModel" 
                   value={formData.carModel}
                   onChange={handleChange}
-                  placeholder="e.g., i30"
+                  placeholder="Örn: i30"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="yearFrom">Year From</Label>
+                <Label htmlFor="yearFrom">Yılından</Label>
                 <Input 
                   id="yearFrom" 
                   name="yearFrom" 
                   type="number"
                   value={formData.yearFrom}
                   onChange={handleChange}
+                  placeholder="2012"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="yearTo">Year To</Label>
+                <Label htmlFor="yearTo">Yılına</Label>
                 <Input 
                   id="yearTo" 
                   name="yearTo" 
                   type="number"
                   value={formData.yearTo}
                   onChange={handleChange}
+                  placeholder="2025"
                 />
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 pt-4">
               <Button type="submit" disabled={loading} size="lg">
-                {loading ? 'Creating...' : 'Create Product'}
+                {loading ? 'Oluşturuluyor...' : 'Ürün Ekle'}
               </Button>
               <Button 
                 type="button" 
@@ -224,7 +314,7 @@ export default function AddProductPage() {
                 onClick={() => router.back()}
                 size="lg"
               >
-                Cancel
+                İptal
               </Button>
             </div>
           </form>
