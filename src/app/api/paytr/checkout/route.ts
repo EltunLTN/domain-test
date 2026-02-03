@@ -49,7 +49,14 @@ export async function POST(req: NextRequest) {
 
     // Calculate order totals
     let subtotal = 0;
-    const orderItems = [];
+    const orderItems: Array<{
+      productId: string;
+      quantity: number;
+      price: number;
+      discount: number;
+      total: number;
+      title: string;
+    }> = [];
 
     for (const item of validatedData.items) {
       const product = products.find((p) => p.id === item.productId);
