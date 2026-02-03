@@ -13,7 +13,6 @@ if (!process.env.NEXTAUTH_URL) {
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
-  trustHost: true,
   session: {
     strategy: 'jwt',
     maxAge: 24 * 60 * 60, // 24 hours - admin security
