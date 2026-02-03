@@ -46,13 +46,13 @@ export function Header() {
             </Link>
             <nav className="hidden md:flex gap-6">
               <Link href="/shop" className="text-sm font-medium hover:text-primary">
-                Shop
+                Mağaza
               </Link>
               <Link href="/categories" className="text-sm font-medium hover:text-primary">
-                Categories
+                Kategoriler
               </Link>
               <Link href="/brands" className="text-sm font-medium hover:text-primary">
-                Brands
+                Markalar
               </Link>
             </nav>
           </div>
@@ -62,7 +62,7 @@ export function Header() {
               <div className="relative w-64">
                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground pointer-events-none" />
                 <Input 
-                  placeholder="Search parts..." 
+                  placeholder="Parça ara..." 
                   className="pl-8 pr-10" 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -93,7 +93,7 @@ export function Header() {
                 {session.user.role === 'ADMIN' && (
                   <Link href="/admin">
                     <Button variant="outline" size="sm">
-                      Admin
+                      Admin Paneli
                     </Button>
                   </Link>
                 )}
@@ -113,7 +113,7 @@ export function Header() {
             ) : (
               <Link href="/login">
                 <Button variant="default" size="sm">
-                  Sign In
+                  Giriş Yap
                 </Button>
               </Link>
             )}

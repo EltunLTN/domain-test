@@ -24,42 +24,42 @@ export default async function AdminLayout({
             className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-accent"
           >
             <LayoutDashboard className="h-5 w-5" />
-            <span>Dashboard</span>
+            <span>Kontrol Paneli</span>
           </Link>
           <Link
             href="/admin/products"
             className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-accent"
           >
             <Package className="h-5 w-5" />
-            <span>Products</span>
+            <span>Ürünler</span>
           </Link>
           <Link
             href="/admin/categories"
             className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-accent"
           >
             <Folder className="h-5 w-5" />
-            <span>Categories</span>
+            <span>Kategoriler</span>
           </Link>
           <Link
             href="/admin/brands"
             className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-accent"
           >
             <Tags className="h-5 w-5" />
-            <span>Brands</span>
+            <span>Markalar</span>
           </Link>
           <Link
             href="/admin/orders"
             className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-accent"
           >
             <ShoppingCart className="h-5 w-5" />
-            <span>Orders</span>
+            <span>Siparişler</span>
           </Link>
           <Link
             href="/admin/users"
             className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-accent"
           >
             <Users className="h-5 w-5" />
-            <span>Users</span>
+            <span>Kullanıcılar</span>
           </Link>
         </nav>
       </aside>

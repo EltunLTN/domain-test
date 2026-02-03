@@ -29,16 +29,17 @@ export default function LoginPage() {
       });
 
       if (result?.error) {
-        setError('Invalid email or password');
+        setError('Geçersiz email veya şifre');
       } else if (result?.ok) {
-        // Wait a moment for session to be established
-        setTimeout(() => {
+        // Wait for session to be established, then check role and redirect
+        setTimeout(async () => {
           router.refresh();
+          // Session will be available after refresh
           router.push('/');
-        }, 100);
+        }, 200);
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      setError('Bir hata oluştu. Lütfen tekrar deneyin.');
     } finally {
       setLoading(false);
     }
@@ -48,8 +49,8 @@ export default function LoginPage() {
     <div className="container mx-auto px-4 py-16 flex items-center justify-center min-h-[calc(100vh-200px)]">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Sign In</CardTitle>
-          <CardDescription>Enter your credentials to access your account</CardDescription>
+          <CardTitle>Giriş Yap</CardTitle>
+          <CardDescription>Hesabınıza erişmek için kimlik bilgilerinizi girin</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -72,7 +73,7 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Şifre</Label>
               <Input
                 id="password"
                 type="password"
@@ -84,19 +85,19 @@ export default function LoginPage() {
             </div>
 
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? 'Signing in...' : 'Sign In'}
+              {loading ? 'Giriş yapılıyor...' : 'Giriş Yap'}
             </Button>
 
             <div className="text-center text-sm">
-              <span className="text-muted-foreground">{"Don't have an account? "}</span>
+              <span className="text-muted-foreground">Hesabınız yok mu? </span>
               <Link href="/register" className="text-primary hover:underline">
-                Register
+                Kayıt Ol
               </Link>
             </div>
 
             <div className="border-t pt-4">
               <p className="text-xs text-muted-foreground text-center">
-                Demo: admin@carparts.com / admin123
+                Admin Demo: admin@carparts.com / admin123
               </p>
             </div>
           </form>
