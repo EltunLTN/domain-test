@@ -18,7 +18,7 @@ export default function CheckoutPage() {
   const router = useRouter();
   const { items, getTotalPrice, clearCart } = useCartStore();
   const [loading, setLoading] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState<'stripe' | 'bank'>('stripe');
+  const [paymentMethod, setPaymentMethod] = useState<'paytr'>('paytr');
   const [formData, setFormData] = useState({
     customerName: session?.user?.name || '',
     customerEmail: session?.user?.email || '',
@@ -46,8 +46,10 @@ export default function CheckoutPage() {
     setLoading(true);
 
     try {
-      // Create order
-      const response = await fetch('/api/checkout', {
+      // Use PayTR for Azerbaycan
+      const endpoint = '/api/paytr/checkout';
+      
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -55,7 +57,6 @@ export default function CheckoutPage() {
             productId: item.productId,
             quantity: item.quantity,
           })),
-          paymentMethod,
           ...formData,
         }),
       });
@@ -66,17 +67,12 @@ export default function CheckoutPage() {
         throw new Error(data.error || 'Checkout failed');
       }
 
-      if (paymentMethod === 'bank') {
-        // Show bank details and redirect to order confirmation
-        router.push(`/order/${data.orderNumber}?method=bank`);
-        clearCart();
+      // Redirect to PayTR payment gateway
+      if (data.token) {
+        // PayTR uses an iframe or redirect
+        window.location.href = `https://www.paytr.com/odeme/guvenli?token=${data.token}`;
       } else {
-        // Redirect to Stripe Checkout
-        if (data.url) {
-          window.location.href = data.url;
-        } else {
-          throw new Error('No checkout URL received');
-        }
+        throw new Error('No payment token received');
       }
     } catch (error: any) {
       console.error('Checkout error:', error);
@@ -182,19 +178,14 @@ export default function CheckoutPage() {
                 <div className="space-y-2">
                   <Label>Payment Method *</Label>
                   <div className="space-y-2">
-                    <label className="flex items-center space-x-2 p-3 border rounded cursor-pointer hover:bg-muted" onClick={() => setPaymentMethod('stripe')}>
-                      <input type="radio" checked={paymentMethod === 'stripe'} readOnly />
-                      <span>Pay with Credit Card (Stripe)</span>
-                    </label>
-                    <label className="flex items-center space-x-2 p-3 border rounded cursor-pointer hover:bg-muted" onClick={() => setPaymentMethod('bank')}>
-                      <input type="radio" checked={paymentMethod === 'bank'} readOnly />
-                      <span>Bank Transfer (Kapital Bank)</span>
+                    <label className="flex items-center space-x-2 p-3 border rounded cursor-pointer hover:bg-muted bg-blue-50">
+                      <span className="text-sm font-semibold">💳 PayTR - Secure Payment</span>
                     </label>
                   </div>
                 </div>
 
                 <Button type="submit" className="w-full" size="lg" disabled={loading}>
-                  {loading ? 'Processing...' : paymentMethod === 'stripe' ? 'Pay with Stripe' : 'Continue to Bank Transfer'}
+                  {loading ? 'Processing...' : 'Pay with PayTR'}
                 </Button>
               </form>
             </CardContent>
