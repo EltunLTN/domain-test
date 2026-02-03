@@ -2,7 +2,7 @@
 
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,10 +11,15 @@ import Link from 'next/link';
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
+  const justRegistered = searchParams.get('registered') === 'true';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,19 +31,16 @@ export default function LoginPage() {
         email,
         password,
         redirect: false,
+        callbackUrl,
       });
 
       if (result?.error) {
         setError('Geçersiz email veya şifre');
-      } else if (result?.ok) {
-        // Wait longer for session to be fully established
-        setTimeout(() => {
-          router.refresh();
-          // Redirect after refresh to ensure session is available
-          setTimeout(() => {
-            router.push('/');
-          }, 100);
-        }, 300);
+      } else if (result?.url) {
+        // Let NextAuth decide the correct redirect URL (admin, account, etc.)
+        router.push(result.url);
+      } else {
+        router.push(callbackUrl);
       }
     } catch (error) {
       setError('Bir hata oluştu. Lütfen tekrar deneyin.');
@@ -56,6 +58,12 @@ export default function LoginPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
+            {justRegistered && (
+              <div className="bg-green-50 text-green-700 p-3 rounded-md text-sm">
+                Kayıt başarılı! Şimdi giriş yapabilirsiniz.
+              </div>
+            )}
+
             {error && (
               <div className="bg-red-50 text-red-600 p-3 rounded-md text-sm">
                 {error}

@@ -3,8 +3,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Edit, Trash, Plus } from 'lucide-react';
+import { requireAdmin } from '@/lib/auth-helpers';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function AdminCategoriesPage() {
+  await requireAdmin();
+
   const categories = await prisma.category.findMany({
     include: {
       _count: {

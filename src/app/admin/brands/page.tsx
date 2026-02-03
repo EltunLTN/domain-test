@@ -3,8 +3,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Edit, Trash, Plus } from 'lucide-react';
+import { requireAdmin } from '@/lib/auth-helpers';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function AdminBrandsPage() {
+  await requireAdmin();
+
   const brands = await prisma.brand.findMany({
     include: {
       _count: {

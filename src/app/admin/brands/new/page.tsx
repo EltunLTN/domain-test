@@ -1,6 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { requireAdmin } from '@/lib/auth-helpers';
 import { redirect } from 'next/navigation';
 import { slugify } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,17 +10,6 @@ import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
-
-async function requireAdmin() {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    redirect('/login');
-  }
-  const role = (session.user?.role || '').toUpperCase();
-  if (role !== 'ADMIN') {
-    redirect('/');
-  }
-}
 
 async function createBrand(formData: FormData) {
   'use server';

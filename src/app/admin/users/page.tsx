@@ -1,7 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-import { redirect } from 'next/navigation';
+import { requireAdmin } from '@/lib/auth-helpers';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export const dynamic = 'force-dynamic';
@@ -21,15 +19,7 @@ async function getUsers() {
 }
 
 export default async function AdminUsersPage() {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    redirect('/login');
-  }
-
-  const role = (session.user?.role || '').toUpperCase();
-  if (role !== 'ADMIN') {
-    redirect('/');
-  }
+  await requireAdmin();
 
   const users = await getUsers();
 

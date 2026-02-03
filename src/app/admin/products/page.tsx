@@ -4,8 +4,14 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { formatPrice } from '@/lib/utils';
 import { Edit, Trash } from 'lucide-react';
+import { requireAdmin } from '@/lib/auth-helpers';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function AdminProductsPage() {
+  await requireAdmin();
+
   const products = await prisma.product.findMany({
     include: {
       category: true,

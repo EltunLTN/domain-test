@@ -1,9 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { prisma } from '@/lib/prisma';
 import { Package, ShoppingCart, Users, DollarSign } from 'lucide-react';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-import { redirect } from 'next/navigation';
+import { requireAdmin } from '@/lib/auth-helpers';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -32,15 +30,8 @@ async function getStats() {
 }
 
 export default async function AdminPage() {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    redirect('/login');
-  }
-
-  const role = (session.user?.role || '').toUpperCase();
-  if (role !== 'ADMIN') {
-    redirect('/');
-  }
+  // This will redirect if not authenticated or not admin
+  await requireAdmin();
 
   const stats = await getStats();
 

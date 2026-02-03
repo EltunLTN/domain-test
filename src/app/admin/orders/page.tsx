@@ -1,8 +1,14 @@
 import { prisma } from '@/lib/prisma';
 import { Card, CardContent } from '@/components/ui/card';
 import { formatPrice } from '@/lib/utils';
+import { requireAdmin } from '@/lib/auth-helpers';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function AdminOrdersPage() {
+  await requireAdmin();
+
   const orders = await prisma.order.findMany({
     include: {
       user: true,
