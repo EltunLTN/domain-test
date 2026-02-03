@@ -3,8 +3,17 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from './prisma';
 import bcrypt from 'bcryptjs';
 
+const baseUrl =
+  process.env.NEXTAUTH_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+
+if (!process.env.NEXTAUTH_URL) {
+  process.env.NEXTAUTH_URL = baseUrl;
+}
+
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
+  trustHost: true,
   session: {
     strategy: 'jwt',
     maxAge: 24 * 60 * 60, // 24 hours - admin security
