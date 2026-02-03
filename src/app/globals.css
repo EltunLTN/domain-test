@@ -56,6 +56,21 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Custom Cursor - Car Wheel */
+  .custom-cursor {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="%233b82f6" opacity="0.3"/><circle cx="16" cy="16" r="12" fill="none" stroke="%231e40af" stroke-width="2"/><circle cx="16" cy="16" r="8" fill="none" stroke="%231e40af" stroke-width="1.5"/><line x1="16" y1="4" x2="16" y2="28" stroke="%231e40af" stroke-width="1.5"/><line x1="4" y1="16" x2="28" y2="16" stroke="%231e40af" stroke-width="1.5"/><line x1="6" y1="6" x2="26" y2="26" stroke="%231e40af" stroke-width="1"/><line x1="26" y1="6" x2="6" y2="26" stroke="%231e40af" stroke-width="1"/><circle cx="16" cy="16" r="3" fill="%231e40af"/></svg>') 16 16, auto;
+  }
+  
+  .custom-cursor * {
+    cursor: inherit;
+  }
+  
+  .custom-cursor a,
+  .custom-cursor button,
+  .custom-cursor [role="button"] {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="%238b5cf6" opacity="0.4"/><circle cx="16" cy="16" r="12" fill="none" stroke="%236d28d9" stroke-width="2.5"/><circle cx="16" cy="16" r="8" fill="none" stroke="%236d28d9" stroke-width="2"/><line x1="16" y1="4" x2="16" y2="28" stroke="%236d28d9" stroke-width="2"/><line x1="4" y1="16" x2="28" y2="16" stroke="%236d28d9" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="%236d28d9"/></svg>') 16 16, pointer;
+  }
 }
 
 @layer utilities {
