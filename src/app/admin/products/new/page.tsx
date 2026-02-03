@@ -65,7 +65,8 @@ export default function AddProductPage() {
     return <div className="p-4 text-red-600">Lütfen giriş yapın</div>;
   }
 
-  if (session?.user?.role !== 'ADMIN') {
+  const userRole = (session?.user?.role || '').toString().toUpperCase();
+  if (userRole !== 'ADMIN') {
     return <div className="p-4 text-red-600">Giriş Yetkiniz Yok</div>;
   }
 
