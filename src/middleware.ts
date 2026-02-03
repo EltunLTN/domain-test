@@ -1,33 +1,31 @@
-import { withAuth } from 'next-auth/middleware';
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
+import { getToken } from 'next-auth/jwt';
 
-export default withAuth(
-  function middleware(req) {
-    const token = req.nextauth.token;
+export async function middleware(req: NextRequest) {
+  const url = new URL(req.url);
+  const pathname = url.pathname;
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
-    // Admin route'larını kontrol et
-    if (req.nextUrl.pathname.startsWith('/admin')) {
-      // Token yoksa veya role ADMIN değilse, login sayfasına yönlendir
-      if (!token || token.role !== 'ADMIN') {
-        return NextResponse.redirect(new URL('/login', req.url));
-      }
+  // Require authentication for /account
+  if (pathname.startsWith('/account')) {
+    if (!token) {
+      const loginUrl = new URL('/login', req.url);
+      loginUrl.searchParams.set('callbackUrl', pathname);
+      return NextResponse.redirect(loginUrl);
     }
-
-    return NextResponse.next();
-  },
-  {
-    callbacks: {
-      authorized: ({ token, req }) => {
-        // Admin route'larına yalnızca ADMIN token sahipleri erişebilir
-        if (req.nextUrl.pathname.startsWith('/admin')) {
-          return !!token && token.role === 'ADMIN';
-        }
-        // Diğer route'lar için token gerekmez
-        return true;
-      },
-    },
   }
-);
+
+  // Require ADMIN role for /admin
+  if (pathname.startsWith('/admin')) {
+    if (!token || token.role !== 'ADMIN') {
+      const loginUrl = new URL('/login', req.url);
+      loginUrl.searchParams.set('callbackUrl', pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+  }
+
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: ['/admin/:path*', '/account/:path*'],
