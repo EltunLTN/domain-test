@@ -1,6 +1,7 @@
 ﻿price,brand,model,year,mileage,engine_size,city,fuel_type,transmission,condition,owners,scraped_at
 207356,Mercedes,GLE 53 AMG 4MATIC+ Coupe,2023,0,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
 135320,Jaguar,F-Pace,2023,0,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
+843192,Bentley,Continental GT,2025,0,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
 46999,Toyota,Frontlander,2025,0,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
 43500,Porsche,Macan S,2015,91000,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
 36500,Lexus,RX 350,2020,268800,3.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
@@ -28,9 +29,11 @@
 22000,Mercedes,E 350 4MATIC,2007,173000,3.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
 21900,Mitsubishi,Pajero,2007,210000,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
 45000,Toyota,Land Cruiser,2011,180000,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
+89999,Mercedes,EQS 450+,2022,202212000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
 19000,Ford,Transit,2002,380000,2.4,Lənkəran,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
 16900,Hyundai,Sonata,2010,266000,2.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
 9400,Volkswagen,Passat,2006,323000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:27
+2999,Dayun,DY200-22A,2024,0,0.2,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
 27700,BMW,528,2020,162000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
 31500,BYD,Song Plus DM-İ,2023,27000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
 30000,Changan,Eado,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
@@ -43,6 +46,7 @@
 39950,Hyundai,Sonata,2022,16000,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
 63500,Toyota,Land Cruiser Prado,2018,103000,2.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
 29800,BMW,428,2020,193121,2.0,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
+279650,Land,Rover Range Rover,2023,88000,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
 7500,Opel,Astra,2009,288888,1.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
 17000,Isuzu,NP 37,2020,100000,4.3,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
 31000,BYD,Destroyer 05,2020,18000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:30
@@ -78,6 +82,8 @@
 45500,Toyota,Land Cruiser,2010,192000,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 18900,Chevrolet,Malibu,2018,167000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 7500,LADA,(VAZ) Niva,2012,218484,1.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
+316200,Mercedes-Maybach,GLS 600 4MATIC,2021,22000,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
+3200,Audi,A6,2020,289000,2.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 25800,Hyundai,Elantra,2019,149682,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 20500,Chevrolet,Malibu,2020,101389,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 17900,Kia,Soul,2015,151278,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
@@ -85,8 +91,10 @@
 11900,Ravon,Nexia R3,2020,376600,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 21500,Mercedes,E 350,2020,336000,3.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 11000,Ford,Tourneo Connect,2006,250125,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
+1500,Tufan,M50,2020,700,0.1,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 13000,Kia,Ceed SW,2007,250680,1.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 12800,Chevrolet,Cruze,2014,300000,1.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
+1900,LADA,(VAZ) 2101,2020,32359,1.3,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 5200,Mercedes,190,2020,223459,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 40000,Land,Rover Discovery Sport,2016,80000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
 6800,Mercedes,C 180,2020,350000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:33
@@ -128,8 +136,10 @@
 16500,Chevrolet,Cruze,2013,109000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:36
 9300,Mercedes,C 180,2020,352000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:36
 7300,LADA,(VAZ) 2107,2020,82000,1.6,Lənkəran,benzin,avtomat,yaxsi,1,2026-02-03 23:24:36
+260100,Lexus,LX 500d,2026,0,3.3,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:36
 16500,KamAz,5511,2020,253842,11.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:36
 16800,Chevrolet,Cruze,2016,175500,1.4,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:24:36
+285600,Lexus,LX 600,2020,0,3.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:36
 135150,Ford,F-150,2020,19000,2.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:40
 42999,Changan,Qiyuan Q07,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:40
 234122,Mercedes,GLS 450 4MATIC,2024,0,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:40
@@ -187,11 +197,13 @@
 16700,Chevrolet,Cruze,2015,205000,1.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
 65000,DAF,105 XF,2013,909500,13.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
 82450,Land,Rover Range Rover,2014,99700,4.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
+45900,Geely,Radar RD6,2020,62024900,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
 41500,Land,Rover Discovery,2017,160000,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
 34900,Toyota,Corolla,2025,0,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
 72080,BMW,750,2020,77000,4.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
 76900,BYD,Leopard 7,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
 73900,Toyota,Camry,2025,0,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
+62000,Volvo,FH 460,2020,1287000,13.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
 35400,Toyota,Corolla,2024,0,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
 25900,Nissan,X-Trail,2015,127000,2.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:43
 69900,GAC,S7,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:45
@@ -305,6 +317,7 @@
 30000,BMW,528,2020,192000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:55
 5600,Mercedes,190,2020,563247,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:55
 20500,Hyundai,Grandeur,2011,399000,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:55
+301750,Land,Rover Range Rover,2023,19800,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:55
 43500,Mercedes,Atego 816,2020,280000,4.3,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:55
 34000,Changan,Qiyuan A07,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:55
 29650,Changan,Qiyuan Q05,2020,520260,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:24:55
@@ -390,6 +403,7 @@
 25500,Kia,Forte,2019,96570,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:00
 13000,Mercedes,E 270,2020,481365,2.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:00
 18200,Toyota,Aqua,2019,95000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:00
+65450,ZEEKR,001,2020,1202419000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:00
 35000,Changan,Uni-Z,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:00
 9999,Honda,Pilot,2010,255000,3.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:00
 32000,Changan,Uni-Z,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:00
@@ -430,6 +444,7 @@
 11500,Volkswagen,Jetta,2013,329916,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:03
 33700,Changan,Uni-Z,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:03
 8500,Chevrolet,Aveo,2011,350000,1.4,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:25:03
+2500,LADA,(VAZ) 2109,2020,223000,1.5,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:25:03
 108970,Jeep,Wrangler,2023,0,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:07
 70900,Changan,Deepal S09,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:07
 229160,Land,Rover RR Sport,2023,0,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:07
@@ -494,6 +509,8 @@
 11800,Nissan,Sunny,2008,356000,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:10
 23200,Mercedes,E 250,2020,227000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:10
 53934,Skoda,Kamiq,2024,27825,1.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:10
+3000,Fiat,Tempra,1996,810500,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:10
+2850,LADA,(VAZ) 2106,2020,562358,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:10
 23500,Kia,K5,2020,167500,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:10
 32900,Haval,M6,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:12
 229900,Land,Rover Range Rover,2023,39500,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:12
@@ -554,6 +571,8 @@
 16500,FAW,Bestune B30,2020,19999,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:15
 37900,Changan,CS 75 Plus,2023,17000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:15
 71900,BYD,Leopard 5,2020,14000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:15
+57000,Tesla,Model X,2017,201789000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:15
+77000,Mercedes,EQC 400 4MATIC,2022,202235000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:15
 28900,Changan,Eado,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:15
 31900,Geely,Galaxy Starship 7,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:15
 50000,Changan,Qiyuan Q07,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:15
@@ -567,6 +586,7 @@
 31800,Hyundai,Elantra,2022,31600,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:17
 59330,Lexus,RX 300,2020,91000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:17
 30000,BMW,328,2020,156000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:17
+49900,MAN,TGA 18.440,2020,1500000,12.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:17
 14500,Ford,Tourneo Connect,2007,457000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:17
 4200,GAZ,"3110 ""Volga""",2020,225000,2.3,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:17
 41500,Mercedes,GLC 300,2020,193000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:17
@@ -588,8 +608,10 @@
 50150,Mercedes,S 400,2020,226000,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 85000,Changan,Deepal S09,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 44900,Changan,Qiyuan Q07,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
+259556,Mercedes,GLS 450 4MATIC,2025,0,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 14300,Mitsubishi,Pajero,2006,210000,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 42500,BMW,530,2020,109030,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
+33999,Volkswagen,ID.6 Crozz,2023,202352000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 34500,Bestune,T99,2020,33000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 29500,Kia,Optima,2019,130172,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 28000,BMW,528,2020,220000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
@@ -613,6 +635,7 @@
 29900,Changan,Uni-V iDD,2023,49000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 20700,BMW,730,2020,152000,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 15400,Toyota,Camry,2011,300000,2.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
+2000,LADA,(VAZ) 2107,2020,28000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 48500,Mercedes,Sprinter 316,2020,657000,2.2,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 4700,LADA,(VAZ) 2107,2020,250000,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:22
 48550,Changan,Qiyuan Q07,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:24
@@ -640,6 +663,7 @@
 17500,Hyundai,Santa Fe,2007,200600,2.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:24
 17500,Nissan,Sunny,2019,162994,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:24
 28900,BMW,528,2020,145000,2.0,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:25:24
+1900,LADA,(VAZ) 2106,2020,98000,1.5,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:25:24
 74900,Land,Rover Range Rover,2016,113000,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:24
 25500,Toyota,Land Cruiser Prado,2006,214000,2.7,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:25:24
 139400,BMW,530e,2024,17000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:24
@@ -651,6 +675,7 @@
 215900,Mercedes,SL 43 AMG,2023,22000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 49000,Toyota,Land Cruiser Prado,2012,199000,2.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 26800,BYD,Qin Plus,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
+392596,Porsche,718 Cayman GT4 RS,2024,4800,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 115600,Ford,Bronco,2024,6000,2.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 43800,BMW,520,2020,146116,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 29000,Kia,K5,2020,181000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
@@ -661,6 +686,7 @@
 8400,Hyundai,Getz,2005,254000,1.3,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 17500,Ford,Transit,2007,440000,2.4,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 4800,Opel,Vectra,1996,201066,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
+2500,Lifan,520,2020,300000,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 28400,Ford,Fusion (North America),2018,131000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 22500,Ford,Fusion (North America),2019,239000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 26500,Hyundai,Elantra,2022,90000,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
@@ -668,6 +694,7 @@
 23800,BMW,528,2020,255000,2.0,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 13800,Kia,Rio,2014,133000,1.6,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 18500,Kia,Rio,2017,203500,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
+34500,Tesla,Model 3,2020,3202350000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 5900,Opel,Astra,1996,374000,1.6,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 17300,Chevrolet,Malibu,2018,250000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
 25800,BMW,328,2020,190000,2.0,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:25:28
@@ -702,6 +729,7 @@
 23000,Cadillac,CTS,2014,240000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:31
 45800,Mitsubishi,Outlander Sport,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:35
 38300,Toyota,Hilux,2021,293944,2.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:35
+342720,Land,Rover Range Rover,2024,0,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:35
 11900,Toyota,Prius,2008,270676,1.5,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:25:35
 34500,Changan,Uni-Z,2025,0,1.5,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:25:35
 61500,Honda,CR-V,2025,2800,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:35
@@ -741,6 +769,7 @@
 36000,Hyundai,Elantra,2023,51850,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 24400,Kia,Sportage,2014,141000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 139400,Mercedes,GLE 450 e 4MATIC,2023,20000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
+275400,Mercedes,G 63 AMG,2018,79260,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 41000,Hyundai,Tucson,2022,92000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 16000,LADA,(VAZ) Granta,2024,74511,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 18900,Ford,Fusion (North America),2019,199797,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
@@ -755,8 +784,10 @@
 32500,Changan,Uni-Z,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 20000,Lincoln,MKZ,2016,217000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 66500,Hyundai,Grandeur,2023,97500,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
+32400,Tesla,Model 3,2020,3202327500,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 28500,Mitsubishi,Pajero,2013,170000,3.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 24500,Mercedes,Sprinter 315,2020,186000,2.2,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
+2900,LADA,(VAZ) 2107,2020,203000,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 24700,Toyota,Highlander,2011,342000,3.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 25500,Chevrolet,Equinox,2018,171000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
 80750,Geely,Galaxy M9,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:39
@@ -770,7 +801,9 @@
 17000,Mini,Countryman,2014,188000,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:42
 8500,Mercedes,C 180,2020,390000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:42
 19500,Hyundai,Sonata,2011,228722,2.4,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:25:42
+37000,Volkswagen,ID.6 Crozz,2022,202250000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:42
 33000,Changan,Uni-Z,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:42
+365500,Mercedes,G 63 AMG,2021,45000,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:42
 10000,Kia,Rio,2005,306000,1.4,Şəki,benzin,avtomat,yaxsi,1,2026-02-03 23:25:42
 29200,Changan,Eado,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:42
 96000,Li,Auto L9,2020,20000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:42
@@ -804,9 +837,11 @@
 12900,Mercedes,E 280,2020,567800,2.8,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
 23500,Mazda,6,2020,270000,2.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
 53900,Hyundai,Sonata,2024,62000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
+399500,Mercedes,G 63 AMG,2023,18000,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
 12800,Hyundai,Sonata,2007,289600,2.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
 25000,Land,Rover Discovery,2008,254000,4.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
 11500,Volkswagen,Touareg,2004,300000,3.2,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
+86700,Denza,Z9 GT,2025,20257400,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
 28900,Volkswagen,Touareg,2013,152200,3.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
 48450,BMW,X5,2020,189000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
 24700,Kia,Sorento,2013,170000,2.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:45
@@ -881,6 +916,7 @@
 27500,Mercedes,E 250,2020,267000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:51
 43900,Changan,Qiyuan Q07,2020,7000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:51
 29500,Kia,Forte,2022,37000,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:51
+33500,Tesla,Model S,2015,201551658,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:51
 98600,Land,Rover Range Rover,2018,105573,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:51
 26800,Audi,A6,2020,158000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:51
 6500,Mercedes,C 180,2020,550000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:51
@@ -922,6 +958,7 @@
 23500,BYD,Seal 06,2020,95300,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:56
 118150,Toyota,Land Cruiser,2022,78000,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:56
 18500,Mercedes,E 320,2020,280000,3.2,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:56
+71400,Tesla,Model X,2018,201886600,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:59
 79900,Toyota,Highlander,2024,0,2.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:59
 24800,JAC,J7,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:59
 71230,Toyota,Camry,2025,0,2.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:25:59
@@ -976,6 +1013,7 @@
 10300,Opel,Astra,2005,474040,1.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:03
 27000,Toyota,Avalon,2015,300000,2.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:03
 5600,LADA,(VAZ) 2106,2020,300000,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:03
+3000,Volkswagen,Polo,2004,250000,1.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:03
 72930,Land,Rover Range Rover,2015,138000,5.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:03
 37000,Toyota,Corolla Levin,2025,31000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:03
 19000,GAZ,GAZel (3302-18),2020,460000,2.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:03
@@ -993,6 +1031,7 @@
 6500,Lifan,320,2020,300000,1.3,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:07
 3700,LADA,(VAZ) 2106,2020,115859,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:07
 10500,Nissan,X-Trail,2002,255000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:07
+36500,Tesla,Model 3,2020,3202250000,2.0,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:26:07
 28800,Chevrolet,Trax,2023,17425,1.2,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:07
 17100,Ford,Fusion (North America),2016,190000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:07
 54700,Mercedes,E 300,2020,95000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:07
@@ -1018,6 +1057,7 @@
 15000,Kia,Sportage,2008,440105,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 14800,Chevrolet,Cruze,2017,248000,1.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 130000,Land,Rover Defender,2020,73500,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
+29500,Tesla,Model 3,2020,3202344579,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 17300,Ford,Transit,2010,254176,2.2,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 7500,Chery,Tiggo (T11),2014,237000,1.9,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 89930,Land,Rover Range Rover,2018,97300,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
@@ -1030,11 +1070,14 @@
 34000,Toyota,Corolla,2024,3000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 27900,Ford,Escape,2020,46000,1.5,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 25900,Hyundai,Venue,2022,67500,1.6,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
+70000,BMW,i4,2020,4202340000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 59330,Land,Rover RR Velar,2019,91000,2.0,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 20000,Chevrolet,Cobalt,2025,27000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 11400,Nissan,Tiida,2008,246300,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 23900,Nissan,Kicks,2018,111000,1.6,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 23900,Mitsubishi,Eclipse Cross,2019,169000,1.5,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
+45730,Kia,EV6,2020,6202419000,2.0,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
+24900,Honda,e:NP1,2020,1202265000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 40500,BMW,420,2020,266000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 15999,LADA,(VAZ) Niva,2019,54549,1.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
 3900,LADA,(VAZ) 2106,2020,125000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:12
@@ -1122,6 +1165,7 @@
 23900,Hyundai,Elantra,2018,137568,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:23
 34510,Mercedes,S 500,2020,233500,4.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:23
 43400,Kia,Sorento,2017,103000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:23
+3200,Opel,Vectra,1994,370000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:23
 12200,Chevrolet,Cruze,2012,204355,1.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:23
 23900,Land,Rover Range Rover,2008,247021,4.2,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:23
 5300,Daewoo,Matiz,2008,1000,0.8,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:26:23
@@ -1210,6 +1254,7 @@
 20900,Hyundai,Santa Fe,2009,190000,2.0,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:26:33
 15600,Mercedes,E 200,2002,398000,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:33
 48500,Changan,Qiyuan Q07,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:33
+2900,Opel,Astra,1996,458889,1.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:33
 76500,BMW,X5 M,2015,60366,4.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:33
 11700,Opel,Astra,2007,302147,1.4,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:26:33
 26888,Kia,Optima,2018,177000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:33
@@ -1314,6 +1359,7 @@
 54400,Toyota,RAV4,2020,114000,2.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:44
 34300,Toyota,Corolla,2025,0,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:44
 149000,SamAuto,HD50,2020,0,5.2,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
+391482,Mercedes,SL 55 4MATIC+,2024,0,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 25500,BYD,Destroyer 05,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 27900,Changan,Qiyuan A05,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 82700,Jeep,Wrangler,2024,19020,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
@@ -1327,11 +1373,13 @@
 7300,LADA,(VAZ) 2107,2020,260000,1.6,Gəncə,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 32900,Kia,Sorento,2016,174000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 30500,Kia,Sorento,2016,285007,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
+3200,GAZ,53,2020,105252,4.3,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 19900,Kia,Forte,2016,147000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 26900,Kia,Sorento,2013,127000,2.0,Şəki,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 21000,Hyundai,Sonata,2012,214043,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 194900,ZEEKR,9X,2025,0,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 89900,BMW,740,2020,69500,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
+38900,Tesla,Model 3,2020,3202318900,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 49800,BMW,530,2020,162000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 36900,Honda,e:NS1,2020,120230,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
 32000,BYD,Destroyer 05,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:26:48
@@ -1402,6 +1450,7 @@
 11200,Mercedes,E 280,2020,20005,2.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:00
 7700,GAZ,GAZel (33021),2020,212744,2.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:00
 5700,Opel,Vectra,1998,292000,1.8,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:27:00
+119900,BMW,i5,2020,5202514900,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:00
 13800,Mercedes,E 240,2020,350000,2.4,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:00
 35790,Changan,Uni-Z,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:00
 20500,Land,Rover Range Rover,2004,265000,4.4,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:27:00
@@ -1478,11 +1527,14 @@
 84150,ZEEKR,007 GT,2025,20250,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 27000,BMW,328,2020,125000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 33300,Toyota,Corolla,2025,0,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
+692622,Bentley,Bentayga,2024,2000,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 41500,Toyota,Frontlander,2025,0,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 12500,Mercedes,E 220,2020,503000,2.2,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 29500,Toyota,RAV4,2020,179807,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
+239990,Maextro,S800,2020,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 17500,Nissan,Qashqai,2013,199999,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 139990,Voyah,Taishan,2026,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
+38930,Neta,GT,2023,202314000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 59990,BAW,212,2020,0,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 30000,Kia,K3,2020,85000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 24900,Toyota,Fortuner,2005,288000,4.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
@@ -1500,6 +1552,7 @@
 32800,Land,Rover Range Rover,2008,195500,4.2,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 22300,Toyota,Land Cruiser Prado,2005,318000,2.7,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:12
 37500,Changan,Uni-Z,2025,0,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
+343740,Land,Rover Range Rover,2024,0,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
 130050,BMW,530e,2024,3000,2.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
 17800,Hyundai,Elantra,2014,310423,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
 55000,Jeep,Grand Cherokee,2020,61000,3.0,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
@@ -1513,6 +1566,7 @@
 15500,Hyundai,Elantra,2013,245222,1.8,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
 30700,Honda,Insight,2021,127500,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
 19700,Ford,Transit,2008,213123,2.2,Sumqayıt,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
+1500,LADA,(VAZ) 2106,2020,25800,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
 13600,Ford,Fusion (North America),2014,226000,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
 23400,Chevrolet,Equinox,2019,129060,1.5,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
 23200,Skoda,Rapid,2021,97000,1.6,Bakı,benzin,avtomat,yaxsi,1,2026-02-03 23:27:16
