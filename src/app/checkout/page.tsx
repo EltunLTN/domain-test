@@ -18,6 +18,7 @@ export default function CheckoutPage() {
   const router = useRouter();
   const { items, getTotalPrice, clearCart } = useCartStore();
   const [loading, setLoading] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<'stripe' | 'bank'>('stripe');
   const [formData, setFormData] = useState({
     customerName: session?.user?.name || '',
     customerEmail: session?.user?.email || '',
@@ -45,7 +46,7 @@ export default function CheckoutPage() {
     setLoading(true);
 
     try {
-      // Create order and get Stripe session
+      // Create order
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -54,6 +55,7 @@ export default function CheckoutPage() {
             productId: item.productId,
             quantity: item.quantity,
           })),
+          paymentMethod,
           ...formData,
         }),
       });
@@ -64,11 +66,17 @@ export default function CheckoutPage() {
         throw new Error(data.error || 'Checkout failed');
       }
 
-      // Redirect to Stripe Checkout
-      if (data.url) {
-        window.location.href = data.url;
+      if (paymentMethod === 'bank') {
+        // Show bank details and redirect to order confirmation
+        router.push(`/order/${data.orderNumber}?method=bank`);
+        clearCart();
       } else {
-        throw new Error('No checkout URL received');
+        // Redirect to Stripe Checkout
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error('No checkout URL received');
+        }
       }
     } catch (error: any) {
       console.error('Checkout error:', error);
@@ -171,8 +179,22 @@ export default function CheckoutPage() {
                   />
                 </div>
 
+                <div className="space-y-2">
+                  <Label>Payment Method *</Label>
+                  <div className="space-y-2">
+                    <label className="flex items-center space-x-2 p-3 border rounded cursor-pointer hover:bg-muted" onClick={() => setPaymentMethod('stripe')}>
+                      <input type="radio" checked={paymentMethod === 'stripe'} readOnly />
+                      <span>Pay with Credit Card (Stripe)</span>
+                    </label>
+                    <label className="flex items-center space-x-2 p-3 border rounded cursor-pointer hover:bg-muted" onClick={() => setPaymentMethod('bank')}>
+                      <input type="radio" checked={paymentMethod === 'bank'} readOnly />
+                      <span>Bank Transfer (Kapital Bank)</span>
+                    </label>
+                  </div>
+                </div>
+
                 <Button type="submit" className="w-full" size="lg" disabled={loading}>
-                  {loading ? 'Processing...' : 'Pay with Stripe'}
+                  {loading ? 'Processing...' : paymentMethod === 'stripe' ? 'Pay with Stripe' : 'Continue to Bank Transfer'}
                 </Button>
               </form>
             </CardContent>

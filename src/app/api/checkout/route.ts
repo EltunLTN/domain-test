@@ -24,6 +24,7 @@ const checkoutSchema = z.object({
   shippingCity: z.string().min(1),
   shippingZip: z.string().optional(),
   notes: z.string().optional(),
+  paymentMethod: z.enum(['stripe', 'bank']),
 });
 
 export async function POST(req: NextRequest) {
@@ -113,6 +114,24 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    // Handle payment method
+    if (validatedData.paymentMethod === 'bank') {
+      // Bank transfer - order created, waiting for manual payment
+      return NextResponse.json({ 
+        method: 'bank',
+        orderId: order.id,
+        orderNumber: order.orderNumber,
+        total: subtotal,
+        bankDetails: {
+          accountHolder: process.env.BANK_ACCOUNT_HOLDER,
+          accountNumber: process.env.BANK_ACCOUNT_NUMBER,
+          iban: process.env.BANK_IBAN,
+          bic: process.env.BANK_BIC,
+          bankName: process.env.BANK_NAME,
+        }
+      });
+    }
+
     // Create Stripe checkout session
     const stripeSession = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -133,6 +152,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ 
+      method: 'stripe',
       sessionId: stripeSession.id,
       url: stripeSession.url 
     });
