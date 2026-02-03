@@ -71,6 +71,7 @@ export default function CarValuationPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setResult(null);
     
     try {
       const response = await fetch('/api/predict-price', {
@@ -79,15 +80,20 @@ export default function CarValuationPage() {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error('Qiymət hesablanmadı');
+        throw new Error(data.error || 'Qiymət hesablanmadı');
       }
 
-      const data = await response.json();
-      setResult(data.prediction.estimated_price);
-    } catch (error) {
+      if (data.success && data.prediction) {
+        setResult(data.prediction.estimated_price);
+      } else {
+        throw new Error('Nəticə alınmadı');
+      }
+    } catch (error: any) {
       console.error('Prediction error:', error);
-      alert('Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.');
+      alert(error.message || 'Xəta baş verdi. Zəhmət olmasa bütün sahələri düzgün doldurun və yenidən cəhd edin.');
     } finally {
       setLoading(false);
     }
