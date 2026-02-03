@@ -85,9 +85,7 @@ export function Header() {
               </Button>
             </Link>
 
-            {!isReady ? (
-              <div className="w-12 h-9 bg-muted rounded animate-pulse"></div>
-            ) : isAuthenticated ? (
+            {isAuthenticated && (
               <div className="flex items-center gap-2">
                 {session?.user?.role?.toUpperCase() === 'ADMIN' && (
                   <Link href="/admin">
@@ -112,12 +110,6 @@ export function Header() {
                   <span className="hidden sm:inline">Çıkış</span>
                 </Button>
               </div>
-            ) : (
-              <Link href="/login">
-                <Button variant="default" size="sm">
-                  Giriş Yap
-                </Button>
-              </Link>
             )}
           </div>
         </div>
