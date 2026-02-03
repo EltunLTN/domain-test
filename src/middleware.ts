@@ -21,15 +21,6 @@ export async function middleware(req: NextRequest) {
 
   console.log('Middleware check:', { pathname, hasToken: !!token, role: token?.role });
 
-  // Require authentication for /account
-  if (pathname.startsWith('/account')) {
-    if (!token) {
-      const url = new URL('/login', req.url);
-      url.searchParams.set('callbackUrl', pathname);
-      return NextResponse.redirect(url);
-    }
-  }
-
   // Require ADMIN role for /admin
   if (pathname.startsWith('/admin')) {
     if (!token) {

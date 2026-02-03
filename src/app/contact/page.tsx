@@ -18,7 +18,7 @@ export default function ContactPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Bizimlə Əlaqə</h1>
           <p className="text-muted-foreground text-lg">
-            Sualınız var? Bizimlə iletişime geçin. Adınız, emailiniz və telefon nömrənizi yazın.
+            Sualınız var? Bizimlə əlaqə saxlayın. Adınız, emailiniz və mesajınızı yazın.
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export default function ContactPage() {
                   eltunjalilli@gmail.com
                 </a>
                 <p className="text-sm text-muted-foreground mt-2">
-                  24 saat içinde cavab veririk
+                  24 saat içində cavab veririk
                 </p>
               </CardContent>
             </Card>
@@ -53,25 +53,9 @@ export default function ContactPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-medium">+994 50 XXX XX XX</p>
+                <p className="text-lg font-medium">+994 99 999 99 99</p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  Bazar günü saat 10:00 - 18:00
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  Ünvan
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="font-medium">CarParts - Bakı</p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Bakı, Xətai rayonu<br />
-                  Azərbaycan
+                  Hər gün saat 10:00 - 18:00
                 </p>
               </CardContent>
             </Card>
