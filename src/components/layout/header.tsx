@@ -51,6 +51,9 @@ export function Header() {
               <Link href="/brands" className="text-sm font-medium hover:text-primary">
                 Markalar
               </Link>
+              <Link href="/car-valuation" className="text-sm font-medium hover:text-primary bg-gradient-to-r from-purple-600 to-pink-600 text-white px-3 py-1 rounded-md hover:shadow-lg transition-all">
+                Qiymət Hesabla
+              </Link>
             </nav>
           </div>
 
