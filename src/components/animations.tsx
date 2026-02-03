@@ -44,3 +44,123 @@ export function FadeIn({ children, delay = 0 }: AnimatedSectionProps) {
     </motion.div>
   );
 }
+
+export function SlideInFromLeft({ children, delay = 0 }: AnimatedSectionProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay, type: 'spring', stiffness: 100 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function SlideInFromRight({ children, delay = 0 }: AnimatedSectionProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay, type: 'spring', stiffness: 100 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function CarDriveIn({ children, delay = 0 }: AnimatedSectionProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -100, rotate: -5 }}
+      animate={{ opacity: 1, x: 0, rotate: 0 }}
+      transition={{ 
+        duration: 0.8, 
+        delay,
+        type: 'spring',
+        stiffness: 80,
+        damping: 15
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function RevEngine({ children }: { children: ReactNode }) {
+  return (
+    <motion.div
+      whileHover={{
+        scale: [1, 1.05, 1],
+        transition: {
+          duration: 0.3,
+          repeat: 2,
+          repeatType: 'reverse'
+        }
+      }}
+      whileTap={{ scale: 0.95 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function RotateOnHover({ children }: { children: ReactNode }) {
+  return (
+    <motion.div
+      whileHover={{ rotate: 360 }}
+      transition={{ duration: 0.6, ease: 'easeInOut' }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function BounceIn({ children, delay = 0 }: AnimatedSectionProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        delay,
+        type: 'spring',
+        stiffness: 200,
+        damping: 10
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function StaggerContainer({ children }: { children: ReactNode }) {
+  return (
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        visible: {
+          transition: {
+            staggerChildren: 0.1
+          }
+        }
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function StaggerItem({ children }: { children: ReactNode }) {
+  return (
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 }
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}

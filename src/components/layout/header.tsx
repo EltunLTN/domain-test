@@ -89,24 +89,27 @@ export function Header() {
               <div className="w-12 h-9 bg-muted rounded animate-pulse"></div>
             ) : isAuthenticated ? (
               <div className="flex items-center gap-2">
-                {session?.user?.role === 'ADMIN' && (
+                {session?.user?.role?.toUpperCase() === 'ADMIN' && (
                   <Link href="/admin">
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="hidden sm:flex">
                       Admin Paneli
                     </Button>
                   </Link>
                 )}
                 <Link href="/account">
-                  <Button variant="ghost" size="icon">
+                  <Button variant="ghost" size="icon" title="Hesabım">
                     <User className="h-5 w-5" />
                   </Button>
                 </Link>
                 <Button
                   variant="ghost"
-                  size="icon"
-                  onClick={() => signOut()}
+                  size="sm"
+                  onClick={() => signOut({ callbackUrl: '/' })}
+                  className="gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
+                  title="Çıkış Yap"
                 >
-                  <LogOut className="h-5 w-5" />
+                  <LogOut className="h-4 w-4" />
+                  <span className="hidden sm:inline">Çıkış</span>
                 </Button>
               </div>
             ) : (
