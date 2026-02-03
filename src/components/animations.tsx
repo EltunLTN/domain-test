@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 interface AnimatedSectionProps {
   children: ReactNode;
   delay?: number;
+  className?: string;
 }
 
 export function AnimatedSection({ children, delay = 0 }: AnimatedSectionProps) {
@@ -116,7 +117,7 @@ export function RotateOnHover({ children }: { children: ReactNode }) {
   );
 }
 
-export function BounceIn({ children, delay = 0 }: AnimatedSectionProps) {
+export function BounceIn({ children, delay = 0, className = '' }: AnimatedSectionProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}
@@ -128,6 +129,7 @@ export function BounceIn({ children, delay = 0 }: AnimatedSectionProps) {
         stiffness: 200,
         damping: 10
       }}
+      className={className}
     >
       {children}
     </motion.div>

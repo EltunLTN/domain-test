@@ -47,7 +47,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                   <div className="inline-flex items-center gap-2 mb-4 px-6 py-3 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 backdrop-blur-xl rounded-full border border-white/20 shadow-2xl">
                     <Sparkles className="h-4 w-4 text-yellow-400 animate-pulse" />
                     <span className="text-sm font-bold bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
-                      Azerbaijan's #1 Trusted Auto Parts Platform
+                      Azerbaijan&apos;s #1 Trusted Auto Parts Platform
                     </span>
                   </div>
                 </BounceIn>
@@ -522,7 +522,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                     
                     {/* Quote */}
                     <p className="text-muted-foreground mb-6 text-lg leading-relaxed italic">
-                      "{testimonial.text}"
+                      &ldquo;{testimonial.text}&rdquo;
                     </p>
                     
                     {/* Author */}
