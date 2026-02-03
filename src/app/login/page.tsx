@@ -30,9 +30,12 @@ export default function LoginPage() {
 
       if (result?.error) {
         setError('Invalid email or password');
-      } else {
-        router.push('/');
-        router.refresh();
+      } else if (result?.ok) {
+        // Wait a moment for session to be established
+        setTimeout(() => {
+          router.refresh();
+          router.push('/');
+        }, 100);
       }
     } catch (error) {
       setError('An error occurred. Please try again.');

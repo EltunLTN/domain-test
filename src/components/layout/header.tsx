@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export function Header() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const totalItems = useCartStore((state) => state.getTotalItems());
@@ -19,6 +19,13 @@ export function Header() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Refresh session when status changes
+  useEffect(() => {
+    if (status === 'authenticated') {
+      // Session is ready
+    }
+  }, [status]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
