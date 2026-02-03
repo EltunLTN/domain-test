@@ -1,0 +1,51 @@
+brand,model,year,mileage,engine_size,fuel_type,transmission,condition,city,owners,price
+Mercedes-Benz,E 200,2020,45000,2.0,benzin,avtomat,yaxsi,Bakı,1,52000
+BMW,320i,2019,68000,2.0,benzin,avtomat,yaxsi,Bakı,1,43000
+Toyota,Camry,2018,82000,2.5,benzin,avtomat,yaxsi,Bakı,2,38000
+Hyundai,Elantra,2021,25000,1.6,benzin,avtomat,ela,Bakı,1,35000
+Mercedes-Benz,C 180,2017,95000,1.6,benzin,avtomat,yaxsi,Bakı,2,38000
+BMW,X5,2016,125000,3.0,dizel,avtomat,yaxsi,Bakı,2,55000
+Toyota,Corolla,2019,70000,1.8,benzin,avtomat,yaxsi,Bakı,1,28000
+Hyundai,Sonata,2020,50000,2.0,benzin,avtomat,yaxsi,Sumqayıt,1,32000
+Kia,Sportage,2018,88000,2.0,benzin,avtomat,yaxsi,Bakı,2,35000
+Mercedes-Benz,S 500,2015,145000,4.7,benzin,avtomat,yaxsi,Bakı,3,68000
+BMW,5 Series,2019,55000,2.0,dizel,avtomat,ela,Bakı,1,58000
+Toyota,Land Cruiser,2017,110000,4.5,dizel,avtomat,yaxsi,Bakı,2,85000
+Hyundai,Tucson,2020,42000,2.0,benzin,avtomat,ela,Bakı,1,38000
+Mercedes-Benz,GLE 350,2018,78000,3.0,dizel,avtomat,yaxsi,Bakı,1,72000
+BMW,X3,2020,38000,2.0,benzin,avtomat,ela,Bakı,1,62000
+Toyota,RAV4,2019,65000,2.5,benzin,avtomat,yaxsi,Bakı,1,42000
+Kia,Cerato,2021,18000,1.6,benzin,avtomat,ela,Bakı,1,29000
+Hyundai,Santa Fe,2017,95000,2.2,dizel,avtomat,yaxsi,Bakı,2,38000
+Mercedes-Benz,E 220,2016,115000,2.0,dizel,avtomat,yaxsi,Bakı,2,42000
+BMW,X6,2019,52000,3.0,dizel,avtomat,ela,Bakı,1,78000
+Toyota,Prius,2020,35000,1.8,hibrid,avtomat,ela,Bakı,1,38000
+Kia,Rio,2019,72000,1.4,benzin,mexaniki,yaxsi,Bakı,2,18000
+Hyundai,Accent,2018,88000,1.4,benzin,mexaniki,yaxsi,Sumqayıt,2,16000
+Mercedes-Benz,GLA 200,2021,22000,1.3,benzin,robot,ela,Bakı,1,48000
+BMW,330i,2020,45000,2.0,benzin,avtomat,ela,Bakı,1,58000
+Toyota,Highlander,2018,72000,3.5,benzin,avtomat,yaxsi,Bakı,2,52000
+Kia,Sorento,2019,58000,2.2,dizel,avtomat,yaxsi,Bakı,1,42000
+Hyundai,Kona,2021,15000,1.6,benzin,robot,ela,Bakı,1,32000
+Mercedes-Benz,A 180,2019,68000,1.3,benzin,robot,yaxsi,Bakı,1,38000
+BMW,218i,2020,35000,1.5,benzin,avtomat,ela,Bakı,1,42000
+Toyota,C-HR,2020,42000,1.8,hibrid,avtomat,ela,Bakı,1,38000
+Kia,Optima,2018,78000,2.0,benzin,avtomat,yaxsi,Bakı,2,28000
+Hyundai,i30,2019,65000,1.4,benzin,mexaniki,yaxsi,Bakı,1,22000
+Mercedes-Benz,CLA 200,2018,82000,1.6,benzin,robot,yaxsi,Bakı,2,42000
+BMW,X1,2020,38000,1.5,benzin,avtomat,ela,Bakı,1,48000
+Toyota,Yaris,2021,12000,1.5,benzin,avtomat,ela,Bakı,1,25000
+Kia,Picanto,2020,28000,1.0,benzin,mexaniki,ela,Bakı,1,15000
+Hyundai,i20,2019,58000,1.2,benzin,mexaniki,yaxsi,Bakı,1,18000
+Mercedes-Benz,GLC 250,2019,52000,2.0,benzin,avtomat,ela,Bakı,1,68000
+BMW,M3,2018,45000,3.0,benzin,avtomat,ela,Bakı,1,85000
+Toyota,Avalon,2019,48000,3.5,benzin,avtomat,yaxsi,Bakı,1,42000
+Kia,Stinger,2020,32000,2.0,benzin,avtomat,ela,Bakı,1,48000
+Hyundai,Veloster,2019,55000,1.6,benzin,robot,yaxsi,Bakı,1,28000
+Mercedes-Benz,G 63,2017,88000,5.5,benzin,avtomat,yaxsi,Bakı,2,165000
+BMW,7 Series,2018,72000,3.0,dizel,avtomat,yaxsi,Bakı,1,78000
+Toyota,Supra,2021,8000,3.0,benzin,avtomat,ela,Bakı,1,95000
+Kia,K5,2021,18000,1.6,benzin,avtomat,ela,Bakı,1,32000
+Hyundai,Palisade,2020,35000,3.8,benzin,avtomat,ela,Bakı,1,58000
+Mercedes-Benz,V 220,2019,95000,2.0,dizel,avtomat,yaxsi,Bakı,2,62000
+BMW,i3,2020,28000,0.0,elektrik,avtomat,ela,Bakı,1,42000

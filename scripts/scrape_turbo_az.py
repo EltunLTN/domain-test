@@ -47,14 +47,38 @@ class TurboAzScraper:
         try:
             response = requests.get(url, headers=self.headers, timeout=10)
             response.raise_for_status()
+            response.encoding = 'utf-8'
             
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Turbo.az-da maşın kartlarını tap (bu selectorlar turbo.az strukturuna görə dəyişə bilər)
-            car_listings = soup.find_all('div', class_='products-i')
+            # Turbo.az yeni struktur - products class-ları
+            # Müxtəlif selector-lar sınayaq
+            car_listings = (
+                soup.find_all('div', class_='products-i') or
+                soup.find_all('div', class_='product-item') or
+                soup.find_all('a', class_='products-link') or
+                soup.find_all('div', attrs={'data-id': True})
+            )
             
             if not car_listings:
-                print("Maşın elanları tapılmadı. HTML strukturu dəyişmiş ola bilər.")
+                # HTML-i faylda saxlayaq debugging üçün
+                with open('turbo_debug.html', 'w', encoding='utf-8') as f:
+                    f.write(str(soup.prettify()))
+                print("⚠️ HTML strukturu faylda: turbo_debug.html")
+                print("⚠️ Maşın elanları tapılmadı. Alternativ scraping method istifadə edilir...")
+                
+                # Alternativ: bütün link-ləri tap
+                all_links = soup.find_all('a', href=True)
+                car_links = [link for link in all_links if '/autos/' in link.get('href', '')]
+                
+                if car_links:
+                    print(f"✓ {len(car_links)} avtomobil linki tapıldı")
+                    for link in car_links[:50]:  # İlk 50-ni götür
+                        car_data = self.extract_from_detail_page(link.get('href'))
+                        if car_data:
+                            self.cars_data.append(car_data)
+                    return True if car_links else False
+                
                 return False
             
             for listing in car_listings:
@@ -68,6 +92,58 @@ class TurboAzScraper:
         except requests.exceptions.RequestException as e:
             print(f"Səhifə {page_num} scrape xətası: {e}")
             return False
+
+    def extract_from_detail_page(self, url):
+        """Ətraflı səhifədən məlumat çıxarır"""
+        try:
+            if not url.startswith('http'):
+                url = 'https://turbo.az' + url
+            
+            response = requests.get(url, headers=self.headers, timeout=10)
+            soup = BeautifulSoup(response.content, 'html.parser')
+            
+            # Sadələşdirilmiş extraction
+            car = {}
+            
+            # Başlıq
+            title = soup.find('h1')
+            if title:
+                title_text = title.text.strip()
+                parts = title_text.split(',')[0].split(' ')
+                car['brand'] = parts[0] if len(parts) > 0 else None
+                car['model'] = ' '.join(parts[1:]) if len(parts) > 1 else None
+            
+            # Qiymət
+            price = soup.find('div', class_='price')
+            if price:
+                car['price'] = self.clean_price(price.text)
+            
+            # Parametrlər
+            params = soup.find_all('tr')
+            for param in params:
+                label = param.find('td', class_='label')
+                value = param.find('td', class_='value')
+                if label and value:
+                    label_text = label.text.strip().lower()
+                    value_text = value.text.strip()
+                    
+                    if 'buraxılış' in label_text or 'il' in label_text:
+                        car['year'] = self.clean_number(value_text)
+                    elif 'yürüş' in label_text:
+                        car['mileage'] = self.clean_number(value_text)
+                    elif 'mühərrik' in label_text and 'həcmi' in label_text:
+                        car['engine_size'] = self.clean_number(value_text)
+                    elif 'yanacaq' in label_text:
+                        car['fuel_type'] = value_text.lower()
+                    elif 'sürətlər' in label_text:
+                        car['transmission'] = value_text.lower()
+            
+            car['scraped_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            
+            return car if car.get('price') else None
+            
+        except Exception as e:
+            return None
 
     def extract_car_data(self, listing):
         """Bir elan məlumatlarını çıxarır"""
@@ -195,9 +271,19 @@ class TurboAzScraper:
 
     def clean_and_prepare_data(self, input_file='car_data.csv', output_file='car_data_cleaned.csv'):
         """Məlumatları təmizləyir və ML üçün hazırlayır"""
+        import os
+        
+        if not os.path.exists(input_file):
+            print(f"⚠️ '{input_file}' faylı tapılmadı. Scraping uğursuz oldu.")
+            return None
+        
         print("Məlumatlar təmizlənir...")
         
         df = pd.read_csv(input_file)
+        
+        if len(df) == 0:
+            print("⚠️ CSV boşdur. Məlumat yoxdur.")
+            return None
         
         # Null dəyərləri sil
         df = df.dropna(subset=['price', 'year', 'mileage', 'brand', 'model'])
@@ -212,9 +298,10 @@ class TurboAzScraper:
         df = df[df['mileage'] >= 0]
         
         # Outlier-ləri sil (qiymət çox yüksək/aşağı)
-        price_q1 = df['price'].quantile(0.01)
-        price_q99 = df['price'].quantile(0.99)
-        df = df[(df['price'] >= price_q1) & (df['price'] <= price_q99)]
+        if len(df) > 10:
+            price_q1 = df['price'].quantile(0.01)
+            price_q99 = df['price'].quantile(0.99)
+            df = df[(df['price'] >= price_q1) & (df['price'] <= price_q99)]
         
         # Təmizlənmiş datanı saxla
         df.to_csv(output_file, index=False, encoding='utf-8-sig')
@@ -227,14 +314,25 @@ def main():
     """Ana funksiya"""
     scraper = TurboAzScraper()
     
-    # 1. Scraping et (100 səhifə = təxminən 2000-3000 maşın)
-    scraper.scrape_all(max_pages=100)
+    print("\n⚠️ XƏBƏRDARLIQ: Turbo.az scraping çətin ola bilər (CAPTCHA, anti-bot).")
+    print("⚠️ Alternativ: Hazır CSV faylı istifadə edin və ya manual məlumat toplayın.\n")
     
-    # 2. İlkin məlumatları saxla
-    scraper.save_data('car_data_raw.csv')
+    # 1. Scraping et (10 səhifə test üçün)
+    scraper.scrape_all(max_pages=10)
     
-    # 3. Təmizlə və hazırla
-    scraper.clean_and_prepare_data('car_data_raw.csv', 'car_data_cleaned.csv')
+    # 2. Əgər məlumat varsa saxla
+    if scraper.cars_data:
+        scraper.save_data('car_data_raw.csv')
+        
+        # 3. Təmizlə və hazırla
+        scraper.clean_and_prepare_data('car_data_raw.csv', 'car_data_cleaned.csv')
+    else:
+        print("\n❌ Heç bir məlumat scrape edilmədi!")
+        print("\n💡 Alternativ həll:")
+        print("1. Hazır CSV faylı istifadə edin")
+        print("2. Və ya əllə məlumat toplayın")
+        print("3. turbo_debug.html faylını yoxlayın və selector-ları düzəldin")
+        return
     
     print("\n🎉 Bütün əməliyyatlar tamamlandı!")
     print("car_data_cleaned.csv faylı ML model üçün hazırdır")
