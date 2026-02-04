@@ -38,56 +38,74 @@ async function main() {
   const categories = await Promise.all([
     prisma.category.upsert({
       where: { slug: 'engine-parts' },
-      update: {},
+      update: {
+        name: 'Mühərrik hissələri',
+        description: 'Bütün mühərriklə bağlı hissələr',
+      },
       create: {
-        name: 'Engine Parts',
+        name: 'Mühərrik hissələri',
         slug: 'engine-parts',
-        description: 'All engine related parts',
+        description: 'Bütün mühərriklə bağlı hissələr',
       },
     }),
     prisma.category.upsert({
       where: { slug: 'brake-system' },
-      update: {},
+      update: {
+        name: 'Əyləc sistemi',
+        description: 'Əyləc qəlibləri, disklər və daha çoxu',
+      },
       create: {
-        name: 'Brake System',
+        name: 'Əyləc sistemi',
         slug: 'brake-system',
-        description: 'Brake pads, discs, and more',
+        description: 'Əyləc qəlibləri, disklər və daha çoxu',
       },
     }),
     prisma.category.upsert({
       where: { slug: 'suspension' },
-      update: {},
+      update: {
+        name: 'Asqı sistemi',
+        description: 'Amortizatorlar, yaylar və s.',
+      },
       create: {
-        name: 'Suspension',
+        name: 'Asqı sistemi',
         slug: 'suspension',
-        description: 'Shock absorbers, springs, etc.',
+        description: 'Amortizatorlar, yaylar və s.',
       },
     }),
     prisma.category.upsert({
       where: { slug: 'electrical' },
-      update: {},
+      update: {
+        name: 'Elektrik',
+        description: 'Akkumulyatorlar, generatorlar, starterlər',
+      },
       create: {
-        name: 'Electrical',
+        name: 'Elektrik',
         slug: 'electrical',
-        description: 'Batteries, alternators, starters',
+        description: 'Akkumulyatorlar, generatorlar, starterlər',
       },
     }),
     prisma.category.upsert({
       where: { slug: 'filters' },
-      update: {},
+      update: {
+        name: 'Filtrlər',
+        description: 'Yağ, hava, yanacaq filtrləri',
+      },
       create: {
-        name: 'Filters',
+        name: 'Filtrlər',
         slug: 'filters',
-        description: 'Oil, air, fuel filters',
+        description: 'Yağ, hava, yanacaq filtrləri',
       },
     }),
     prisma.category.upsert({
       where: { slug: 'exhaust' },
-      update: {},
+      update: {
+        name: 'Egzoz sistemi',
+        description: 'Səsboğucular, borular, katalizatorlar',
+      },
       create: {
-        name: 'Exhaust System',
+        name: 'Egzoz sistemi',
         slug: 'exhaust',
-        description: 'Mufflers, pipes, catalytic converters',
+        description: 'Səsboğucular, borular, katalizatorlar',
       },
     }),
   ]);
