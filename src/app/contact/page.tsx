@@ -32,8 +32,18 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {/* Contact Information */}
-          <div className="space-y-6">
+          {/* Contact Form - First on mobile */}
+          <Card className="order-1 md:order-2">
+            <CardHeader>
+              <CardTitle>Mesaj göndər</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ContactFormWrapper />
+            </CardContent>
+          </Card>
+
+          {/* Contact Information - Second on mobile */}
+          <div className="space-y-6 order-2 md:order-1">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -69,16 +79,6 @@ export default function ContactPage() {
               </CardContent>
             </Card>
           </div>
-
-          {/* Contact Form */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Mesaj göndər</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ContactFormWrapper />
-            </CardContent>
-          </Card>
         </div>
       </div>
     </div>
