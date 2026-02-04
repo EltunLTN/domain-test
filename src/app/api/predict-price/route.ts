@@ -57,36 +57,37 @@ export async function POST(request: NextRequest) {
         throw new Error('Python script tapılmadı');
       }
 
-      // Prepare car data for Python script (yeni struktur - Azərbaycanca sütun adları)
+      // Prepare car data for Python script (car_data.csv strukturu)
       const carData = {
-        marka: brand,
+        brand: brand,
         model: model,
-        il: parseInt(year),
-        yurus: parseInt(mileage),
-        muherrik: parseFloat(engineSize),
+        year: parseInt(year),
+        mileage: parseInt(mileage),
+        engineSize: parseFloat(engineSize),
       };
 
-      // Write to temp file to avoid quote issues
-      const tempFile = path.join(process.cwd(), 'temp_car_data.json');
-      fs.writeFileSync(tempFile, JSON.stringify(carData));
+      const carDataJson = JSON.stringify(carData).replace(/"/g, '\\"');
 
       // Run Python prediction script
       const pythonCmd = process.platform === 'win32' ? 'python' : 'python3';
       const { stdout, stderr } = await execAsync(
-        `${pythonCmd} "${scriptPath}" "$(cat "${tempFile}")"`
+        `cd "${path.join(process.cwd(), 'scripts')}" && ${pythonCmd} predict_price.py "${carDataJson}"`,
+        { maxBuffer: 1024 * 1024 }
       );
 
-      // Clean up temp file
-      if (fs.existsSync(tempFile)) {
-        fs.unlinkSync(tempFile);
-      }
-
       if (stderr && !stdout) {
+        console.error('Python stderr:', stderr);
         throw new Error(stderr);
       }
 
-      // Parse prediction result
-      const result = JSON.parse(stdout.trim());
+      // Parse prediction result - son sətri tap (JSON)
+      const lines = stdout.trim().split('\n');
+      const jsonLine = lines[lines.length - 1];
+      const result = JSON.parse(jsonLine);
+
+      if (!result.success) {
+        throw new Error(result.error || 'Prediction uğursuz oldu');
+      }
 
       return NextResponse.json({
         success: true,
@@ -94,10 +95,10 @@ export async function POST(request: NextRequest) {
           estimated_price: Math.round(result.predicted_price),
           min_price: Math.round(result.predicted_price * 0.85),
           max_price: Math.round(result.predicted_price * 1.15),
-          confidence: result.confidence || 'orta',
+          confidence: 'yüksək', // ML model istifadə edilir
         },
       });
-    } catch (pythonError) {
+    } catch (pythonError: any) {
       console.error('Python execution error:', pythonError);
       // Fall back to enhanced calculation
       const price = calculateEnhancedPrice(body);
@@ -108,7 +109,7 @@ export async function POST(request: NextRequest) {
           estimated_price: price,
           min_price: Math.round(price * 0.85),
           max_price: Math.round(price * 1.15),
-          confidence: 'orta',
+          confidence: 'orta', // Fallback formula istifadə edilir
         },
       });
     }
