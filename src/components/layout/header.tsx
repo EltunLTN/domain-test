@@ -52,7 +52,7 @@ export function Header() {
               <Link href="/brands" className="text-sm font-medium hover:text-primary">
                 Markalar
               </Link>
-              <Link href="/car-valuation" className="text-sm font-medium hover:text-primary bg-gradient-to-r from-purple-600 to-pink-600 text-white px-2.5 py-1 rounded-md hover:shadow-lg transition-all whitespace-nowrap">
+              <Link href="/car-valuation" className="text-sm font-medium hover:text-primary">
                 Qiymət hesabla
               </Link>
             </nav>
@@ -152,9 +152,9 @@ export function Header() {
             >
               Markalar
             </Link>
-              <Link 
+            <Link 
               href="/car-valuation" 
-              className="block px-4 py-2 text-sm font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-md hover:shadow-lg transition-all"
+              className="block px-4 py-2 text-sm font-medium hover:bg-accent rounded-md"
               onClick={() => setMobileMenuOpen(false)}
             >
               Qiymət hesabla
