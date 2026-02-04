@@ -8,6 +8,12 @@ const contactSchema = z.object({
   phone: z.string().min(7, 'Düzgün telefon nömrəsi daxil edin'),
   subject: z.string().min(3, 'Mövzu ən az 3 simvol olmalıdır').optional(),
   message: z.string().min(10, 'Mesaj ən az 10 simvol olmalıdır').optional(),
+  orderItems: z.array(z.object({
+    title: z.string(),
+    quantity: z.number(),
+    price: z.number(),
+  })).optional(),
+  orderTotal: z.number().optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -37,11 +43,13 @@ export async function POST(req: NextRequest) {
           from: 'CarParts Contact <onboarding@resend.dev>',
           to: ['eltunjalilli@gmail.com'],
           replyTo: validatedData.email,
-          subject: validatedData.subject || `Yeni mesaj - ${validatedData.name}`,
+          subject: validatedData.orderItems && validatedData.orderItems.length > 0 
+            ? `Yeni Sifariş - ${validatedData.name}` 
+            : (validatedData.subject || `Yeni mesaj - ${validatedData.name}`),
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <h2 style="color: #333; border-bottom: 2px solid #4F46E5; padding-bottom: 10px;">
-                Yeni Əlaqə Mesajı
+                ${validatedData.orderItems && validatedData.orderItems.length > 0 ? '🛒 Yeni Sifariş' : 'Yeni Əlaqə Mesajı'}
               </h2>
               
               <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -50,6 +58,36 @@ export async function POST(req: NextRequest) {
                 <p style="margin: 10px 0;"><strong>Telefon:</strong> ${validatedData.phone}</p>
                 ${validatedData.subject ? `<p style="margin: 10px 0;"><strong>Mövzu:</strong> ${validatedData.subject}</p>` : ''}
               </div>
+              
+              ${validatedData.orderItems && validatedData.orderItems.length > 0 ? `
+              <div style="background-color: #fff; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px; margin: 20px 0;">
+                <h3 style="color: #333; margin-top: 0; border-bottom: 1px solid #e5e7eb; padding-bottom: 10px;">📦 Sifariş edilən məhsullar:</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                  <thead>
+                    <tr style="background-color: #f9fafb;">
+                      <th style="text-align: left; padding: 10px; border-bottom: 1px solid #e5e7eb;">Məhsul</th>
+                      <th style="text-align: center; padding: 10px; border-bottom: 1px solid #e5e7eb;">Say</th>
+                      <th style="text-align: right; padding: 10px; border-bottom: 1px solid #e5e7eb;">Qiymət</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${validatedData.orderItems.map((item: any) => `
+                      <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">${item.title}</td>
+                        <td style="text-align: center; padding: 10px; border-bottom: 1px solid #e5e7eb;">${item.quantity}</td>
+                        <td style="text-align: right; padding: 10px; border-bottom: 1px solid #e5e7eb;">AZN ${(item.price * item.quantity).toFixed(2)}</td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                  <tfoot>
+                    <tr style="background-color: #f0f9ff;">
+                      <td colspan="2" style="padding: 10px; font-weight: bold;">Cəmi:</td>
+                      <td style="text-align: right; padding: 10px; font-weight: bold; color: #4F46E5;">AZN ${validatedData.orderTotal?.toFixed(2) || '0.00'}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              ` : ''}
               
               <div style="background-color: #fff; padding: 20px; border-left: 4px solid #4F46E5; margin: 20px 0;">
                 <h3 style="color: #333; margin-top: 0;">Mesaj:</h3>

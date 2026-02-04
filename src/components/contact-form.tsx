@@ -1,14 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Send } from 'lucide-react';
+import { Send, ShoppingBag } from 'lucide-react';
+
+interface OrderItem {
+  title: string;
+  quantity: number;
+  price: number;
+}
 
 export default function ContactForm() {
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
+  const [orderTotal, setOrderTotal] = useState<number>(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,6 +26,27 @@ export default function ContactForm() {
     subject: '',
     message: '',
   });
+
+  useEffect(() => {
+    const isOrder = searchParams.get('order') === 'true';
+    const itemsParam = searchParams.get('items');
+    const totalParam = searchParams.get('total');
+    
+    if (isOrder && itemsParam) {
+      try {
+        const items = JSON.parse(decodeURIComponent(itemsParam));
+        setOrderItems(items);
+        setOrderTotal(parseFloat(totalParam || '0'));
+        setFormData(prev => ({
+          ...prev,
+          subject: 'Sifariş sorğusu',
+          message: 'Səbətimdəki məhsulları sifariş etmək istəyirəm.'
+        }));
+      } catch (e) {
+        console.error('Error parsing order items:', e);
+      }
+    }
+  }, [searchParams]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -30,7 +61,11 @@ export default function ContactForm() {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          orderItems: orderItems.length > 0 ? orderItems : undefined,
+          orderTotal: orderTotal > 0 ? orderTotal : undefined,
+        }),
       });
 
       const data = await response.json();
@@ -38,6 +73,8 @@ export default function ContactForm() {
       if (response.ok) {
         setSuccess(true);
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        setOrderItems([]);
+        setOrderTotal(0);
         setTimeout(() => setSuccess(false), 5000);
       } else {
         alert(data.error || 'Xəta baş verdi');
@@ -52,6 +89,30 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Sifariş məhsulları göstərilir */}
+      {orderItems.length > 0 && (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+          <div className="flex items-center gap-2 mb-3">
+            <ShoppingBag className="h-5 w-5 text-blue-600" />
+            <h3 className="font-semibold text-blue-800">Sifariş ediləcək məhsullar</h3>
+          </div>
+          <div className="space-y-2">
+            {orderItems.map((item, index) => (
+              <div key={index} className="flex justify-between items-center text-sm bg-white p-2 rounded">
+                <span className="font-medium">{item.title}</span>
+                <span className="text-muted-foreground">
+                  {item.quantity} x AZN {item.price.toFixed(2)} = <strong>AZN {(item.quantity * item.price).toFixed(2)}</strong>
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 pt-3 border-t border-blue-200 flex justify-between font-bold">
+            <span>Cəmi:</span>
+            <span className="text-blue-600">AZN {orderTotal.toFixed(2)}</span>
+          </div>
+        </div>
+      )}
+
       <div className="space-y-2">
         <Label htmlFor="name">Ad və soyad *</Label>
         <Input 

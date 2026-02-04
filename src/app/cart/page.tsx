@@ -165,7 +165,7 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <Link href="/contact">
+              <Link href={`/contact?order=true&items=${encodeURIComponent(JSON.stringify(items.map(i => ({ title: i.title, quantity: i.quantity, price: calculateDiscount(i.price, i.discount) }))))}&total=${total}`}>
                 <Button className="w-full" size="lg">
                   Sifariş Vermək Üçün Bizimlə Əlaqə Saxla
                 </Button>
