@@ -71,7 +71,7 @@ export function CategoriesClient({ categories }: { categories: Category[] }) {
               <thead className="bg-gradient-to-r from-green-50 to-blue-50 border-b-2">
                 <tr>
                   <th className="text-left p-4 font-semibold">Kateqoriya adı</th>
-                  <th className="text-left p-4 font-semibold">Slug</th>
+                  <th className="text-left p-4 font-semibold">Qısa ad (slug)</th>
                   <th className="text-left p-4 font-semibold">Məhsul sayı</th>
                   <th className="text-center p-4 font-semibold">Əməliyyatlar</th>
                 </tr>

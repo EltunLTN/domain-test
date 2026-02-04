@@ -57,8 +57,8 @@ export default async function NewCategoryPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="slug">Slug</Label>
-              <Input id="slug" name="slug" placeholder="fren" />
+              <Label htmlFor="slug">Qısa ad (slug)</Label>
+              <Input id="slug" name="slug" placeholder="məs: fren" />
             </div>
 
             <div className="space-y-2">

@@ -70,7 +70,7 @@ export default async function EditCategoryPage({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="slug">Slug</Label>
+              <Label htmlFor="slug">Qısa ad (slug)</Label>
               <Input id="slug" name="slug" defaultValue={category.slug} />
             </div>
 
