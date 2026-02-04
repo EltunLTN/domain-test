@@ -5,11 +5,20 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import ContactForm from '@/components/contact-form';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Əlaqə - CarParts',
   description: 'Komandamızla əlaqə saxlayın',
 };
+
+function ContactFormWrapper() {
+  return (
+    <Suspense fallback={<div className="animate-pulse bg-muted h-96 rounded-lg" />}>
+      <ContactForm />
+    </Suspense>
+  );
+}
 
 export default function ContactPage() {
   return (
@@ -67,7 +76,7 @@ export default function ContactPage() {
               <CardTitle>Mesaj göndər</CardTitle>
             </CardHeader>
             <CardContent>
-              <ContactForm />
+              <ContactFormWrapper />
             </CardContent>
           </Card>
         </div>
