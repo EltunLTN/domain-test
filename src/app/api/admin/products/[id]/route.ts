@@ -11,12 +11,12 @@ export async function DELETE(
     const session = await getServerSession(authOptions);
     
     if (!session || !session.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ error: 'İcazəsiz' }, { status: 401 });
     }
     
     const role = (session.user?.role || '').toString().toUpperCase();
     if (role !== 'ADMIN') {
-      return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
+      return NextResponse.json({ error: 'Admin girişi tələb olunur' }, { status: 403 });
     }
 
     const { id } = params;
@@ -28,7 +28,7 @@ export async function DELETE(
 
     if (!product) {
       return NextResponse.json(
-        { error: 'Product not found' },
+        { error: 'Məhsul tapılmadı' },
         { status: 404 }
       );
     }
@@ -42,7 +42,7 @@ export async function DELETE(
   } catch (error) {
     console.error('Error deleting product:', error);
     return NextResponse.json(
-      { error: 'Failed to delete product' },
+      { error: 'Məhsul silinə bilmədi' },
       { status: 500 }
     );
   }

@@ -4,9 +4,9 @@ import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
 
 const registerSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  name: z.string().min(2, 'Ad ən azı 2 simvol olmalıdır'),
+  email: z.string().email('E-poçt ünvanı etibarsızdır'),
+  password: z.string().min(6, 'Şifrə ən azı 6 simvol olmalıdır'),
 });
 
 export async function POST(req: NextRequest) {
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
 
     if (existingUser) {
       return NextResponse.json(
-        { error: 'Email already registered' },
+        { error: 'Bu e-poçt artıq qeydiyyatdan keçib' },
         { status: 400 }
       );
     }
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
 
     console.error('Registration error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Daxili server xətası' },
       { status: 500 }
     );
   }

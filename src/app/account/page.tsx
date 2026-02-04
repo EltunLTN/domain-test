@@ -10,8 +10,21 @@ import Link from 'next/link';
 import { formatPrice } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'My Account - CarParts',
-  description: 'Manage your account and orders',
+  title: 'Hesabım - CarParts',
+  description: 'Hesabınızı və sifarişlərinizi idarə edin',
+};
+
+const STATUS_LABELS: Record<string, string> = {
+  PAID: 'Ödənilib',
+  PENDING: 'Gözlənilir',
+  CANCELLED: 'Ləğv edilib',
+  SHIPPED: 'Göndərilib',
+  DELIVERED: 'Çatdırılıb',
+};
+
+const ROLE_LABELS: Record<string, string> = {
+  ADMIN: 'Admin',
+  USER: 'İstifadəçi',
 };
 
 export default async function AccountPage() {
@@ -47,7 +60,7 @@ export default async function AccountPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">My Account</h1>
+      <h1 className="text-4xl font-bold mb-8">Hesabım</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* User Info Card */}
@@ -55,25 +68,25 @@ export default async function AccountPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <User className="h-5 w-5" />
-              Profile Information
+              Profil məlumatları
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <p className="text-sm text-muted-foreground mb-1">Name</p>
-              <p className="font-medium">{user?.name || 'Not set'}</p>
+              <p className="text-sm text-muted-foreground mb-1">Ad</p>
+              <p className="font-medium">{user?.name || 'Təyin edilməyib'}</p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground mb-1 flex items-center gap-1">
                 <Mail className="h-3 w-3" />
-                Email
+                E-poçt
               </p>
               <p className="font-medium text-sm">{user?.email}</p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground mb-1 flex items-center gap-1">
                 <ShieldCheck className="h-3 w-3" />
-                Role
+                Rol
               </p>
               <p className="font-medium">
                 <span className={`inline-flex px-2 py-1 rounded text-xs ${
@@ -81,14 +94,14 @@ export default async function AccountPage() {
                     ? 'bg-purple-100 text-purple-700' 
                     : 'bg-blue-100 text-blue-700'
                 }`}>
-                  {user?.role}
+                  {ROLE_LABELS[user?.role || ''] ?? user?.role}
                 </span>
               </p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground mb-1">Member Since</p>
+              <p className="text-sm text-muted-foreground mb-1">Qeydiyyat tarixi</p>
               <p className="font-medium">
-                {new Date(user!.createdAt).toLocaleDateString('en-US', {
+                {new Date(user!.createdAt).toLocaleDateString('az-AZ', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric',
@@ -104,11 +117,11 @@ export default async function AccountPage() {
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">
                 <Package className="h-5 w-5" />
-                Recent Orders
+                Son sifarişlər
               </CardTitle>
               <Link href="/admin/orders">
                 <Button variant="outline" size="sm">
-                  View All
+                  Hamısına bax
                 </Button>
               </Link>
             </div>
@@ -125,7 +138,7 @@ export default async function AccountPage() {
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div>
-                        <p className="font-semibold">Order #{order.orderNumber}</p>
+                        <p className="font-semibold">Sifariş #{order.orderNumber}</p>
                         <p className="text-sm text-muted-foreground">
                           {new Date(order.createdAt).toLocaleDateString()}
                         </p>
@@ -145,13 +158,13 @@ export default async function AccountPage() {
                               : 'bg-gray-100 text-gray-700'
                           }`}
                         >
-                          {order.status}
+                          {STATUS_LABELS[order.status] ?? order.status}
                         </span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Package className="h-4 w-4" />
-                      <span>{order.orderItems.length} items</span>
+                      <span>{order.orderItems.length} məhsul</span>
                       {order.shippingAddress && (
                         <>
                           <span>•</span>
@@ -169,9 +182,9 @@ export default async function AccountPage() {
             ) : (
               <div className="text-center py-8">
                 <Package className="h-12 w-12 mx-auto text-muted-foreground mb-3" />
-                <p className="text-muted-foreground mb-4">No orders yet</p>
+                <p className="text-muted-foreground mb-4">Hələ sifariş yoxdur</p>
                 <Link href="/shop">
-                  <Button>Start Shopping</Button>
+                  <Button>Alış-verişə başla</Button>
                 </Link>
               </div>
             )}

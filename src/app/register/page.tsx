@@ -24,12 +24,12 @@ export default function RegisterPage() {
     setError('');
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError('Şifrələr uyğun gəlmir');
       return;
     }
 
     if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError('Şifrə ən azı 6 simvoldan ibarət olmalıdır');
       return;
     }
 
@@ -49,12 +49,12 @@ export default function RegisterPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || 'Registration failed');
+        setError(data.error || 'Qeydiyyat uğursuz oldu');
       } else {
         router.push('/login?registered=true');
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      setError('Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.');
     } finally {
       setLoading(false);
     }
@@ -64,8 +64,8 @@ export default function RegisterPage() {
     <div className="container mx-auto px-4 py-16 flex items-center justify-center min-h-[calc(100vh-200px)]">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Create Account</CardTitle>
-          <CardDescription>Sign up to start shopping for car parts</CardDescription>
+          <CardTitle>Hesab yaradın</CardTitle>
+          <CardDescription>Ehtiyat hissələri üçün alış-verişə başlamaq üçün qeydiyyatdan keçin</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -76,7 +76,7 @@ export default function RegisterPage() {
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
+              <Label htmlFor="name">Ad Soyad</Label>
               <Input
                 id="name"
                 type="text"
@@ -88,7 +88,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-poçt</Label>
               <Input
                 id="email"
                 type="email"
@@ -100,7 +100,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Şifrə</Label>
               <Input
                 id="password"
                 type="password"
@@ -112,7 +112,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Label htmlFor="confirmPassword">Şifrəni təsdiqlə</Label>
               <Input
                 id="confirmPassword"
                 type="password"
@@ -124,13 +124,13 @@ export default function RegisterPage() {
             </div>
 
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? 'Creating account...' : 'Create Account'}
+              {loading ? 'Hesab yaradılır...' : 'Hesab yarat'}
             </Button>
 
             <div className="text-center text-sm">
-              <span className="text-muted-foreground">Already have an account? </span>
+              <span className="text-muted-foreground">Artıq hesabınız var? </span>
               <Link href="/login" className="text-primary hover:underline">
-                Sign In
+                Daxil ol
               </Link>
             </div>
           </form>

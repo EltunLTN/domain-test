@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     const session = await getServerSession(authOptions);
 
     if (!session?.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ error: 'İcazəsiz' }, { status: 401 });
     }
 
     const body = await req.json();
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (products.length !== validatedData.items.length) {
-      return NextResponse.json({ error: 'Some products not found' }, { status: 400 });
+      return NextResponse.json({ error: 'Bəzi məhsullar tapılmadı' }, { status: 400 });
     }
 
     // Calculate order totals
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
 
       if (product.stock < item.quantity) {
         return NextResponse.json(
-          { error: `Insufficient stock for ${product.title}` },
+          { error: `${product.title} üçün kifayət qədər stok yoxdur` },
           { status: 400 }
         );
       }
@@ -117,7 +117,7 @@ export async function POST(req: NextRequest) {
 
     if (!merchantId || !apiKey || !apiSecret) {
       return NextResponse.json(
-        { error: 'PayTR configuration missing' },
+        { error: 'PayTR konfiqurasiyası yoxdur' },
         { status: 500 }
       );
     }
@@ -177,14 +177,14 @@ export async function POST(req: NextRequest) {
         });
       } else {
         return NextResponse.json(
-          { error: 'PayTR payment token generation failed' },
+          { error: 'PayTR ödəniş tokeni yaradılmadı' },
           { status: 400 }
         );
       }
     } catch (paytrError) {
       console.error('PayTR error:', paytrError);
       return NextResponse.json(
-        { error: 'Payment gateway error' },
+        { error: 'Ödəniş şlüzü xətası' },
         { status: 500 }
       );
     }
@@ -194,6 +194,6 @@ export async function POST(req: NextRequest) {
     }
 
     console.error('Checkout error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ error: 'Daxili server xətası' }, { status: 500 });
   }
 }

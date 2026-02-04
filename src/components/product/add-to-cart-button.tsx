@@ -41,7 +41,7 @@ export function AddToCartButton({ product }: { product: Product }) {
       disabled={product.stock <= 0}
     >
       <ShoppingCart className="h-4 w-4 mr-2" />
-      {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+      {product.stock > 0 ? 'Səbətə əlavə et' : 'Stokda yoxdur'}
     </Button>
   );
 }

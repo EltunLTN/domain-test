@@ -12,68 +12,68 @@ export function Footer() {
               <span className="text-lg sm:text-xl font-bold">CarParts</span>
             </Link>
             <p className="text-xs sm:text-sm text-muted-foreground">
-              Your trusted source for quality auto parts and accessories.
+              Keyfiyyətli ehtiyat hissələri və aksesuarlar üçün etibarlı ünvan.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Shop</h3>
+            <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Mağaza</h3>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
               <li>
                 <Link href="/shop" className="text-muted-foreground hover:text-primary">
-                  All Products
+                  Bütün məhsullar
                 </Link>
               </li>
               <li>
                 <Link href="/categories" className="text-muted-foreground hover:text-primary">
-                  Categories
+                  Kateqoriyalar
                 </Link>
               </li>
               <li>
                 <Link href="/brands" className="text-muted-foreground hover:text-primary">
-                  Brands
+                  Markalar
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Customer Service</h3>
+            <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Müştəri xidməti</h3>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
               <li>
                 <Link href="/account" className="text-muted-foreground hover:text-primary">
-                  My Account
+                  Hesabım
                 </Link>
               </li>
               <li>
                 <Link href="/cart" className="text-muted-foreground hover:text-primary">
-                  Shopping Cart
+                  Səbət
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-primary">
-                  Contact Us
+                  Əlaqə
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Information</h3>
+            <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Məlumat</h3>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
               <li>
                 <Link href="/about" className="text-muted-foreground hover:text-primary">
-                  About Us
+                  Haqqımızda
                 </Link>
               </li>
               <li>
                 <Link href="/privacy" className="text-muted-foreground hover:text-primary">
-                  Privacy Policy
+                  Məxfilik siyasəti
                 </Link>
               </li>
               <li>
                 <Link href="/terms" className="text-muted-foreground hover:text-primary">
-                  Terms & Conditions
+                  Şərtlər və qaydalar
                 </Link>
               </li>
             </ul>
@@ -81,7 +81,7 @@ export function Footer() {
         </div>
 
         <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t text-center text-xs sm:text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} CarParts. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} CarParts. Bütün hüquqlar qorunur.</p>
         </div>
       </div>
     </footer>

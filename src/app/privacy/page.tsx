@@ -1,94 +1,94 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - CarParts',
-  description: 'Our privacy policy and data protection practices',
+  title: 'Məxfilik Siyasəti - CarParts',
+  description: 'Məxfilik siyasətimiz və məlumatların qorunması praktikamız',
 };
 
 export default function PrivacyPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto prose prose-lg">
-        <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
+        <h1 className="text-4xl font-bold mb-8">Məxfilik Siyasəti</h1>
         
         <p className="text-muted-foreground text-lg mb-8">
-          Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          Son yenilənmə: {new Date().toLocaleDateString('az-AZ', { year: 'numeric', month: 'long', day: 'numeric' })}
         </p>
 
-        <h2>1. Information We Collect</h2>
+        <h2>1. Topladığımız məlumatlar</h2>
         <p>
-          At CarParts, we collect information you provide directly to us, such as when you create an account, 
-          make a purchase, or contact customer service. This may include:
-        </p>
-        <ul>
-          <li>Name and contact information</li>
-          <li>Shipping and billing addresses</li>
-          <li>Payment information</li>
-          <li>Order history</li>
-          <li>Email communications and preferences</li>
-        </ul>
-
-        <h2>2. How We Use Your Information</h2>
-        <p>We use the information we collect to:</p>
-        <ul>
-          <li>Process and fulfill your orders</li>
-          <li>Communicate with you about your orders and account</li>
-          <li>Provide customer support</li>
-          <li>Send you promotional communications (with your consent)</li>
-          <li>Improve our services and website functionality</li>
-          <li>Prevent fraud and enhance security</li>
-        </ul>
-
-        <h2>3. Information Sharing</h2>
-        <p>
-          We do not sell, trade, or rent your personal information to third parties. We may share your 
-          information with:
+          CarParts-da bizə birbaşa təqdim etdiyiniz məlumatları toplayırıq: hesab yaratdıqda, alış etdikdə
+          və ya müştəri xidmətinə müraciət etdikdə. Bunlara daxildir:
         </p>
         <ul>
-          <li>Service providers who assist with order fulfillment and shipping</li>
-          <li>Payment processors to complete transactions</li>
-          <li>Analytics providers to improve our services</li>
-          <li>Law enforcement when required by law</li>
+          <li>Ad və əlaqə məlumatları</li>
+          <li>Çatdırılma və ödəniş ünvanları</li>
+          <li>Ödəniş məlumatları</li>
+          <li>Sifariş tarixçəsi</li>
+          <li>E-poçt yazışmaları və seçimlər</li>
         </ul>
 
-        <h2>4. Data Security</h2>
-        <p>
-          We implement appropriate technical and organizational measures to protect your personal data 
-          against unauthorized access, alteration, disclosure, or destruction. This includes encryption 
-          of sensitive information and regular security audits.
-        </p>
-
-        <h2>5. Your Rights</h2>
-        <p>You have the right to:</p>
+        <h2>2. Məlumatlardan necə istifadə edirik</h2>
+        <p>Topladığımız məlumatlardan aşağıdakı məqsədlərlə istifadə edirik:</p>
         <ul>
-          <li>Access your personal information</li>
-          <li>Correct inaccurate data</li>
-          <li>Request deletion of your data</li>
-          <li>Opt-out of marketing communications</li>
-          <li>Export your data in a portable format</li>
+          <li>Sifarişlərinizi emal edib yerinə yetirmək</li>
+          <li>Sifarişləriniz və hesabınızla bağlı sizinlə əlaqə saxlamaq</li>
+          <li>Müştəri dəstəyi göstərmək</li>
+          <li>Razılığınız əsasında promo məlumatlar göndərmək</li>
+          <li>Xidmətləri və saytın funksionallığını təkmilləşdirmək</li>
+          <li>Dələduzluğun qarşısını almaq və təhlükəsizliyi gücləndirmək</li>
         </ul>
 
-        <h2>6. Cookies</h2>
+        <h2>3. Məlumatların paylaşılması</h2>
         <p>
-          We use cookies and similar technologies to enhance your browsing experience, analyze site traffic, 
-          and personalize content. You can control cookie preferences through your browser settings.
+          Şəxsi məlumatlarınızı üçüncü tərəflərə satmır, dəyişmir və ya icarəyə vermirik. Aşağıdakı tərəflərlə
+          paylaşa bilərik:
+        </p>
+        <ul>
+          <li>Sifarişin icrası və çatdırılmasına yardım edən xidmət təminatçıları</li>
+          <li>Ödənişlərin tamamlanması üçün ödəniş prosessorları</li>
+          <li>Xidmətləri yaxşılaşdırmaq üçün analitika təminatçıları</li>
+          <li>Qanun tələb etdikdə hüquq-mühafizə orqanları</li>
+        </ul>
+
+        <h2>4. Məlumat təhlükəsizliyi</h2>
+        <p>
+          Şəxsi məlumatlarınızı icazəsiz giriş, dəyişdirmə, açıqlama və ya məhv edilmədən qorumaq üçün
+          uyğun texniki və təşkilati tədbirlər görürük. Buna həssas məlumatların şifrələnməsi və mütəmadi
+          təhlükəsizlik auditləri daxildir.
         </p>
 
-        <h2>7. Third-Party Links</h2>
+        <h2>5. Sizin hüquqlarınız</h2>
+        <p>Aşağıdakı hüquqlara maliksiniz:</p>
+        <ul>
+          <li>Şəxsi məlumatlarınıza çıxış</li>
+          <li>Yanlış məlumatların düzəldilməsi</li>
+          <li>Məlumatlarınızın silinməsini tələb etmək</li>
+          <li>Marketinq yazışmalarından imtina</li>
+          <li>Məlumatlarınızı daşına bilən formatda əldə etmək</li>
+        </ul>
+
+        <h2>6. Kukilər</h2>
         <p>
-          Our website may contain links to third-party sites. We are not responsible for the privacy 
-          practices of these external sites and encourage you to review their privacy policies.
+          Baxış təcrübənizi yaxşılaşdırmaq, sayt trafikinı analiz etmək və məzmunu fərdiləşdirmək üçün kukilərdən
+          və oxşar texnologiyalardan istifadə edirik. Kukiləri brauzer ayarlarından idarə edə bilərsiniz.
         </p>
 
-        <h2>8. Changes to This Policy</h2>
+        <h2>7. Üçüncü tərəf keçidləri</h2>
         <p>
-          We may update this privacy policy periodically. We will notify you of significant changes via 
-          email or through a notice on our website.
+          Saytımız üçüncü tərəf saytlarına keçidlər ehtiva edə bilər. Bu saytlardakı məxfilik praktikalarına görə
+          məsuliyyət daşımırıq və onların məxfilik siyasətini oxumağı tövsiyə edirik.
         </p>
 
-        <h2>9. Contact Us</h2>
+        <h2>8. Siyasətdə dəyişikliklər</h2>
         <p>
-          If you have questions about this privacy policy or how we handle your data, please contact us at:
+          Bu məxfilik siyasətini vaxtaşırı yeniləyə bilərik. Əhəmiyyətli dəyişikliklər barədə sizi e-poçtla
+          və ya saytda bildirişlə məlumatlandıracağıq.
+        </p>
+
+        <h2>9. Əlaqə</h2>
+        <p>
+          Məxfilik siyasəti və məlumatların idarə edilməsi ilə bağlı suallarınız varsa, bizimlə əlaqə saxlayın:
         </p>
         <p className="not-prose">
           <a href="mailto:eltunjalilli@gmail.com" className="text-primary hover:underline font-medium">

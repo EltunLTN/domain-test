@@ -21,7 +21,7 @@ async function createCategory(formData: FormData) {
   const image = (formData.get('image') || '').toString().trim();
 
   if (!name) {
-    throw new Error('Name is required');
+    throw new Error('Ad tələb olunur');
   }
 
   const slug = slugInput || slugify(name);
@@ -43,17 +43,17 @@ export default async function NewCategoryPage() {
 
   return (
     <div className="max-w-2xl space-y-6">
-      <h1 className="text-3xl font-bold">Yeni Kategori</h1>
+      <h1 className="text-3xl font-bold">Yeni kateqoriya</h1>
 
       <Card>
         <CardHeader>
-          <CardTitle>Kategori Bilgileri</CardTitle>
+          <CardTitle>Kateqoriya məlumatları</CardTitle>
         </CardHeader>
         <CardContent>
           <form action={createCategory} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Ad *</Label>
-              <Input id="name" name="name" required placeholder="Örn: Fren" />
+              <Input id="name" name="name" required placeholder="Məs: Əyləc" />
             </div>
 
             <div className="space-y-2">
@@ -62,19 +62,19 @@ export default async function NewCategoryPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="description">Açıklama</Label>
-              <Input id="description" name="description" placeholder="Kategori açıklaması" />
+              <Label htmlFor="description">Təsvir</Label>
+              <Input id="description" name="description" placeholder="Kateqoriya təsviri" />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="image">Görsel URL</Label>
+              <Label htmlFor="image">Şəkil URL</Label>
               <Input id="image" name="image" placeholder="https://..." />
             </div>
 
             <div className="flex gap-3 pt-2">
-              <Button type="submit">Kaydet</Button>
+              <Button type="submit">Yadda saxla</Button>
               <Link href="/admin/categories">
-                <Button type="button" variant="outline">İptal</Button>
+                <Button type="button" variant="outline">Ləğv et</Button>
               </Link>
             </div>
           </form>

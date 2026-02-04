@@ -21,7 +21,7 @@ async function updateCategory(id: string, formData: FormData) {
   const image = (formData.get('image') || '').toString().trim();
 
   if (!name) {
-    throw new Error('Name is required');
+    throw new Error('Ad tələb olunur');
   }
 
   const slug = slugInput || slugify(name);
@@ -56,11 +56,11 @@ export default async function EditCategoryPage({
 
   return (
     <div className="max-w-2xl space-y-6">
-      <h1 className="text-3xl font-bold">Kategori Düzenle</h1>
+      <h1 className="text-3xl font-bold">Kateqoriyanı redaktə et</h1>
 
       <Card>
         <CardHeader>
-          <CardTitle>Kategori Bilgileri</CardTitle>
+          <CardTitle>Kateqoriya məlumatları</CardTitle>
         </CardHeader>
         <CardContent>
           <form action={updateCategory.bind(null, category.id)} className="space-y-4">
@@ -75,19 +75,19 @@ export default async function EditCategoryPage({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="description">Açıklama</Label>
+              <Label htmlFor="description">Təsvir</Label>
               <Input id="description" name="description" defaultValue={category.description || ''} />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="image">Görsel URL</Label>
+              <Label htmlFor="image">Şəkil URL</Label>
               <Input id="image" name="image" defaultValue={category.image || ''} />
             </div>
 
             <div className="flex gap-3 pt-2">
-              <Button type="submit">Kaydet</Button>
+              <Button type="submit">Yadda saxla</Button>
               <Link href="/admin/categories">
-                <Button type="button" variant="outline">İptal</Button>
+                <Button type="button" variant="outline">Ləğv et</Button>
               </Link>
             </div>
           </form>

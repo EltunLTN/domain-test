@@ -7,8 +7,8 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import ContactForm from '@/components/contact-form';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - CarParts',
-  description: 'Get in touch with our team',
+  title: 'Əlaqə - CarParts',
+  description: 'Komandamızla əlaqə saxlayın',
 };
 
 export default function ContactPage() {
@@ -29,7 +29,7 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Mail className="h-5 w-5 text-primary" />
-                  Email
+                  E-poçt
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -64,7 +64,7 @@ export default function ContactPage() {
           {/* Contact Form */}
           <Card>
             <CardHeader>
-              <CardTitle>Mesaj Göndər</CardTitle>
+              <CardTitle>Mesaj göndər</CardTitle>
             </CardHeader>
             <CardContent>
               <ContactForm />

@@ -47,7 +47,7 @@ export function Header() {
                 Mağaza
               </Link>
               <Link href="/categories" className="text-sm font-medium hover:text-primary">
-                Kategoriler
+                Kateqoriyalar
               </Link>
               <Link href="/brands" className="text-sm font-medium hover:text-primary">
                 Markalar
@@ -81,7 +81,7 @@ export function Header() {
                 <button
                   type="submit"
                   className="absolute right-2 top-2 p-1 hover:bg-muted rounded"
-                  aria-label="Search"
+                  aria-label="Axtar"
                 >
                   <Search className="h-4 w-4 text-muted-foreground" />
                 </button>
@@ -118,10 +118,10 @@ export function Header() {
                   size="sm"
                   onClick={() => signOut({ callbackUrl: '/' })}
                   className="gap-1 sm:gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 h-8 sm:h-9 px-2 sm:px-3 text-xs sm:text-sm"
-                  title="Çıkış Yap"
+                  title="Çıxış et"
                 >
                   <LogOut className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span className="hidden sm:inline">Çıkış</span>
+                  <span className="hidden sm:inline">Çıxış</span>
                 </Button>
               </div>
             )}
@@ -143,7 +143,7 @@ export function Header() {
               className="block px-4 py-2 text-sm font-medium hover:bg-accent rounded-md"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Kategoriler
+              Kateqoriyalar
             </Link>
             <Link 
               href="/brands" 

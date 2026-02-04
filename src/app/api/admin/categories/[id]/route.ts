@@ -11,12 +11,12 @@ export async function DELETE(
     const session = await getServerSession(authOptions);
     
     if (!session || !session.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ error: 'İcazəsiz' }, { status: 401 });
     }
     
     const role = (session.user?.role || '').toString().toUpperCase();
     if (role !== 'ADMIN') {
-      return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
+      return NextResponse.json({ error: 'Admin girişi tələb olunur' }, { status: 403 });
     }
 
     const { id } = params;
@@ -33,7 +33,7 @@ export async function DELETE(
 
     if (!category) {
       return NextResponse.json(
-        { error: 'Category not found' },
+        { error: 'Kateqoriya tapılmadı' },
         { status: 404 }
       );
     }
@@ -41,7 +41,7 @@ export async function DELETE(
     // Check if category has products
     if (category._count.products > 0) {
       return NextResponse.json(
-        { error: `Cannot delete category with ${category._count.products} products. Remove products first.` },
+        { error: `${category._count.products} məhsulu olan kateqoriyanı silmək olmaz. Əvvəl məhsulları silin.` },
         { status: 400 }
       );
     }
@@ -55,7 +55,7 @@ export async function DELETE(
   } catch (error) {
     console.error('Error deleting category:', error);
     return NextResponse.json(
-      { error: 'Failed to delete category' },
+      { error: 'Kateqoriya silinə bilmədi' },
       { status: 500 }
     );
   }

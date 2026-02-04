@@ -67,7 +67,7 @@ export default function AddProductPage() {
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Yükleniyor...</p>
+          <p className="text-gray-600">Yüklənir...</p>
         </div>
       </div>
     );
@@ -102,11 +102,11 @@ export default function AddProductPage() {
       if (response.ok) {
         router.push('/admin/products');
       } else {
-        setError(data.error || 'Ürün oluşturulamadı');
+        setError(data.error || 'Məhsul yaradıla bilmədi');
       }
     } catch (error) {
       console.error('Error:', error);
-      setError('Ürün eklenirken hata oluştu');
+      setError('Məhsul əlavə edilərkən xəta baş verdi');
     } finally {
       setLoading(false);
     }
@@ -114,7 +114,7 @@ export default function AddProductPage() {
 
   return (
     <div className="max-w-3xl">
-      <h1 className="text-3xl font-bold mb-8">Yeni Ürün Ekle</h1>
+      <h1 className="text-3xl font-bold mb-8">Yeni məhsul əlavə et</h1>
 
       {error && <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">{error}</div>}
 
@@ -122,19 +122,19 @@ export default function AddProductPage() {
         <CardContent className="pt-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="title">Ürün Adı *</Label>
+              <Label htmlFor="title">Məhsul adı *</Label>
               <Input 
                 id="title" 
                 name="title" 
                 required 
                 value={formData.title}
                 onChange={handleChange}
-                placeholder="Örn: Yağ Filtresi"
+                placeholder="Məs: Yağ filtri"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="description">Açıklama *</Label>
+              <Label htmlFor="description">Təsvir *</Label>
               <textarea
                 id="description"
                 name="description"
@@ -143,13 +143,13 @@ export default function AddProductPage() {
                 onChange={handleChange}
                 rows={4}
                 className="w-full px-3 py-2 border border-input rounded-md"
-                placeholder="Ürün açıklaması"
+                placeholder="Məhsul təsviri"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="price">Fiyat (AZN) *</Label>
+                <Label htmlFor="price">Qiymət (AZN) *</Label>
                 <Input 
                   id="price" 
                   name="price" 
@@ -162,7 +162,7 @@ export default function AddProductPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="discount">İndirim (%)</Label>
+                <Label htmlFor="discount">Endirim (%)</Label>
                 <Input 
                   id="discount" 
                   name="discount" 
@@ -200,7 +200,7 @@ export default function AddProductPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="categoryId">Kategori</Label>
+                <Label htmlFor="categoryId">Kateqoriya</Label>
                 <select
                   id="categoryId"
                   name="categoryId"
@@ -208,7 +208,7 @@ export default function AddProductPage() {
                   onChange={handleChange}
                   className="w-full px-3 py-2 border border-input rounded-md"
                 >
-                  <option value="">Kategori Seç</option>
+                  <option value="">Kateqoriya seç</option>
                   {categories.map((cat) => (
                     <option key={cat.id} value={cat.id}>{cat.name}</option>
                   ))}
@@ -224,7 +224,7 @@ export default function AddProductPage() {
                   onChange={handleChange}
                   className="w-full px-3 py-2 border border-input rounded-md"
                 >
-                  <option value="">Marka Seç</option>
+                  <option value="">Marka seç</option>
                   {brands.map((brand) => (
                     <option key={brand.id} value={brand.id}>{brand.name}</option>
                   ))}
@@ -233,7 +233,7 @@ export default function AddProductPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="condition">Durum</Label>
+              <Label htmlFor="condition">Vəziyyət</Label>
               <select
                 id="condition"
                 name="condition"
@@ -242,12 +242,12 @@ export default function AddProductPage() {
                 className="w-full px-3 py-2 border border-input rounded-md"
               >
                 <option value="NEW">Yeni</option>
-                <option value="USED">Kullanılmış</option>
+                <option value="USED">İstifadə olunmuş</option>
               </select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="mainImage">Ana Görüntü URL</Label>
+              <Label htmlFor="mainImage">Əsas şəkil URL</Label>
               <Input 
                 id="mainImage" 
                 name="mainImage" 
@@ -260,31 +260,31 @@ export default function AddProductPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="carMake">Araç Markası</Label>
+                <Label htmlFor="carMake">Avtomobil markası</Label>
                 <Input 
                   id="carMake" 
                   name="carMake" 
                   value={formData.carMake}
                   onChange={handleChange}
-                  placeholder="Örn: Hyundai"
+                  placeholder="Məs: Hyundai"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="carModel">Araç Modeli</Label>
+                <Label htmlFor="carModel">Avtomobil modeli</Label>
                 <Input 
                   id="carModel" 
                   name="carModel" 
                   value={formData.carModel}
                   onChange={handleChange}
-                  placeholder="Örn: i30"
+                  placeholder="Məs: i30"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="yearFrom">Yılından</Label>
+                <Label htmlFor="yearFrom">İlindən</Label>
                 <Input 
                   id="yearFrom" 
                   name="yearFrom" 
@@ -296,7 +296,7 @@ export default function AddProductPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="yearTo">Yılına</Label>
+                <Label htmlFor="yearTo">İlinə</Label>
                 <Input 
                   id="yearTo" 
                   name="yearTo" 
@@ -310,7 +310,7 @@ export default function AddProductPage() {
 
             <div className="flex gap-4 pt-4">
               <Button type="submit" disabled={loading} size="lg">
-                {loading ? 'Oluşturuluyor...' : 'Ürün Ekle'}
+                {loading ? 'Yaradılır...' : 'Məhsul əlavə et'}
               </Button>
               <Button 
                 type="button" 
@@ -318,7 +318,7 @@ export default function AddProductPage() {
                 onClick={() => router.back()}
                 size="lg"
               >
-                İptal
+                Ləğv et
               </Button>
             </div>
           </form>

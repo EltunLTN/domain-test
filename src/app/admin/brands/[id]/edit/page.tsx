@@ -21,7 +21,7 @@ async function updateBrand(id: string, formData: FormData) {
   const logo = (formData.get('logo') || '').toString().trim();
 
   if (!name) {
-    throw new Error('Name is required');
+    throw new Error('Ad tələb olunur');
   }
 
   const slug = slugInput || slugify(name);
@@ -56,11 +56,11 @@ export default async function EditBrandPage({
 
   return (
     <div className="max-w-2xl space-y-6">
-      <h1 className="text-3xl font-bold">Marka Düzenle</h1>
+      <h1 className="text-3xl font-bold">Markanı redaktə et</h1>
 
       <Card>
         <CardHeader>
-          <CardTitle>Marka Bilgileri</CardTitle>
+          <CardTitle>Marka məlumatları</CardTitle>
         </CardHeader>
         <CardContent>
           <form action={updateBrand.bind(null, brand.id)} className="space-y-4">
@@ -75,19 +75,19 @@ export default async function EditBrandPage({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="description">Açıklama</Label>
+              <Label htmlFor="description">Təsvir</Label>
               <Input id="description" name="description" defaultValue={brand.description || ''} />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="logo">Logo URL</Label>
+              <Label htmlFor="logo">Loqo URL</Label>
               <Input id="logo" name="logo" defaultValue={brand.logo || ''} />
             </div>
 
             <div className="flex gap-3 pt-2">
-              <Button type="submit">Kaydet</Button>
+              <Button type="submit">Yadda saxla</Button>
               <Link href="/admin/brands">
-                <Button type="button" variant="outline">İptal</Button>
+                <Button type="button" variant="outline">Ləğv et</Button>
               </Link>
             </div>
           </form>

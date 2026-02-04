@@ -5,6 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
+const ROLE_LABELS: Record<string, string> = {
+  ADMIN: 'Admin',
+  USER: 'İstifadəçi',
+};
+
 async function getUsers() {
   return prisma.user.findMany({
     select: {
@@ -25,11 +30,11 @@ export default async function AdminUsersPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Kullanıcılar</h1>
+      <h1 className="text-3xl font-bold">İstifadəçilər</h1>
 
       <Card>
         <CardHeader>
-          <CardTitle>Toplam: {users.length}</CardTitle>
+          <CardTitle>Cəmi: {users.length}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -37,9 +42,9 @@ export default async function AdminUsersPage() {
               <thead>
                 <tr className="text-left border-b">
                   <th className="py-2">Ad</th>
-                  <th className="py-2">Email</th>
+                  <th className="py-2">E-poçt</th>
                   <th className="py-2">Rol</th>
-                  <th className="py-2">Tarih</th>
+                  <th className="py-2">Tarix</th>
                 </tr>
               </thead>
               <tbody>
@@ -47,9 +52,9 @@ export default async function AdminUsersPage() {
                   <tr key={user.id} className="border-b">
                     <td className="py-2">{user.name || '-'}</td>
                     <td className="py-2">{user.email}</td>
-                    <td className="py-2">{user.role}</td>
+                    <td className="py-2">{ROLE_LABELS[user.role] ?? user.role}</td>
                     <td className="py-2">
-                      {new Date(user.createdAt).toLocaleDateString('tr-TR')}
+                      {new Date(user.createdAt).toLocaleDateString('az-AZ')}
                     </td>
                   </tr>
                 ))}

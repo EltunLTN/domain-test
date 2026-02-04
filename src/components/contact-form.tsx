@@ -65,7 +65,7 @@ export default function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="email">Email *</Label>
+        <Label htmlFor="email">E-poçt *</Label>
         <Input 
           id="email" 
           name="email" 
@@ -121,7 +121,7 @@ export default function ContactForm() {
 
       <Button type="submit" className="w-full" size="lg" disabled={loading}>
         <Send className="mr-2 h-4 w-4" />
-        {loading ? 'Göndərilir...' : 'Mesaj Göndər'}
+        {loading ? 'Göndərilir...' : 'Mesaj göndər'}
       </Button>
     </form>
   );

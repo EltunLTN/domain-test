@@ -21,7 +21,7 @@ async function createBrand(formData: FormData) {
   const logo = (formData.get('logo') || '').toString().trim();
 
   if (!name) {
-    throw new Error('Name is required');
+    throw new Error('Ad tələb olunur');
   }
 
   const slug = slugInput || slugify(name);
@@ -43,17 +43,17 @@ export default async function NewBrandPage() {
 
   return (
     <div className="max-w-2xl space-y-6">
-      <h1 className="text-3xl font-bold">Yeni Marka</h1>
+      <h1 className="text-3xl font-bold">Yeni marka</h1>
 
       <Card>
         <CardHeader>
-          <CardTitle>Marka Bilgileri</CardTitle>
+          <CardTitle>Marka məlumatları</CardTitle>
         </CardHeader>
         <CardContent>
           <form action={createBrand} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Ad *</Label>
-              <Input id="name" name="name" required placeholder="Örn: Bosch" />
+              <Input id="name" name="name" required placeholder="Məs: Bosch" />
             </div>
 
             <div className="space-y-2">
@@ -62,19 +62,19 @@ export default async function NewBrandPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="description">Açıklama</Label>
-              <Input id="description" name="description" placeholder="Marka açıklaması" />
+              <Label htmlFor="description">Təsvir</Label>
+              <Input id="description" name="description" placeholder="Marka təsviri" />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="logo">Logo URL</Label>
+              <Label htmlFor="logo">Loqo URL</Label>
               <Input id="logo" name="logo" placeholder="https://..." />
             </div>
 
             <div className="flex gap-3 pt-2">
-              <Button type="submit">Kaydet</Button>
+              <Button type="submit">Yadda saxla</Button>
               <Link href="/admin/brands">
-                <Button type="button" variant="outline">İptal</Button>
+                <Button type="button" variant="outline">Ləğv et</Button>
               </Link>
             </div>
           </form>

@@ -30,7 +30,7 @@ export function ProductsClient({ products }: { products: Product[] }) {
   const [deleting, setDeleting] = useState<string | null>(null);
 
   const handleDelete = async (productId: string, productTitle: string) => {
-    if (!confirm(`"${productTitle}" ürününü silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.`)) {
+    if (!confirm(`"${productTitle}" məhsulunu silmək istədiyinizdən əminsiniz? Bu əməliyyat geri qaytarıla bilməz.`)) {
       return;
     }
 
@@ -44,10 +44,10 @@ export function ProductsClient({ products }: { products: Product[] }) {
         router.refresh();
       } else {
         const data = await response.json();
-        alert(data.error || 'Ürün silinemedi');
+        alert(data.error || 'Məhsul silinə bilmədi');
       }
     } catch (error) {
-      alert('Ürün silinirken hata oluştu');
+      alert('Məhsul silinərkən xəta baş verdi');
     } finally {
       setDeleting(null);
     }
@@ -58,15 +58,15 @@ export function ProductsClient({ products }: { products: Product[] }) {
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            Ürünler
+            Məhsullar
           </h1>
-          <p className="text-muted-foreground mt-1">Tüm araç parçalarını yönetin</p>
+          <p className="text-muted-foreground mt-1">Bütün avtomobil ehtiyat hissələrini idarə edin</p>
         </div>
         <RevEngine>
           <Link href="/admin/products/new">
             <Button className="gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
               <Plus className="h-4 w-4" />
-              Yeni Ürün
+              Yeni məhsul
             </Button>
           </Link>
         </RevEngine>
@@ -154,7 +154,7 @@ export function ProductsClient({ products }: { products: Product[] }) {
                                   ? 'bg-blue-100 text-blue-700' 
                                   : 'bg-gray-100 text-gray-700'
                               }`}>
-                                {product.isActive ? 'Aktif' : 'Pasif'}
+                                {product.isActive ? 'Aktiv' : 'Passiv'}
                               </div>
                             </div>
                           </div>

@@ -8,8 +8,8 @@ import { Building2 } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Brands - CarParts',
-  description: 'Shop by premium automotive brands',
+  title: 'Markalar - CarParts',
+  description: 'Premium avtomobil markaları üzrə seçim edin',
 };
 
 async function getBrands() {
@@ -31,9 +31,9 @@ export default async function BrandsPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">Shop by Brand</h1>
+        <h1 className="text-4xl font-bold mb-2">Markaya görə seçin</h1>
         <p className="text-muted-foreground">
-          {"Discover products from the world's leading automotive brands"}
+          {"Dünyanın aparıcı avtomobil markalarının məhsullarını kəşf edin"}
         </p>
       </div>
 
@@ -67,7 +67,7 @@ export default async function BrandsPage() {
               </CardHeader>
               <CardContent className="pt-0">
                 <p className="text-sm text-muted-foreground text-center">
-                  {brand._count.products} products available
+                  {brand._count.products} məhsul mövcuddur
                 </p>
                 {brand.description && (
                   <p className="text-xs text-muted-foreground mt-2 line-clamp-2 text-center">
@@ -83,9 +83,9 @@ export default async function BrandsPage() {
       {brands.length === 0 && (
         <div className="text-center py-16">
           <Building2 className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-          <h3 className="text-lg font-semibold mb-2">No brands found</h3>
+          <h3 className="text-lg font-semibold mb-2">Marka tapılmadı</h3>
           <p className="text-muted-foreground">
-            Brands will appear here once they are added.
+            Markalar əlavə edildikdən sonra burada görünəcək.
           </p>
         </div>
       )}

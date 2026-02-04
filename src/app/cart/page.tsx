@@ -24,7 +24,7 @@ export default function CartPage() {
     return (
       <div className="container mx-auto px-4 py-16">
         <div className="text-center">
-          <p>Loading...</p>
+          <p>Yüklənir...</p>
         </div>
       </div>
     );
@@ -35,12 +35,12 @@ export default function CartPage() {
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-md mx-auto">
           <ShoppingBag className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
-          <h1 className="text-2xl font-bold mb-2">Your cart is empty</h1>
+          <h1 className="text-2xl font-bold mb-2">Səbətiniz boşdur</h1>
           <p className="text-muted-foreground mb-6">
-            Add some items to your cart to get started
+            Başlamaq üçün səbətə məhsul əlavə edin
           </p>
           <Link href="/shop">
-            <Button>Continue Shopping</Button>
+            <Button>Alış-verişə davam et</Button>
           </Link>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function CartPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Shopping Cart</h1>
+      <h1 className="text-3xl font-bold mb-8">Səbət</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
@@ -138,23 +138,23 @@ export default function CartPage() {
           })}
 
           <Button variant="outline" onClick={clearCart}>
-            Clear Cart
+            Səbəti təmizlə
           </Button>
         </div>
 
         <div>
           <Card className="sticky top-20">
             <CardContent className="p-6">
-              <h2 className="text-xl font-bold mb-4">Order Summary</h2>
+              <h2 className="text-xl font-bold mb-4">Sifariş xülasəsi</h2>
 
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between text-sm">
-                  <span>Subtotal</span>
+                  <span>Aralıq məbləğ</span>
                   <span>{formatPrice(total)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span>Shipping</span>
-                  <span>Calculated at checkout</span>
+                  <span>Çatdırılma</span>
+                  <span>Ödənişdə hesablanır</span>
                 </div>
               </div>
 
@@ -173,7 +173,7 @@ export default function CartPage() {
 
               <Link href="/shop">
                 <Button variant="outline" className="w-full mt-2">
-                  Continue Shopping
+                  Alış-verişə davam et
                 </Button>
               </Link>
             </CardContent>

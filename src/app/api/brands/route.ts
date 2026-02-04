@@ -16,7 +16,7 @@ export async function GET() {
   } catch (error) {
     console.error('Error fetching brands:', error);
     return Response.json(
-      { error: 'Failed to fetch brands' },
+      { error: 'Markalar yüklənmədi' },
       { status: 500 }
     );
   }

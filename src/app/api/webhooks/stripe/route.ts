@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   const signature = headers().get('stripe-signature');
 
   if (!signature) {
-    return NextResponse.json({ error: 'No signature' }, { status: 400 });
+    return NextResponse.json({ error: 'İmza yoxdur' }, { status: 400 });
   }
 
   let event: Stripe.Event;
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (err: any) {
     console.error('Webhook signature verification failed:', err.message);
-    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
+    return NextResponse.json({ error: 'Etibarsız imza' }, { status: 400 });
   }
 
   // Handle the event

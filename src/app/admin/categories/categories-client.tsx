@@ -22,7 +22,7 @@ export function CategoriesClient({ categories }: { categories: Category[] }) {
   const [deleting, setDeleting] = useState<string | null>(null);
 
   const handleDelete = async (categoryId: string, categoryName: string) => {
-    if (!confirm(`"${categoryName}" kategorisini silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.`)) {
+    if (!confirm(`"${categoryName}" kateqoriyasını silmək istədiyinizdən əminsiniz? Bu əməliyyat geri qaytarıla bilməz.`)) {
       return;
     }
 
@@ -36,10 +36,10 @@ export function CategoriesClient({ categories }: { categories: Category[] }) {
         router.refresh();
       } else {
         const data = await response.json();
-        alert(data.error || 'Kategori silinemedi');
+        alert(data.error || 'Kateqoriya silinə bilmədi');
       }
     } catch (error) {
-      alert('Kategori silinirken hata oluştu');
+      alert('Kateqoriya silinərkən xəta baş verdi');
     } finally {
       setDeleting(null);
     }
@@ -50,15 +50,15 @@ export function CategoriesClient({ categories }: { categories: Category[] }) {
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-            Kategoriler
+            Kateqoriyalar
           </h1>
-          <p className="text-muted-foreground mt-1">Tüm ürün kategorilerini yönetin</p>
+          <p className="text-muted-foreground mt-1">Bütün məhsul kateqoriyalarını idarə edin</p>
         </div>
         <RevEngine>
           <Link href="/admin/categories/new">
             <Button className="gap-2 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700">
               <Plus className="h-4 w-4" />
-              Yeni Kategori
+              Yeni kateqoriya
             </Button>
           </Link>
         </RevEngine>
@@ -70,10 +70,10 @@ export function CategoriesClient({ categories }: { categories: Category[] }) {
             <table className="w-full">
               <thead className="bg-gradient-to-r from-green-50 to-blue-50 border-b-2">
                 <tr>
-                  <th className="text-left p-4 font-semibold">Kategori Adı</th>
+                  <th className="text-left p-4 font-semibold">Kateqoriya adı</th>
                   <th className="text-left p-4 font-semibold">Slug</th>
-                  <th className="text-left p-4 font-semibold">Ürün Sayısı</th>
-                  <th className="text-center p-4 font-semibold">İşlemler</th>
+                  <th className="text-left p-4 font-semibold">Məhsul sayı</th>
+                  <th className="text-center p-4 font-semibold">Əməliyyatlar</th>
                 </tr>
               </thead>
               <tbody>

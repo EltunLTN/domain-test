@@ -94,13 +94,13 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Shop Car Parts</h1>
+      <h1 className="text-3xl font-bold mb-8">Ehtiyat hissələri mağazası</h1>
 
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Filters Sidebar */}
         <aside className="lg:w-64 space-y-6">
           <div>
-            <h3 className="font-semibold mb-3">Categories</h3>
+            <h3 className="font-semibold mb-3">Kateqoriyalar</h3>
             <div className="space-y-2">
               {categories.map((cat) => (
                 <Link
@@ -117,7 +117,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-3">Brands</h3>
+            <h3 className="font-semibold mb-3">Markalar</h3>
             <div className="space-y-2 max-h-64 overflow-y-auto">
               {brands.map((brand) => (
                 <Link
@@ -134,12 +134,12 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-3">Sort By</h3>
+            <h3 className="font-semibold mb-3">Sıralama</h3>
             <select className="w-full p-2 border rounded-md text-sm">
-              <option value="">Newest</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="popular">Most Popular</option>
+              <option value="">Ən yeni</option>
+              <option value="price-asc">Qiymət: aşağıdan yuxarı</option>
+              <option value="price-desc">Qiymət: yuxarıdan aşağı</option>
+              <option value="popular">Ən populyar</option>
             </select>
           </div>
         </aside>
@@ -147,7 +147,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
         {/* Products Grid */}
         <div className="flex-1">
           <div className="mb-4 flex justify-between items-center">
-            <p className="text-muted-foreground">{products.length} products found</p>
+            <p className="text-muted-foreground">{products.length} məhsul tapıldı</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -198,7 +198,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
                       )}
                     </div>
                     <p className="text-xs text-muted-foreground mt-2">
-                      {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+                      {product.stock > 0 ? `Anbarda ${product.stock} ədəd` : 'Stokda yoxdur'}
                     </p>
                   </CardContent>
                   <CardFooter className="p-4 pt-0">
@@ -211,7 +211,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
 
           {products.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">No products found</p>
+              <p className="text-muted-foreground">Məhsul tapılmadı</p>
             </div>
           )}
         </div>

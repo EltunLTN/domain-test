@@ -28,13 +28,13 @@ export async function POST(req: NextRequest) {
 
     // Check if user is admin
     if (!session || !session.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ error: 'İcazəsiz' }, { status: 401 });
     }
 
     const userRole = (session.user?.role || '').toString().toUpperCase();
     if (userRole !== 'ADMIN') {
       return NextResponse.json(
-        { error: 'Admin access required' },
+        { error: 'Admin girişi tələb olunur' },
         { status: 403 }
       );
     }
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
 
     if (existingProduct) {
       return NextResponse.json(
-        { error: 'Product with this title already exists' },
+        { error: 'Bu adlı məhsul artıq mövcuddur' },
         { status: 400 }
       );
     }
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
       });
       if (!category) {
         return NextResponse.json(
-          { error: 'Category not found' },
+          { error: 'Kateqoriya tapılmadı' },
           { status: 404 }
         );
       }
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
       });
       if (!brand) {
         return NextResponse.json(
-          { error: 'Brand not found' },
+          { error: 'Marka tapılmadı' },
           { status: 404 }
         );
       }
@@ -140,7 +140,7 @@ export async function POST(req: NextRequest) {
 
     console.error('Product creation error:', error);
     return NextResponse.json(
-      { error: 'Failed to create product' },
+      { error: 'Məhsul yaradıla bilmədi' },
       { status: 500 }
     );
   }

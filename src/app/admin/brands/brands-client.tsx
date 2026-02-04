@@ -22,7 +22,7 @@ export function BrandsClient({ brands }: { brands: Brand[] }) {
   const [deleting, setDeleting] = useState<string | null>(null);
 
   const handleDelete = async (brandId: string, brandName: string) => {
-    if (!confirm(`"${brandName}" markasını silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.`)) {
+    if (!confirm(`"${brandName}" markasını silmək istədiyinizdən əminsiniz? Bu əməliyyat geri qaytarıla bilməz.`)) {
       return;
     }
 
@@ -36,10 +36,10 @@ export function BrandsClient({ brands }: { brands: Brand[] }) {
         router.refresh();
       } else {
         const data = await response.json();
-        alert(data.error || 'Marka silinemedi');
+        alert(data.error || 'Marka silinə bilmədi');
       }
     } catch (error) {
-      alert('Marka silinirken hata oluştu');
+      alert('Marka silinərkən xəta baş verdi');
     } finally {
       setDeleting(null);
     }
@@ -52,13 +52,13 @@ export function BrandsClient({ brands }: { brands: Brand[] }) {
           <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Markalar
           </h1>
-          <p className="text-muted-foreground mt-1">Tüm araç parça markalarını yönetin</p>
+          <p className="text-muted-foreground mt-1">Bütün avtomobil ehtiyat hissəsi markalarını idarə edin</p>
         </div>
         <RevEngine>
           <Link href="/admin/brands/new">
             <Button className="gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
               <Plus className="h-4 w-4" />
-              Yeni Marka
+              Yeni marka
             </Button>
           </Link>
         </RevEngine>
@@ -70,10 +70,10 @@ export function BrandsClient({ brands }: { brands: Brand[] }) {
             <table className="w-full">
               <thead className="bg-gradient-to-r from-blue-50 to-purple-50 border-b-2">
                 <tr>
-                  <th className="text-left p-4 font-semibold">Marka Adı</th>
+                  <th className="text-left p-4 font-semibold">Marka adı</th>
                   <th className="text-left p-4 font-semibold">Slug</th>
-                  <th className="text-left p-4 font-semibold">Ürün Sayısı</th>
-                  <th className="text-center p-4 font-semibold">İşlemler</th>
+                  <th className="text-left p-4 font-semibold">Məhsul sayı</th>
+                  <th className="text-center p-4 font-semibold">Əməliyyatlar</th>
                 </tr>
               </thead>
               <tbody>

@@ -1,113 +1,110 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions - CarParts',
-  description: 'Terms of service and conditions of use',
+  title: 'Şərtlər və Qaydalar - CarParts',
+  description: 'Xidmət şərtləri və istifadə qaydaları',
 };
 
 export default function TermsPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto prose prose-lg">
-        <h1 className="text-4xl font-bold mb-8">Terms & Conditions</h1>
+        <h1 className="text-4xl font-bold mb-8">Şərtlər və Qaydalar</h1>
         
         <p className="text-muted-foreground text-lg mb-8">
-          Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          Son yenilənmə: {new Date().toLocaleDateString('az-AZ', { year: 'numeric', month: 'long', day: 'numeric' })}
         </p>
 
-        <h2>1. Acceptance of Terms</h2>
+        <h2>1. Şərtlərin qəbulu</h2>
         <p>
-          By accessing and using CarParts ({"\"the Website\""}), you accept and agree to be bound by these Terms 
-          and Conditions. If you do not agree to these terms, please do not use our services.
+          CarParts ("Vebsayt") xidmətindən istifadə etməklə bu Şərtləri qəbul edir və onlara riayət etməyi
+          öhdənizə götürürsünüz. Razı deyilsinizsə, xidmətlərimizdən istifadə etməyin.
         </p>
 
-        <h2>2. Use of Website</h2>
+        <h2>2. Vebsaytdan istifadə</h2>
         <p>
-          You agree to use the Website only for lawful purposes and in a way that does not infringe the 
-          rights of others or restrict their use of the Website. Prohibited behavior includes:
+          Vebsaytdan yalnız qanuni məqsədlər üçün və başqalarının hüquqlarını pozmadan istifadə etməyi
+          qəbul edirsiniz. Qadağan olunan davranışlara daxildir:
         </p>
         <ul>
-          <li>Transmitting unlawful, threatening, or offensive content</li>
-          <li>Attempting to gain unauthorized access to our systems</li>
-          <li>Using automated systems to scrape or collect data</li>
-          <li>Impersonating others or providing false information</li>
+          <li>Qanunsuz, hədələyici və ya təhqiredici məzmun göndərmək</li>
+          <li>Sistemlərimizə icazəsiz daxil olmağa cəhd etmək</li>
+          <li>Məlumat toplamaq üçün avtomatlaşdırılmış vasitələrdən istifadə etmək</li>
+          <li>Başqalarını təqlid etmək və ya saxta məlumat vermək</li>
         </ul>
 
-        <h2>3. Product Information</h2>
+        <h2>3. Məhsul məlumatı</h2>
         <p>
-          We strive to ensure that product descriptions, images, and pricing information are accurate. 
-          However, we do not warrant that product descriptions or other content is error-free, complete, 
-          or current. We reserve the right to correct errors and update information without prior notice.
+          Məhsul təsvirləri, şəkillər və qiymət məlumatlarının dəqiq olmasına çalışırıq. Lakin məzmunun
+          səhvsiz, tam və ya aktual olmasına zəmanət vermirik. Səhvləri düzəltmək və məlumatları xəbərdarlıq
+          etmədən yeniləmək hüququmuz var.
         </p>
 
-        <h2>4. Pricing and Availability</h2>
+        <h2>4. Qiymət və mövcudluq</h2>
         <p>
-          All prices are listed in USD and are subject to change without notice. We reserve the right to 
-          limit quantities and discontinue products. In the event of a pricing error, we will contact you 
-          before processing your order.
+          Bütün qiymətlər AZN ilə göstərilir və xəbərdarlıq etmədən dəyişdirilə bilər. Miqdar limitlərini
+          tətbiq etmək və məhsulu satışdan çıxarmaq hüququmuz var. Qiymət xətası olduqda sifarişi emal etməzdən
+          əvvəl sizinlə əlaqə saxlayacağıq.
         </p>
 
-        <h2>5. Orders and Payment</h2>
+        <h2>5. Sifariş və ödəniş</h2>
         <p>
-          By placing an order, you warrant that you are legally capable of entering into binding contracts. 
-          All orders are subject to acceptance and availability. We accept major credit cards and secure 
-          online payment methods.
+          Sifariş verməklə hüquqi müqavilə bağlamaq səlahiyyətinizin olduğunu təsdiq edirsiniz. Bütün sifarişlər
+          qəbul və mövcudluq şərtinə tabedir. Təhlükəsiz onlayn ödəniş üsullarını qəbul edirik.
         </p>
 
-        <h2>6. Shipping and Delivery</h2>
+        <h2>6. Çatdırılma</h2>
         <p>
-          We ship to addresses within the United States. Delivery times are estimates and not guaranteed. 
-          Risk of loss and title for items pass to you upon delivery to the carrier. We are not responsible 
-          for delays caused by shipping carriers or circumstances beyond our control.
+          Çatdırılma müddətləri təxminidir və zəmanət verilmir. Daşıyıcıya təhvil verildikdən sonra risk sizə keçir.
+          Daşıyıcıların gecikmələrinə və nəzarətimizdən kənar hallara görə məsuliyyət daşımırıq.
         </p>
 
-        <h2>7. Returns and Refunds</h2>
+        <h2>7. Qaytarma və geri ödəniş</h2>
         <p>
-          We accept returns within 30 days of delivery for most items in unused, resalable condition. 
-          Original packaging and all accessories must be included. Refunds will be processed to the 
-          original payment method within 5-10 business days of receiving the return.
+          Əksər məhsullar üçün 30 gün ərzində istifadə olunmamış və yenidən satıla bilən vəziyyətdə qaytarma qəbul edilir.
+          Orijinal qablaşdırma və aksesuarlar daxil olmalıdır. Qaytarmadan sonra 5–10 iş günü ərzində eyni ödəniş üsuluna
+          geri ödəniş edilir.
         </p>
-        <p>Non-returnable items include:</p>
+        <p>Qaytarılmayan məhsullara daxildir:</p>
         <ul>
-          <li>Installed or used parts</li>
-          <li>Electrical components that have been installed</li>
-          <li>Fluids and chemicals</li>
-          <li>Custom-ordered parts</li>
+          <li>Quraşdırılmış və ya istifadə olunmuş hissələr</li>
+          <li>Quraşdırılmış elektrik komponentləri</li>
+          <li>Mayelər və kimyəvi məhsullar</li>
+          <li>Xüsusi sifarişlə hazırlanmış hissələr</li>
         </ul>
 
-        <h2>8. Warranties</h2>
+        <h2>8. Zəmanət</h2>
         <p>
-          Parts are covered by manufacturer warranties. Warranty terms vary by product and manufacturer. 
-          We are not responsible for consequential damages resulting from part failure or installation.
+          Hissələr istehsalçı zəmanəti ilə təmin olunur. Zəmanət şərtləri məhsul və istehsalçıdan asılıdır.
+          Hissənin sıradan çıxması və ya quraşdırma nəticəsində yaranan dolayı zərərlərə görə məsuliyyət daşımırıq.
         </p>
 
-        <h2>9. Limitation of Liability</h2>
+        <h2>9. Məsuliyyətin məhdudlaşdırılması</h2>
         <p>
-          To the maximum extent permitted by law, CarParts shall not be liable for any indirect, incidental, 
-          special, or consequential damages arising from your use of the Website or purchase of products.
+          Qanunla icazə verilən maksimum həddə CarParts, vebsaytdan istifadə və ya məhsul alışı nəticəsində yaranan
+          dolayı, təsadüfi, xüsusi və ya ardıcıl zərərlərə görə məsuliyyət daşımır.
         </p>
 
-        <h2>10. Intellectual Property</h2>
+        <h2>10. Əqli mülkiyyət</h2>
         <p>
-          All content on this Website, including text, graphics, logos, images, and software, is the 
-          property of CarParts or its licensors and is protected by copyright and trademark laws.
+          Bu vebsaytdakı bütün məzmun (mətn, qrafika, loqo, şəkillər və proqram təminatı daxil olmaqla) CarParts
+          və ya lisenziya sahiblərinə məxsusdur və müəlliflik və ticarət nişanı qanunları ilə qorunur.
         </p>
 
-        <h2>11. Modifications to Terms</h2>
+        <h2>11. Şərtlərə dəyişikliklər</h2>
         <p>
-          We reserve the right to modify these Terms and Conditions at any time. Your continued use of 
-          the Website after changes constitutes acceptance of the modified terms.
+          Bu şərtləri istənilən vaxt dəyişdirmək hüququna malikik. Dəyişiklikdən sonra vebsaytdan istifadəni davam
+          etməyiniz yenilənmiş şərtlərin qəbul edilməsi deməkdir.
         </p>
 
-        <h2>12. Governing Law</h2>
+        <h2>12. Tətbiq olunan hüquq</h2>
         <p>
-          These Terms and Conditions are governed by the laws of the State of Michigan, without regard to 
-          conflict of law principles.
+          Bu şərtlər Azərbaycan Respublikasının qanunvericiliyi ilə tənzimlənir.
         </p>
 
-        <h2>13. Contact Information</h2>
+        <h2>13. Əlaqə məlumatı</h2>
         <p>
-          For questions about these Terms and Conditions, please contact us at:
+          Şərtlər və qaydalarla bağlı suallarınız üçün bizimlə əlaqə saxlayın:
         </p>
         <p className="not-prose">
           <a href="mailto:eltunjalilli@gmail.com" className="text-primary hover:underline font-medium">

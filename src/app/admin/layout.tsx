@@ -19,7 +19,7 @@ export default async function AdminLayout({
         <div className="mb-6 p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg text-white">
           <div className="flex items-center gap-2">
             <Gauge className="h-6 w-6" />
-            <span className="font-bold text-lg">Admin Panel</span>
+            <span className="font-bold text-lg">Admin paneli</span>
           </div>
         </div>
         <nav className="space-y-1">
@@ -28,21 +28,21 @@ export default async function AdminLayout({
             className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white hover:shadow-md transition-all duration-200 group"
           >
             <LayoutDashboard className="h-5 w-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
-            <span className="font-medium group-hover:text-blue-600 transition-colors">Kontrol Paneli</span>
+            <span className="font-medium group-hover:text-blue-600 transition-colors">İdarəetmə paneli</span>
           </Link>
           <Link
             href="/admin/products"
             className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white hover:shadow-md transition-all duration-200 group"
           >
             <Package className="h-5 w-5 text-slate-600 group-hover:text-purple-600 transition-colors" />
-            <span className="font-medium group-hover:text-purple-600 transition-colors">Ürünler</span>
+            <span className="font-medium group-hover:text-purple-600 transition-colors">Məhsullar</span>
           </Link>
           <Link
             href="/admin/categories"
             className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white hover:shadow-md transition-all duration-200 group"
           >
             <Folder className="h-5 w-5 text-slate-600 group-hover:text-green-600 transition-colors" />
-            <span className="font-medium group-hover:text-green-600 transition-colors">Kategoriler</span>
+            <span className="font-medium group-hover:text-green-600 transition-colors">Kateqoriyalar</span>
           </Link>
           <Link
             href="/admin/brands"
@@ -56,14 +56,14 @@ export default async function AdminLayout({
             className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white hover:shadow-md transition-all duration-200 group"
           >
             <ShoppingCart className="h-5 w-5 text-slate-600 group-hover:text-red-600 transition-colors" />
-            <span className="font-medium group-hover:text-red-600 transition-colors">Siparişler</span>
+            <span className="font-medium group-hover:text-red-600 transition-colors">Sifarişlər</span>
           </Link>
           <Link
             href="/admin/users"
             className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white hover:shadow-md transition-all duration-200 group"
           >
             <Users className="h-5 w-5 text-slate-600 group-hover:text-indigo-600 transition-colors" />
-            <span className="font-medium group-hover:text-indigo-600 transition-colors">Kullanıcılar</span>
+            <span className="font-medium group-hover:text-indigo-600 transition-colors">İstifadəçilər</span>
           </Link>
         </nav>
       </aside>

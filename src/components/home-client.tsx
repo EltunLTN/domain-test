@@ -50,27 +50,27 @@ export function HomeClient({ featuredProducts, categories }: any) {
                   <div className="inline-flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-4 px-3 sm:px-6 py-2 sm:py-3 bg-white/80 backdrop-blur-xl rounded-full border-2 border-blue-200 shadow-xl">
                     <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-500 animate-pulse" />
                     <span className="text-xs sm:text-sm font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                      Azerbaijan&apos;s #1 Trusted Auto Parts Platform
+                      Azərbaycanın #1 etibarlı avto ehtiyat hissələri platforması
                     </span>
                   </div>
                 </BounceIn>
                 
                 <CarDriveIn delay={0.2}>
                   <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-[1.1] mb-4 sm:mb-6">
-                    <span className="block text-slate-800">Your Car</span>
+                    <span className="block text-slate-800">Sizin avtomobiliniz</span>
                     <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-slow bg-[length:200%_auto]">
-                      Deserves
+                      Layiqdir
                     </span>
                     <span className="block bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-                      The Best
+                      Ən yaxşısına
                     </span>
                   </h1>
                 </CarDriveIn>
                 
                 <AnimatedSection delay={0.3}>
                   <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
-                    Premium quality auto parts with genuine warranties. Fast delivery across Azerbaijan. 
-                    <span className="block mt-2 font-semibold text-slate-800">Your satisfaction, our commitment.</span>
+                    Orijinal zəmanətli premium ehtiyat hissələri. Azərbaycanda sürətli çatdırılma.
+                    <span className="block mt-2 font-semibold text-slate-800">Sizin məmnuniyyətiniz — bizim öhdəliyimiz.</span>
                   </p>
                 </AnimatedSection>
                 
@@ -79,15 +79,15 @@ export function HomeClient({ featuredProducts, categories }: any) {
                   <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center lg:justify-start text-xs sm:text-sm">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500" />
-                      <span className="text-slate-700 font-medium">10,000+ Products</span>
+                      <span className="text-slate-700 font-medium">10,000+ məhsul</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500" />
-                      <span className="text-slate-700 font-medium">Same Day Delivery</span>
+                      <span className="text-slate-700 font-medium">Eyni gün çatdırılma</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-green-500" />
-                      <span className="text-slate-700 font-medium">Genuine Parts</span>
+                      <span className="text-slate-700 font-medium">Orijinal hissələr</span>
                     </div>
                   </div>
                 </AnimatedSection>
@@ -99,7 +99,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                         <Button size="lg" className="group relative bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white px-6 sm:px-12 py-4 sm:py-7 text-base sm:text-lg font-bold shadow-2xl hover:shadow-purple-500/50 transition-all overflow-hidden w-full">
                           <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                           <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:animate-bounce" />
-                          Explore Products
+                          Məhsullara bax
                         </Button>
                       </Link>
                     </RevEngine>
@@ -110,7 +110,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                         className="group border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 sm:px-12 py-4 sm:py-7 text-base sm:text-lg font-bold shadow-lg hover:shadow-blue-500/50 transition-all w-full"
                       >
                         <Sparkles className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                        AI Car Valuation
+                        Süni intellektlə qiymətləndirmə
                       </Button>
                     </Link>
                   </div>
@@ -128,8 +128,8 @@ export function HomeClient({ featuredProducts, categories }: any) {
                           <Zap className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-white" />
                         </div>
                         <div>
-                          <h3 className="font-black text-base sm:text-lg md:text-2xl mb-0.5 sm:mb-1 text-slate-800">Lightning Fast</h3>
-                          <p className="text-xs sm:text-sm md:text-base text-slate-600">Same-day delivery in Baku</p>
+                          <h3 className="font-black text-base sm:text-lg md:text-2xl mb-0.5 sm:mb-1 text-slate-800">İldırım sürətli</h3>
+                          <p className="text-xs sm:text-sm md:text-base text-slate-600">Bakıda eyni gün çatdırılma</p>
                         </div>
                       </div>
                     </div>
@@ -143,8 +143,8 @@ export function HomeClient({ featuredProducts, categories }: any) {
                       <div className="p-2 sm:p-3 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl sm:rounded-2xl shadow-lg w-fit mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
                         <Shield className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
                       </div>
-                      <h3 className="font-black text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1 text-slate-800">100% Genuine</h3>
-                      <p className="text-xs sm:text-sm text-slate-600">Quality guaranteed</p>
+                      <h3 className="font-black text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1 text-slate-800">100% orijinal</h3>
+                      <p className="text-xs sm:text-sm text-slate-600">Keyfiyyətə zəmanət</p>
                     </div>
                   </div>
                 </BounceIn>
@@ -156,8 +156,8 @@ export function HomeClient({ featuredProducts, categories }: any) {
                       <div className="p-3 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl shadow-lg w-fit mb-3 group-hover:scale-110 transition-transform">
                         <Award className="h-7 w-7 text-white" />
                       </div>
-                      <h3 className="font-black text-lg mb-1 text-slate-800">Top Rated</h3>
-                      <p className="text-sm text-slate-600">5000+ reviews</p>
+                      <h3 className="font-black text-lg mb-1 text-slate-800">Ən yüksək qiymətləndirilən</h3>
+                      <p className="text-sm text-slate-600">5000+ rəy</p>
                     </div>
                   </div>
                 </BounceIn>
@@ -171,8 +171,8 @@ export function HomeClient({ featuredProducts, categories }: any) {
                           <Truck className="h-7 w-7 text-white" />
                         </div>
                         <div>
-                          <h3 className="font-black text-xl mb-1 text-slate-800">Free Shipping</h3>
-                          <p className="text-sm text-slate-600">On orders over 50 AZN</p>
+                          <h3 className="font-black text-xl mb-1 text-slate-800">Pulsuz çatdırılma</h3>
+                          <p className="text-sm text-slate-600">50 AZN-dən yuxarı sifarişlərdə</p>
                         </div>
                       </div>
                       <div className="hidden sm:block text-4xl">🚚</div>
@@ -203,13 +203,13 @@ export function HomeClient({ featuredProducts, categories }: any) {
             <div className="text-center mb-20">
               <div className="inline-flex items-center gap-2 mb-4 px-6 py-2 bg-gradient-to-r from-blue-50 to-purple-50 rounded-full border-2 border-blue-200/50 shadow-lg">
                 <Settings className="h-4 w-4 text-blue-600" />
-                <span className="text-sm font-black text-blue-700">EXPLORE BY CATEGORY</span>
+                <span className="text-sm font-black text-blue-700">KATEQORİYA ÜZRƏ SEÇİM</span>
               </div>
               <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Find Your Perfect Part
+                Sizə uyğun hissəni tapın
               </h2>
               <p className="text-muted-foreground text-xl max-w-2xl mx-auto">
-                Browse through our extensive collection of premium auto parts
+                Geniş premium ehtiyat hissələri kolleksiyamızı nəzərdən keçirin
               </p>
             </div>
           </CarDriveIn>
@@ -262,13 +262,13 @@ export function HomeClient({ featuredProducts, categories }: any) {
               <div className="text-center lg:text-left">
                 <div className="inline-flex items-center gap-2 mb-4 px-6 py-2 bg-gradient-to-r from-purple-50 to-pink-50 rounded-full border-2 border-purple-200/50 shadow-lg">
                   <Star className="h-4 w-4 text-purple-600 animate-pulse" />
-                  <span className="text-sm font-black text-purple-700">BESTSELLING PRODUCTS</span>
+                  <span className="text-sm font-black text-purple-700">ƏN ÇOX SATILANLAR</span>
                 </div>
                 <h2 className="text-5xl md:text-6xl font-black mb-4 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
-                  Premium Selection
+                  Premium seçim
                 </h2>
                 <p className="text-muted-foreground text-xl max-w-2xl">
-                  Hand-picked top-quality parts trusted by thousands of customers
+                  Minlərlə müştərinin etibar etdiyi, diqqətlə seçilmiş yüksək keyfiyyətli hissələr
                 </p>
               </div>
               <RevEngine>
@@ -276,7 +276,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                   <Button size="lg" className="group relative bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 hover:from-purple-700 hover:via-pink-700 hover:to-purple-700 shadow-2xl hover:shadow-purple-500/50 px-8 py-6 text-lg font-bold overflow-hidden">
                     <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     <span className="relative flex items-center">
-                      View All Products
+                      Bütün məhsullara bax
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </Button>
@@ -324,7 +324,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                         {product.stock <= 5 && product.stock > 0 && (
                           <div className="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg z-20 flex items-center gap-1">
                             <Zap className="h-3 w-3" />
-                            Only {product.stock} left!
+                            Yalnız {product.stock} ədəd qalıb!
                           </div>
                         )}
                         
@@ -362,7 +362,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
                             <span className="relative flex items-center justify-center">
                               <ShoppingCart className="mr-2 h-4 w-4 group-hover/btn:animate-bounce" />
-                              View Details
+                              Ətraflı bax
                             </span>
                           </Button>
                         </RevEngine>
@@ -394,13 +394,13 @@ export function HomeClient({ featuredProducts, categories }: any) {
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 mb-4 px-6 py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20">
                 <TrendingUp className="h-4 w-4 text-cyan-400" />
-                <span className="text-sm font-black">WHY CHOOSE US</span>
+                <span className="text-sm font-black">NİYƏ BİZİ SEÇİRLƏR</span>
               </div>
               <h2 className="text-5xl md:text-6xl font-black mb-4 bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300 bg-clip-text text-transparent">
-                Trusted by Thousands
+                Minlərlə insanın etibarı
               </h2>
               <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-                Join our growing community of satisfied customers across Azerbaijan
+                Azərbaycan üzrə məmnun müştərilərimizin artan icmasına qoşulun
               </p>
             </div>
           </BounceIn>
@@ -416,7 +416,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                   <div className="text-5xl font-black mb-2 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
                     50K+
                   </div>
-                  <div className="text-blue-200 font-semibold">Products Available</div>
+                  <div className="text-blue-200 font-semibold">Mövcud məhsul</div>
                 </div>
               </div>
             </AnimatedCard>
@@ -431,7 +431,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                   <div className="text-5xl font-black mb-2 bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
                     25K+
                   </div>
-                  <div className="text-blue-200 font-semibold">Happy Customers</div>
+                  <div className="text-blue-200 font-semibold">Məmnun müştəri</div>
                 </div>
               </div>
             </AnimatedCard>
@@ -446,7 +446,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                   <div className="text-5xl font-black mb-2 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
                     98%
                   </div>
-                  <div className="text-blue-200 font-semibold">Satisfaction Rate</div>
+                  <div className="text-blue-200 font-semibold">Məmnunluq faizi</div>
                 </div>
               </div>
             </AnimatedCard>
@@ -461,7 +461,7 @@ export function HomeClient({ featuredProducts, categories }: any) {
                   <div className="text-5xl font-black mb-2 bg-gradient-to-r from-pink-300 to-cyan-300 bg-clip-text text-transparent">
                     24/7
                   </div>
-                  <div className="text-blue-200 font-semibold">Fast Delivery</div>
+                  <div className="text-blue-200 font-semibold">Sürətli çatdırılma</div>
                 </div>
               </div>
             </AnimatedCard>
@@ -478,10 +478,10 @@ export function HomeClient({ featuredProducts, categories }: any) {
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 mb-4 px-6 py-2 bg-gradient-to-r from-blue-50 to-purple-50 rounded-full border-2 border-blue-200/50 shadow-lg">
                 <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-                <span className="text-sm font-black text-blue-700">CUSTOMER REVIEWS</span>
+                <span className="text-sm font-black text-blue-700">MÜŞTƏRİ RƏYLƏRİ</span>
               </div>
               <h2 className="text-5xl md:text-6xl font-black mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                What Our Clients Say
+                Müştərilərimiz nə deyir
               </h2>
             </div>
           </CarDriveIn>
@@ -490,21 +490,21 @@ export function HomeClient({ featuredProducts, categories }: any) {
             {[
               {
                 name: "Əli Məmmədov",
-                role: "BMW X5 Owner",
+                role: "BMW X5 sahibi",
                 rating: 5,
                 text: "Çox keyfiyyətli hissələr və sürətli çatdırılma. Artıq 2 ildir ki, buradan alış-veriş edirəm. Hamıya tövsiyə edirəm! 🚗",
                 delay: 0
               },
               {
                 name: "Leyla Həsənova",
-                role: "Mercedes C-Class Owner",
+                role: "Mercedes C-Class sahibi",
                 rating: 5,
                 text: "Original ehtiyat hissələri və çox peşəkar xidmət. Qiymətlər də əlverişlidir. Təşəkkürlər! ⭐",
                 delay: 0.1
               },
               {
                 name: "Rəşad Əliyev",
-                role: "Toyota Camry Owner",
+                role: "Toyota Camry sahibi",
                 rating: 5,
                 text: "AI qiymət hesablayıcı çox faydalıdır. Hissələr vaxtında gəlir və keyfiyyət əladır. Super! 👍",
                 delay: 0.2
@@ -560,16 +560,16 @@ export function HomeClient({ featuredProducts, categories }: any) {
             <div className="max-w-4xl mx-auto space-y-8">
               <div className="inline-flex items-center gap-2 px-6 py-2 bg-white/20 backdrop-blur-xl rounded-full border border-white/30 mb-4">
                 <Sparkles className="h-4 w-4 text-yellow-300 animate-pulse" />
-                <span className="text-sm font-black">SPECIAL OFFER</span>
+                <span className="text-sm font-black">XÜSUSİ TƏKLİF</span>
               </div>
               
               <h2 className="text-5xl md:text-7xl font-black leading-tight">
-                Ready to Upgrade
-                <span className="block mt-2">Your Car?</span>
+                Avtomobilinizi
+                <span className="block mt-2">yeniləməyə hazırsınız?</span>
               </h2>
               
               <p className="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
-                Get 15% off on your first order! Premium parts at unbeatable prices.
+                İlk sifarişinizə 15% endirim! Premium hissələr — bənzərsiz qiymətlərlə.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
@@ -577,13 +577,13 @@ export function HomeClient({ featuredProducts, categories }: any) {
                   <Link href="/shop">
                     <Button size="lg" className="group bg-white text-blue-600 hover:bg-blue-50 px-12 py-7 text-lg font-black shadow-2xl w-full sm:w-auto">
                       <ShoppingCart className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                      Start Shopping
+                      Alış-verişə başla
                     </Button>
                   </Link>
                 </RevEngine>
                 <Link href="/contact">
                   <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-12 py-7 text-lg font-black backdrop-blur-xl w-full sm:w-auto">
-                    Contact Us
+                    Əlaqə
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>

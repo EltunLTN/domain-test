@@ -11,12 +11,12 @@ export async function DELETE(
     const session = await getServerSession(authOptions);
     
     if (!session || !session.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ error: 'İcazəsiz' }, { status: 401 });
     }
     
     const role = (session.user?.role || '').toString().toUpperCase();
     if (role !== 'ADMIN') {
-      return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
+      return NextResponse.json({ error: 'Admin girişi tələb olunur' }, { status: 403 });
     }
 
     const { id } = params;
@@ -33,7 +33,7 @@ export async function DELETE(
 
     if (!brand) {
       return NextResponse.json(
-        { error: 'Brand not found' },
+        { error: 'Marka tapılmadı' },
         { status: 404 }
       );
     }
@@ -41,7 +41,7 @@ export async function DELETE(
     // Check if brand has products
     if (brand._count.products > 0) {
       return NextResponse.json(
-        { error: `Cannot delete brand with ${brand._count.products} products. Remove products first.` },
+        { error: `${brand._count.products} məhsulu olan markanı silmək olmaz. Əvvəl məhsulları silin.` },
         { status: 400 }
       );
     }
@@ -55,7 +55,7 @@ export async function DELETE(
   } catch (error) {
     console.error('Error deleting brand:', error);
     return NextResponse.json(
-      { error: 'Failed to delete brand' },
+      { error: 'Marka silinə bilmədi' },
       { status: 500 }
     );
   }

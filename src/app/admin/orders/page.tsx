@@ -6,6 +6,14 @@ import { requireAdmin } from '@/lib/auth-helpers';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
+const STATUS_LABELS: Record<string, string> = {
+  PAID: 'Ödənilib',
+  PENDING: 'Gözlənilir',
+  CANCELLED: 'Ləğv edilib',
+  SHIPPED: 'Göndərilib',
+  DELIVERED: 'Çatdırılıb',
+};
+
 export default async function AdminOrdersPage() {
   await requireAdmin();
 
@@ -26,7 +34,7 @@ export default async function AdminOrdersPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-8">Orders</h1>
+      <h1 className="text-3xl font-bold mb-8">Sifarişlər</h1>
 
       <Card>
         <CardContent className="p-0">
@@ -34,12 +42,12 @@ export default async function AdminOrdersPage() {
             <table className="w-full">
               <thead className="bg-muted">
                 <tr>
-                  <th className="text-left p-4">Order #</th>
-                  <th className="text-left p-4">Customer</th>
-                  <th className="text-left p-4">Items</th>
-                  <th className="text-right p-4">Total</th>
+                  <th className="text-left p-4">Sifariş #</th>
+                  <th className="text-left p-4">Müştəri</th>
+                  <th className="text-left p-4">Məhsul sayı</th>
+                  <th className="text-right p-4">Cəmi</th>
                   <th className="text-center p-4">Status</th>
-                  <th className="text-left p-4">Date</th>
+                  <th className="text-left p-4">Tarix</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,7 +60,7 @@ export default async function AdminOrdersPage() {
                       <div>{order.customerName}</div>
                       <div className="text-sm text-muted-foreground">{order.customerEmail}</div>
                     </td>
-                    <td className="p-4 text-sm">{order.orderItems.length} items</td>
+                    <td className="p-4 text-sm">{order.orderItems.length} məhsul</td>
                     <td className="p-4 text-right font-semibold">{formatPrice(order.total)}</td>
                     <td className="p-4 text-center">
                       <span
@@ -66,7 +74,7 @@ export default async function AdminOrdersPage() {
                             : 'bg-blue-100 text-blue-700'
                         }`}
                       >
-                        {order.status}
+                        {STATUS_LABELS[order.status] ?? order.status}
                       </span>
                     </td>
                     <td className="p-4 text-sm">

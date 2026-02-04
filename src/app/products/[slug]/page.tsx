@@ -56,9 +56,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <div className="container mx-auto px-4 py-8">
       {/* Breadcrumbs */}
       <nav className="flex items-center space-x-2 text-sm text-muted-foreground mb-6">
-        <Link href="/" className="hover:text-primary">Home</Link>
+        <Link href="/" className="hover:text-primary">Ana səhifə</Link>
         <ChevronRight className="h-4 w-4" />
-        <Link href="/shop" className="hover:text-primary">Shop</Link>
+        <Link href="/shop" className="hover:text-primary">Mağaza</Link>
         <ChevronRight className="h-4 w-4" />
         <Link href={`/shop?category=${product.category.slug}`} className="hover:text-primary">
           {product.category.name}
@@ -126,18 +126,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <div className="space-y-2">
             <p className="text-sm">
-              <span className="font-semibold">SKU:</span> {product.sku || 'N/A'}
+              <span className="font-semibold">SKU:</span> {product.sku || 'Mövcud deyil'}
             </p>
             <p className="text-sm">
-              <span className="font-semibold">Condition:</span>{' '}
+              <span className="font-semibold">Vəziyyət:</span>{' '}
               <span className="capitalize">{product.condition.toLowerCase()}</span>
             </p>
             <p className="text-sm">
-              <span className="font-semibold">Availability:</span>{' '}
+              <span className="font-semibold">Mövcudluq:</span>{' '}
               {product.stock > 0 ? (
-                <span className="text-green-600">{product.stock} in stock</span>
+                <span className="text-green-600">Anbarda {product.stock} ədəd</span>
               ) : (
-                <span className="text-red-600">Out of stock</span>
+                <span className="text-red-600">Stokda yoxdur</span>
               )}
             </p>
           </div>
@@ -150,11 +150,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {(product.carMake || product.carModel) && (
             <Card>
               <CardContent className="p-4">
-                <h3 className="font-semibold mb-2">Compatibility</h3>
+                <h3 className="font-semibold mb-2">Uyğunluq</h3>
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   {product.carMake && (
                     <div>
-                      <span className="text-muted-foreground">Make:</span> {product.carMake}
+                      <span className="text-muted-foreground">Marka:</span> {product.carMake}
                     </div>
                   )}
                   {product.carModel && (
@@ -164,18 +164,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   )}
                   {product.yearFrom && (
                     <div>
-                      <span className="text-muted-foreground">Year:</span> {product.yearFrom}
+                      <span className="text-muted-foreground">İl:</span> {product.yearFrom}
                       {product.yearTo && ` - ${product.yearTo}`}
                     </div>
                   )}
                   {product.engine && (
                     <div>
-                      <span className="text-muted-foreground">Engine:</span> {product.engine}
+                      <span className="text-muted-foreground">Mühərrik:</span> {product.engine}
                     </div>
                   )}
                   {product.gearbox && (
                     <div>
-                      <span className="text-muted-foreground">Gearbox:</span> {product.gearbox}
+                      <span className="text-muted-foreground">Sürətlər qutusu:</span> {product.gearbox}
                     </div>
                   )}
                 </div>
@@ -187,7 +187,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {attributes && Object.keys(attributes).length > 0 && (
             <Card>
               <CardContent className="p-4">
-                <h3 className="font-semibold mb-2">Specifications</h3>
+                <h3 className="font-semibold mb-2">Xüsusiyyətlər</h3>
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   {Object.entries(attributes).map(([key, value]) => (
                     <div key={key}>

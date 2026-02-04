@@ -64,7 +64,7 @@ export default function CheckoutPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Checkout failed');
+        throw new Error(data.error || 'Ödəniş uğursuz oldu');
       }
 
       // Redirect to PayTR payment gateway
@@ -72,37 +72,37 @@ export default function CheckoutPage() {
         // PayTR uses an iframe or redirect
         window.location.href = `https://www.paytr.com/odeme/guvenli?token=${data.token}`;
       } else {
-        throw new Error('No payment token received');
+        throw new Error('Ödəniş tokeni alınmadı');
       }
     } catch (error: any) {
       console.error('Checkout error:', error);
-      alert(error.message || 'Checkout failed');
+      alert(error.message || 'Ödəniş uğursuz oldu');
     } finally {
       setLoading(false);
     }
   };
 
   if (status === 'loading') {
-    return <div className="container mx-auto px-4 py-16 text-center">Loading...</div>;
+    return <div className="container mx-auto px-4 py-16 text-center">Yüklənir...</div>;
   }
 
   const total = getTotalPrice();
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Checkout</h1>
+      <h1 className="text-3xl font-bold mb-8">Ödəniş</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
           <Card>
             <CardHeader>
-              <CardTitle>Shipping Information</CardTitle>
+              <CardTitle>Çatdırılma məlumatları</CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="customerName">Full Name *</Label>
+                    <Label htmlFor="customerName">Ad Soyad *</Label>
                     <Input
                       id="customerName"
                       required
@@ -112,7 +112,7 @@ export default function CheckoutPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="customerEmail">Email *</Label>
+                    <Label htmlFor="customerEmail">E-poçt *</Label>
                     <Input
                       id="customerEmail"
                       type="email"
@@ -124,7 +124,7 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="customerPhone">Phone Number *</Label>
+                  <Label htmlFor="customerPhone">Telefon nömrəsi *</Label>
                   <Input
                     id="customerPhone"
                     type="tel"
@@ -135,7 +135,7 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="shippingAddress">Address *</Label>
+                  <Label htmlFor="shippingAddress">Ünvan *</Label>
                   <Input
                     id="shippingAddress"
                     required
@@ -146,7 +146,7 @@ export default function CheckoutPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="shippingCity">City *</Label>
+                    <Label htmlFor="shippingCity">Şəhər *</Label>
                     <Input
                       id="shippingCity"
                       required
@@ -156,7 +156,7 @@ export default function CheckoutPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="shippingZip">Postal Code</Label>
+                    <Label htmlFor="shippingZip">Poçt indeksi</Label>
                     <Input
                       id="shippingZip"
                       value={formData.shippingZip}
@@ -166,26 +166,26 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="notes">Order Notes (Optional)</Label>
+                  <Label htmlFor="notes">Sifariş qeydləri (istəyə bağlı)</Label>
                   <Input
                     id="notes"
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    placeholder="Special instructions for delivery"
+                    placeholder="Çatdırılma üçün xüsusi qeydlər"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Payment Method *</Label>
+                  <Label>Ödəniş üsulu *</Label>
                   <div className="space-y-2">
                     <label className="flex items-center space-x-2 p-3 border rounded cursor-pointer hover:bg-muted bg-blue-50">
-                      <span className="text-sm font-semibold">💳 PayTR - Secure Payment</span>
+                      <span className="text-sm font-semibold">💳 PayTR - Təhlükəsiz ödəniş</span>
                     </label>
                   </div>
                 </div>
 
                 <Button type="submit" className="w-full" size="lg" disabled={loading}>
-                  {loading ? 'Processing...' : 'Pay with PayTR'}
+                  {loading ? 'Emal olunur...' : 'PayTR ilə ödə'}
                 </Button>
               </form>
             </CardContent>
@@ -195,7 +195,7 @@ export default function CheckoutPage() {
         <div>
           <Card>
             <CardHeader>
-              <CardTitle>Order Summary</CardTitle>
+              <CardTitle>Sifariş xülasəsi</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {items.map((item) => (
@@ -209,7 +209,7 @@ export default function CheckoutPage() {
 
               <div className="border-t pt-4">
                 <div className="flex justify-between font-bold text-lg">
-                  <span>Total</span>
+                  <span>Cəmi</span>
                   <span className="text-primary">{formatPrice(total)}</span>
                 </div>
               </div>

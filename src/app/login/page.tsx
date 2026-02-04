@@ -35,7 +35,7 @@ function LoginForm() {
       });
 
       if (result?.error) {
-        setError('Geçersiz email veya şifre');
+        setError('Yanlış e-poçt və ya şifrə');
       } else if (result?.url) {
         // Let NextAuth decide the correct redirect URL (admin, account, etc.)
         router.push(result.url);
@@ -43,7 +43,7 @@ function LoginForm() {
         router.push(callbackUrl);
       }
     } catch (error) {
-      setError('Bir hata oluştu. Lütfen tekrar deneyin.');
+      setError('Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.');
     } finally {
       setLoading(false);
     }
@@ -53,14 +53,14 @@ function LoginForm() {
     <div className="container mx-auto px-4 py-16 flex items-center justify-center min-h-[calc(100vh-200px)]">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Giriş Yap</CardTitle>
-          <CardDescription>Hesabınıza erişmek için kimlik bilgilerinizi girin</CardDescription>
+          <CardTitle>Daxil ol</CardTitle>
+          <CardDescription>Hesabınıza daxil olmaq üçün məlumatlarınızı daxil edin</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             {justRegistered && (
               <div className="bg-green-50 text-green-700 p-3 rounded-md text-sm">
-                Kayıt başarılı! Şimdi giriş yapabilirsiniz.
+                Qeydiyyat uğurludur! İndi daxil ola bilərsiniz.
               </div>
             )}
 
@@ -71,7 +71,7 @@ function LoginForm() {
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-poçt</Label>
               <Input
                 id="email"
                 type="email"
@@ -83,7 +83,7 @@ function LoginForm() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Şifre</Label>
+              <Label htmlFor="password">Şifrə</Label>
               <Input
                 id="password"
                 type="password"
@@ -95,19 +95,19 @@ function LoginForm() {
             </div>
 
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? 'Giriş yapılıyor...' : 'Giriş Yap'}
+              {loading ? 'Daxil olunur...' : 'Daxil ol'}
             </Button>
 
             <div className="text-center text-sm">
-              <span className="text-muted-foreground">Hesabınız yok mu? </span>
+              <span className="text-muted-foreground">Hesabınız yoxdur? </span>
               <Link href="/register" className="text-primary hover:underline">
-                Kayıt Ol
+                Qeydiyyat
               </Link>
             </div>
 
             <div className="border-t pt-4">
               <p className="text-xs text-muted-foreground text-center">
-                Admin Demo: admin@carparts.com / admin123
+                Admin demo: admin@carparts.com / admin123
               </p>
             </div>
           </form>
@@ -123,7 +123,7 @@ export default function LoginPage() {
       <div className="container mx-auto px-4 py-16 flex items-center justify-center min-h-[calc(100vh-200px)]">
         <Card className="w-full max-w-md">
           <CardContent className="p-8">
-            <div className="text-center">Yükleniyor...</div>
+            <div className="text-center">Yüklənir...</div>
           </CardContent>
         </Card>
       </div>

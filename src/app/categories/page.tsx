@@ -7,8 +7,8 @@ import { Package2 } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Categories - CarParts',
-  description: 'Browse car parts by category',
+  title: 'Kateqoriyalar - CarParts',
+  description: 'Ehtiyat hissələrini kateqoriyaya görə seçin',
 };
 
 async function getCategories() {
@@ -33,9 +33,9 @@ export default async function CategoriesPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">Shop by Category</h1>
+        <h1 className="text-4xl font-bold mb-2">Kateqoriyaya görə seçin</h1>
         <p className="text-muted-foreground">
-          Find the perfect parts for your vehicle organized by category
+          Avtomobiliniz üçün uyğun hissələri kateqoriyaya görə tapın
         </p>
       </div>
 
@@ -57,7 +57,7 @@ export default async function CategoriesPage() {
                       {category.name}
                     </CardTitle>
                     <p className="text-sm text-muted-foreground mt-1">
-                      {category._count.products} products
+                      {category._count.products} məhsul
                     </p>
                   </div>
                 </div>
@@ -77,9 +77,9 @@ export default async function CategoriesPage() {
       {categories.length === 0 && (
         <div className="text-center py-16">
           <Package2 className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-          <h3 className="text-lg font-semibold mb-2">No categories found</h3>
+          <h3 className="text-lg font-semibold mb-2">Kateqoriya tapılmadı</h3>
           <p className="text-muted-foreground">
-            Categories will appear here once they are added.
+            Kateqoriyalar əlavə edildikdən sonra burada görünəcək.
           </p>
         </div>
       )}
