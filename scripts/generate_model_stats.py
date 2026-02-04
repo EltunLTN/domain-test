@@ -17,8 +17,16 @@ for col in ['qiymet']:
 df = df.dropna(subset=['marka', 'model', 'qiymet'])
 
 stats = (
-    df.groupby(['marka', 'model'])['qiymet']
-    .agg(['mean', 'min', 'max', 'count'])
+    df.groupby(['marka', 'model'])
+    .agg(
+        mean_price=('qiymet', 'mean'),
+        min_price=('qiymet', 'min'),
+        max_price=('qiymet', 'max'),
+        count=('qiymet', 'count'),
+        avg_il=('il', 'mean'),
+        avg_yurus=('yurus', 'mean'),
+        avg_muherrik=('muherrik', 'mean'),
+    )
     .reset_index()
 )
 
@@ -26,10 +34,13 @@ result = {}
 for _, row in stats.iterrows():
     key = f"{row['marka']}||{row['model']}"
     result[key] = {
-        'avg_price': float(row['mean']),
-        'min_price': float(row['min']),
-        'max_price': float(row['max']),
+        'avg_price': float(row['mean_price']),
+        'min_price': float(row['min_price']),
+        'max_price': float(row['max_price']),
         'count': int(row['count']),
+        'avg_il': float(row['avg_il']),
+        'avg_yurus': float(row['avg_yurus']),
+        'avg_muherrik': float(row['avg_muherrik']),
     }
 
 with open(output_path, 'w', encoding='utf-8') as f:
