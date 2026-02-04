@@ -17,7 +17,7 @@ export default function TermsPage() {
 
         <h2>1. Şərtlərin qəbulu</h2>
         <p>
-          CarParts ("Vebsayt") xidmətindən istifadə etməklə bu Şərtləri qəbul edir və onlara riayət etməyi
+          CarParts (&quot;Vebsayt&quot;) xidmətindən istifadə etməklə bu Şərtləri qəbul edir və onlara riayət etməyi
           öhdənizə götürürsünüz. Razı deyilsinizsə, xidmətlərimizdən istifadə etməyin.
         </p>
 
