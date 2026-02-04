@@ -48,13 +48,13 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // Try to use Advanced Python ML model in development
+    // Try to use Per-Model Python ML model in development
     try {
-      const scriptPath = path.join(process.cwd(), 'scripts', 'predict_price_advanced.py');
+      const scriptPath = path.join(process.cwd(), 'scripts', 'predict_per_model.py');
       
       // Check if script exists
       if (!fs.existsSync(scriptPath)) {
-        console.log('Advanced script tapılmadı, fallback istifadə edilir');
+        console.log('Per-model script tapılmadı, fallback istifadə edilir');
         throw new Error('Python script tapılmadı');
       }
 
@@ -69,10 +69,10 @@ export async function POST(request: NextRequest) {
 
       const carDataJson = JSON.stringify(carData).replace(/"/g, '\\"');
 
-      // Run Advanced Python prediction script
+      // Run Per-Model Python prediction script
       const pythonCmd = process.platform === 'win32' ? 'python' : 'python3';
       const { stdout, stderr } = await execAsync(
-        `cd "${path.join(process.cwd(), 'scripts')}" && ${pythonCmd} predict_price_advanced.py "${carDataJson}"`,
+        `cd "${path.join(process.cwd(), 'scripts')}" && ${pythonCmd} predict_per_model.py "${carDataJson}"`,
         { maxBuffer: 1024 * 1024 }
       );
 
