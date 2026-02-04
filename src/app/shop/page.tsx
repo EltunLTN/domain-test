@@ -198,7 +198,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
                       )}
                     </div>
                     <p className="text-xs text-muted-foreground mt-2">
-                      {product.stock > 0 ? `Anbarda ${product.stock} ədəd` : 'Stokda yoxdur'}
+                      {product.stock > 0 ? `Anbarda ${product.stock} ədəd` : 'Anbarda yoxdur'}
                     </p>
                   </CardContent>
                   <CardFooter className="p-4 pt-0">

@@ -53,7 +53,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="name">Ad Soyad *</Label>
+        <Label htmlFor="name">Ad və soyad *</Label>
         <Input 
           id="name" 
           name="name" 

@@ -145,7 +145,7 @@ export function ProductsClient({ products }: { products: Product[] }) {
                                   ? 'bg-orange-100 text-orange-700' 
                                   : 'bg-red-100 text-red-700'
                               }`}>
-                                Stok: {product.stock}
+                                Anbar: {product.stock}
                               </div>
 
                               {/* Status */}

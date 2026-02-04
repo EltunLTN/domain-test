@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
 
       if (product.stock < item.quantity) {
         return NextResponse.json(
-          { error: `${product.title} üçün kifayət qədər stok yoxdur` },
+          { error: `${product.title} üçün kifayət qədər anbar yoxdur` },
           { status: 400 }
         );
       }

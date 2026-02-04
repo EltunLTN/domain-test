@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Ad ən az 2 simvol olmalıdır'),
-  email: z.string().email('Düzgün email daxil edin'),
+  email: z.string().email('Düzgün e-poçt daxil edin'),
   phone: z.string().min(7, 'Düzgün telefon nömrəsi daxil edin'),
   subject: z.string().min(3, 'Mövzu ən az 3 simvol olmalıdır').optional(),
   message: z.string().min(10, 'Mesaj ən az 10 simvol olmalıdır').optional(),
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
               
               <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
                 <p style="margin: 10px 0;"><strong>Ad:</strong> ${validatedData.name}</p>
-                <p style="margin: 10px 0;"><strong>Email:</strong> <a href="mailto:${validatedData.email}">${validatedData.email}</a></p>
+                <p style="margin: 10px 0;"><strong>E-poçt:</strong> <a href="mailto:${validatedData.email}">${validatedData.email}</a></p>
                 <p style="margin: 10px 0;"><strong>Telefon:</strong> ${validatedData.phone}</p>
                 ${validatedData.subject ? `<p style="margin: 10px 0;"><strong>Mövzu:</strong> ${validatedData.subject}</p>` : ''}
               </div>
@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
               
               <div style="color: #999; font-size: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
                 <p>Bu mesaj CarParts saytının əlaqə formasından göndərilib.</p>
-                <p>Cavab vermək üçün birbaşa <a href="mailto:${validatedData.email}">${validatedData.email}</a> adresinə yazın.</p>
+                <p>Cavab vermək üçün birbaşa <a href="mailto:${validatedData.email}">${validatedData.email}</a> ünvanına yazın.</p>
               </div>
             </div>
           `,

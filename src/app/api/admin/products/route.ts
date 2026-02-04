@@ -84,27 +84,27 @@ export async function POST(req: NextRequest) {
 
     // Get or create default category and brand
     let defaultCategory = await prisma.category.findFirst({
-      where: { name: 'Diğer' },
+      where: { name: 'Digər' },
     });
     if (!defaultCategory) {
       defaultCategory = await prisma.category.create({
         data: {
-          name: 'Diğer',
+          name: 'Digər',
           slug: 'diger',
-          description: 'Diğer kategoriler',
+          description: 'Digər kateqoriyalar',
         },
       });
     }
 
     let defaultBrand = await prisma.brand.findFirst({
-      where: { name: 'Belirtilmemiş' },
+      where: { name: 'Müəyyən edilməyib' },
     });
     if (!defaultBrand) {
       defaultBrand = await prisma.brand.create({
         data: {
-          name: 'Belirtilmemiş',
-          slug: 'belirtilmemis',
-          description: 'Belirtilmemiş marka',
+          name: 'Müəyyən edilməyib',
+          slug: 'muayyen-edilmeyib',
+          description: 'Müəyyən edilməmiş marka',
         },
       });
     }

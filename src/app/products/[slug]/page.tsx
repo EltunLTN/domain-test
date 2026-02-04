@@ -137,7 +137,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {product.stock > 0 ? (
                 <span className="text-green-600">Anbarda {product.stock} ədəd</span>
               ) : (
-                <span className="text-red-600">Stokda yoxdur</span>
+                <span className="text-red-600">Anbarda yoxdur</span>
               )}
             </p>
           </div>

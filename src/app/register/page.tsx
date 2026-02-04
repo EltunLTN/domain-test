@@ -76,14 +76,14 @@ export default function RegisterPage() {
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="name">Ad Soyad</Label>
+              <Label htmlFor="name">Ad və soyad</Label>
               <Input
                 id="name"
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
-                placeholder="John Doe"
+                placeholder="Məs: Əli Məmmədov"
               />
             </div>
 
@@ -95,7 +95,7 @@ export default function RegisterPage() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
-                placeholder="you@example.com"
+                placeholder="siz@example.com"
               />
             </div>
 

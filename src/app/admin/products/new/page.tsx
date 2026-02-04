@@ -186,7 +186,7 @@ export default function AddProductPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="stock">Stok *</Label>
+                <Label htmlFor="stock">Anbar *</Label>
                 <Input 
                   id="stock" 
                   name="stock" 
