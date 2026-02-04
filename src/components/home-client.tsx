@@ -58,11 +58,11 @@ export function HomeClient({ featuredProducts, categories }: any) {
                 <CarDriveIn delay={0.2}>
                   <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-[1.1] mb-4 sm:mb-6">
                     <span className="block text-slate-800">Sizin avtomobiliniz</span>
-                    <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-slow bg-[length:200%_auto]">
-                      Layiqdir
-                    </span>
                     <span className="block bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-                      Ən yaxşısına
+                      ən yaxşısına
+                    </span>
+                    <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-slow bg-[length:200%_auto]">
+                      layiqdir
                     </span>
                   </h1>
                 </CarDriveIn>
