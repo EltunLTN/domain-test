@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     } = body;
 
     // Validate required fields
-    if (!brand || !model || !year || !mileage || !engineSize) {
+    if (!brand || !model || !year || mileage === undefined || mileage === null || !engineSize) {
       return NextResponse.json(
         { error: 'Bütün məlumatlar doldurulmalıdır' },
         { status: 400 }
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
         brand: brand,
         model: model,
         year: parseInt(year),
-        mileage: parseInt(mileage),
+        mileage: parseInt(mileage) || 0,
         engineSize: parseFloat(engineSize),
       };
 
@@ -73,9 +73,10 @@ export async function POST(request: NextRequest) {
 
       // Run Logarithmic Python prediction script with temp file
       const pythonCmd = process.platform === 'win32' ? 'python' : 'python3';
+      const scriptDir = path.join(process.cwd(), 'scripts');
       const { stdout, stderr } = await execAsync(
-        `cd "${path.join(process.cwd(), 'scripts')}" && ${pythonCmd} -c "import json; from predict_log import predict_from_json; data=open('temp_input.json').read(); print(predict_from_json(data))"`,
-        { maxBuffer: 1024 * 1024 }
+        `${pythonCmd} -c "import sys; sys.path.insert(0, '${scriptDir.replace(/\\/g, '\\\\')}'); import json; from predict_log import predict_from_json; data=open('${tempFile.replace(/\\/g, '\\\\')}').read(); print(predict_from_json(data))"`,
+        { maxBuffer: 1024 * 1024, cwd: scriptDir }
       );
       
       // Clean up temp file
