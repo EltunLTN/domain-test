@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
         throw new Error('Python script tapılmadı');
       }
 
-      // Prepare car data for Python script (car_data.csv strukturu)
+      // Prepare car data for Python script
       const carData = {
         brand: brand,
         model: model,
@@ -67,14 +67,19 @@ export async function POST(request: NextRequest) {
         engineSize: parseFloat(engineSize),
       };
 
-      const carDataJson = JSON.stringify(carData).replace(/"/g, '\\"');
+      // Write JSON to temp file to avoid shell escaping issues
+      const tempFile = path.join(process.cwd(), 'scripts', 'temp_input.json');
+      fs.writeFileSync(tempFile, JSON.stringify(carData));
 
-      // Run Per-Model Python prediction script
+      // Run Per-Model Python prediction script with temp file
       const pythonCmd = process.platform === 'win32' ? 'python' : 'python3';
       const { stdout, stderr } = await execAsync(
-        `cd "${path.join(process.cwd(), 'scripts')}" && ${pythonCmd} predict_per_model.py "${carDataJson}"`,
+        `cd "${path.join(process.cwd(), 'scripts')}" && ${pythonCmd} -c "import json; from predict_per_model import predict_from_json; data=open('temp_input.json').read(); print(predict_from_json(data))"`,
         { maxBuffer: 1024 * 1024 }
       );
+      
+      // Clean up temp file
+      try { fs.unlinkSync(tempFile); } catch {}
 
       if (stderr && !stdout) {
         console.error('Python stderr:', stderr);

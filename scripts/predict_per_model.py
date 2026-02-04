@@ -158,9 +158,21 @@ def predict_from_json(json_str):
         
         marka = data.get('brand') or data.get('marka')
         model_name = data.get('model')
-        il = int(data.get('year') or data.get('il'))
-        yurus = int(data.get('mileage') or data.get('yurus'))
-        muherrik = float(data.get('engineSize') or data.get('muherrik'))
+        il = data.get('year') or data.get('il')
+        yurus = data.get('mileage') or data.get('yurus') or 0
+        muherrik = data.get('engineSize') or data.get('muherrik')
+        
+        # Validate
+        if not marka or not model_name or il is None or muherrik is None:
+            return json.dumps({
+                'success': False,
+                'error': f'Missing fields: marka={marka}, model={model_name}, il={il}, muherrik={muherrik}',
+                'model': 'per_model'
+            })
+        
+        il = int(il)
+        yurus = int(yurus)
+        muherrik = float(muherrik)
         
         predicted_price = predict_price(marka, model_name, il, yurus, muherrik, verbose=False)
         
@@ -214,7 +226,16 @@ def main():
     
     if len(sys.argv) > 1:
         # JSON argument varsa - API rejimi
-        json_str = sys.argv[1]
+        # Bütün argumentləri birləşdir (boşluqlu JSON üçün)
+        json_str = ' '.join(sys.argv[1:])
+        
+        # Escaped quotes düzəlt
+        json_str = json_str.replace('\\"', '"')
+        
+        # Əgər başında/sonunda tək dırnaq varsa sil
+        if json_str.startswith("'") and json_str.endswith("'"):
+            json_str = json_str[1:-1]
+        
         result = predict_from_json(json_str)
         print(result)
     else:
@@ -234,6 +255,7 @@ def main():
             ('BMW', 'X5', 2019, 80000, 3.0),
             ('Hyundai', 'Elantra', 2022, 20000, 2.0),
             ('Porsche', 'Cayenne', 2020, 40000, 3.0),
+            ('Lamborghini', 'Urus', 2025, 0, 4.0),
         ]
         
         print("\n🧪 TEST NƏTİCƏLƏRİ:")
