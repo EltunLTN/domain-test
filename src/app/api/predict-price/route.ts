@@ -6,6 +6,33 @@ import fs from 'fs';
 
 const execAsync = promisify(exec);
 
+type ModelStats = {
+  avg_price: number;
+  min_price: number;
+  max_price: number;
+  count: number;
+};
+
+let modelStatsCache: Record<string, ModelStats> | null = null;
+
+function loadModelStats(): Record<string, ModelStats> {
+  if (modelStatsCache) return modelStatsCache;
+
+  try {
+    const statsPath = path.join(process.cwd(), 'scripts', 'model_stats.json');
+    if (fs.existsSync(statsPath)) {
+      const raw = fs.readFileSync(statsPath, 'utf-8');
+      modelStatsCache = JSON.parse(raw) as Record<string, ModelStats>;
+      return modelStatsCache;
+    }
+  } catch (error) {
+    console.error('Model stats load error:', error);
+  }
+
+  modelStatsCache = {};
+  return modelStatsCache;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -169,7 +196,11 @@ function calculateEnhancedPrice(data: any): number {
     'LADA': 8000,
   };
 
-  let basePrice = brandPrices[brand] || 20000;
+  const statsMap = loadModelStats();
+  const statsKey = `${brand}||${model}`;
+  const modelStats = statsMap[statsKey];
+
+  let basePrice = modelStats?.avg_price ?? (brandPrices[brand] || 20000);
 
   // Year depreciation (more realistic)
   const carAge = 2026 - parseInt(year);
