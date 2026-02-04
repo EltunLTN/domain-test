@@ -48,13 +48,13 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // Try to use Per-Model Python ML model in development
+    // Try to use Logarithmic Python ML model in development
     try {
-      const scriptPath = path.join(process.cwd(), 'scripts', 'predict_per_model.py');
+      const scriptPath = path.join(process.cwd(), 'scripts', 'predict_log.py');
       
       // Check if script exists
       if (!fs.existsSync(scriptPath)) {
-        console.log('Per-model script tapılmadı, fallback istifadə edilir');
+        console.log('Log model script tapılmadı, fallback istifadə edilir');
         throw new Error('Python script tapılmadı');
       }
 
@@ -71,10 +71,10 @@ export async function POST(request: NextRequest) {
       const tempFile = path.join(process.cwd(), 'scripts', 'temp_input.json');
       fs.writeFileSync(tempFile, JSON.stringify(carData));
 
-      // Run Per-Model Python prediction script with temp file
+      // Run Logarithmic Python prediction script with temp file
       const pythonCmd = process.platform === 'win32' ? 'python' : 'python3';
       const { stdout, stderr } = await execAsync(
-        `cd "${path.join(process.cwd(), 'scripts')}" && ${pythonCmd} -c "import json; from predict_per_model import predict_from_json; data=open('temp_input.json').read(); print(predict_from_json(data))"`,
+        `cd "${path.join(process.cwd(), 'scripts')}" && ${pythonCmd} -c "import json; from predict_log import predict_from_json; data=open('temp_input.json').read(); print(predict_from_json(data))"`,
         { maxBuffer: 1024 * 1024 }
       );
       
