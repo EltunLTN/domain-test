@@ -104,12 +104,6 @@ function LoginForm() {
                 Qeydiyyat
               </Link>
             </div>
-
-            <div className="border-t pt-4">
-              <p className="text-xs text-muted-foreground text-center">
-                Admin demo: admin@carparts.com / admin123
-              </p>
-            </div>
           </form>
         </CardContent>
       </Card>
