@@ -7,13 +7,18 @@ async function main() {
   console.log('Seeding database...');
 
   // Create admin user
-  const hashedPassword = await bcrypt.hash('admin123', 10);
+  // Admin credentials should be set via environment variables for security
+  const adminEmail = process.env.ADMIN_EMAIL || 'admin@autoparts.az';
+  const adminPassword = process.env.ADMIN_PASSWORD || 'AvtohisseAdmin2024!';
+  const hashedPassword = await bcrypt.hash(adminPassword, 12);
   const admin = await prisma.user.upsert({
-    where: { email: 'admin@carparts.com' },
-    update: {},
+    where: { email: adminEmail },
+    update: {
+      password: hashedPassword, // Update password on reseed
+    },
     create: {
-      email: 'admin@carparts.com',
-      name: 'Admin User',
+      email: adminEmail,
+      name: 'Avtohissə Admin',
       password: hashedPassword,
       role: 'ADMIN',
     },
