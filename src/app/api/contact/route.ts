@@ -9,6 +9,7 @@ const contactSchema = z.object({
   subject: z.string().min(3, 'Mövzu ən az 3 simvol olmalıdır').optional(),
   message: z.string().min(10, 'Mesaj ən az 10 simvol olmalıdır').optional(),
   orderItems: z.array(z.object({
+    productId: z.string(),
     title: z.string(),
     quantity: z.number(),
     price: z.number(),
@@ -32,6 +33,69 @@ export async function POST(req: NextRequest) {
         status: 'NEW',
       },
     });
+
+    // If order items exist, create an order in the database
+    let order: { id: string; orderNumber: string } | null = null;
+    if (validatedData.orderItems && validatedData.orderItems.length > 0) {
+      // Find or create a guest user for this email
+      let user = await prisma.user.findUnique({
+        where: { email: validatedData.email }
+      });
+
+      if (!user) {
+        // Create a guest user with random password (they won't login with it)
+        const bcrypt = await import('bcryptjs');
+        const randomPassword = Math.random().toString(36).slice(-12);
+        const hashedPassword = await bcrypt.hash(randomPassword, 10);
+        
+        user = await prisma.user.create({
+          data: {
+            email: validatedData.email,
+            name: validatedData.name,
+            password: hashedPassword,
+            role: 'USER',
+          }
+        });
+      }
+
+      // Generate unique order number
+      const orderNumber = `ORD-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(-5).toUpperCase()}`;
+
+      // Calculate totals
+      const subtotal = validatedData.orderItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const total = validatedData.orderTotal || subtotal;
+
+      // Create order with items
+      order = await prisma.order.create({
+        data: {
+          userId: user.id,
+          orderNumber,
+          status: 'PENDING',
+          total,
+          subtotal,
+          customerName: validatedData.name,
+          customerEmail: validatedData.email,
+          customerPhone: validatedData.phone,
+          shippingAddress: validatedData.message || 'Əlaqə formu ilə sifariş',
+          shippingCity: 'Bakı',
+          shippingCountry: 'Azerbaijan',
+          paymentMethod: 'contact_form',
+          notes: validatedData.message || null,
+          orderItems: {
+            create: validatedData.orderItems.map(item => ({
+              productId: item.productId,
+              quantity: item.quantity,
+              price: item.price,
+              discount: 0,
+              total: item.price * item.quantity,
+            }))
+          }
+        },
+        include: {
+          orderItems: true
+        }
+      });
+    }
 
     // Send email notification using Resend (only if API key is configured)
     if (process.env.RESEND_API_KEY) {
@@ -110,8 +174,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       { 
         success: true, 
-        message: 'Mesajınız uğurla göndərildi. Tezliklə sizinlə əlaqə saxlayacağıq.',
-        id: contact.id 
+        message: order 
+          ? `Sifarişiniz qeydə alındı! Sifariş nömrəsi: ${order.orderNumber}. Tezliklə sizinlə əlaqə saxlayacağıq.`
+          : 'Mesajınız uğurla göndərildi. Tezliklə sizinlə əlaqə saxlayacağıq.',
+        id: contact.id,
+        orderId: order?.id,
+        orderNumber: order?.orderNumber
       },
       { status: 201 }
     );

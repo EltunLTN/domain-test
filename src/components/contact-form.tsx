@@ -5,9 +5,11 @@ import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Send, ShoppingBag } from 'lucide-react';
+import { Send, ShoppingBag, CheckCircle } from 'lucide-react';
+import { useCartStore } from '@/store/cart';
 
 interface OrderItem {
+  productId: string;
   title: string;
   quantity: number;
   price: number;
@@ -15,8 +17,10 @@ interface OrderItem {
 
 export default function ContactForm() {
   const searchParams = useSearchParams();
+  const { clearCart } = useCartStore();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [orderNumber, setOrderNumber] = useState<string | null>(null);
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const [orderTotal, setOrderTotal] = useState<number>(0);
   const [formData, setFormData] = useState({
@@ -73,9 +77,15 @@ export default function ContactForm() {
       if (response.ok) {
         setSuccess(true);
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        
+        // If this was an order, clear the cart and save order number
+        if (orderItems.length > 0) {
+          clearCart();
+          setOrderNumber(data.orderNumber || null);
+        }
+        
         setOrderItems([]);
         setOrderTotal(0);
-        setTimeout(() => setSuccess(false), 5000);
       } else {
         alert(data.error || 'Xəta baş verdi');
       }
@@ -175,8 +185,19 @@ export default function ContactForm() {
       </div>
 
       {success && (
-        <div className="p-3 bg-green-100 text-green-800 rounded-md text-sm">
-          ✓ Mesajınız alındı. Tezliklə sizinlə əlaqə saxlayacağıq.
+        <div className="p-4 bg-green-100 text-green-800 rounded-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <CheckCircle className="h-5 w-5" />
+            <span className="font-semibold">
+              {orderNumber ? 'Sifarişiniz qeydə alındı!' : 'Mesajınız göndərildi!'}
+            </span>
+          </div>
+          {orderNumber && (
+            <p className="text-sm">
+              Sifariş nömrəniz: <strong>{orderNumber}</strong>
+            </p>
+          )}
+          <p className="text-sm mt-1">Tezliklə sizinlə əlaqə saxlayacağıq.</p>
         </div>
       )}
 
